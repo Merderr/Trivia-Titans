@@ -1,4 +1,6 @@
 volumes:
+  pg-admin:
+    external: true
   api:
     external: true
 services:
@@ -14,6 +16,16 @@ services:
       - 8000:8000
     volumes:
       - ./api:/app
+  pg-admin:
+    image: dpage/pgadmin4
+    volumes:
+      - pg-admin:/var/lib/pgadmin
+    ports:
+      - 8082:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: pass
+      PGADMIN_DISABLE_POSTFIX: 1
 
   ghi:
     image: node:lts-bullseye
@@ -39,4 +51,4 @@ services:
     ports:
       - "15432:5432"
     volumes:
-      - fastapi-trivia-data:/var/lib/postgresql/data
+      - postgres-trivia-data:/var/lib/postgresql/data
