@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./NavBar.css";
-import { NavLink } from 'react-router-dom';
-
+import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -16,7 +15,7 @@ const NavBar = () => {
       </button>
       <div className="nav-links">
         <NavLink to="/" activeClassName="active" exact>
-          Home
+          Main
         </NavLink>
         <NavLink to="/login" activeClassName="active">
           Log In
