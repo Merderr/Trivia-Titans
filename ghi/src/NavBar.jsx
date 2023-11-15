@@ -1,24 +1,41 @@
 import React, { useState } from "react";
 import "./NavBar.css";
+import { NavLink } from 'react-router-dom';
+
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
+
   return (
     <div className={`nav-container ${isNavOpen ? "open" : ""}`}>
       <button onClick={toggleNav} className="toggle-button">
         ≡
       </button>
       <div className="nav-links">
-        <NavLink className="nav-link" to="/leaderboard">Leaderboard</NavLink>
-        <a href="#">Sign In</a>
-        <a href="#">Sign Up</a>
-        <a href="#">Leaderboard</a>
-        <a href="#">My Account</a>
-        <a href="#">About Us</a>
+        <NavLink to="/" activeClassName="active" exact>
+          Home
+        </NavLink>
+        <NavLink to="/login" activeClassName="active">
+          Log In
+        </NavLink>
+        <NavLink to="/signup" activeClassName="active">
+          Sign Up
+        </NavLink>
+        <NavLink to="/leaderboard" activeClassName="active">
+          Leaderboard
+        </NavLink>
+        <NavLink to="/myaccount" activeClassName="active">
+          My Account
+        </NavLink>
+        <NavLink to="/aboutus" activeClassName="active">
+          About Us
+        </NavLink>
       </div>
     </div>
   );
 };
+
 export default NavBar;
