@@ -11,7 +11,7 @@ const NavBar = () => {
         ≡
       </button>
       <div className="nav-links">
-        <a href="#">Home</a>
+        <NavLink className="nav-link" to="/leaderboard">Leaderboard</NavLink>
         <a href="#">Sign In</a>
         <a href="#">Sign Up</a>
         <a href="#">Leaderboard</a>

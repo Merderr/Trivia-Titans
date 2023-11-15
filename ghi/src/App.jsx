@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import NavBar from "./NavBar";
 import PlayButton from "./PlayButton";
+
 function App() {
   const [count, setCount] = useState(0);
   return (
