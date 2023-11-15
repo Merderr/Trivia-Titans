@@ -1,14 +1,11 @@
-steps = [
+query = [
     """
-    CREATE TABLE users (
-    id SERIAL PRIMARY KEY NOT NULL
-    name VARCHAR(1000) NOT NULL
-    username VARCHAR(20) NOT NULL
-    password VARCHAR(20) NOT NULL
-    score INTEGER
-    );
-    """
-    """
-    DROP TABLE users;
+        CREATE TABLE IF NOT EXISTS users (
+            id SERIAL PRIMARY KEY,
+            username TEXT UNIQUE,
+            password TEXT,
+            name TEXT,
+            score INTEGER
+        )
     """
 ]
