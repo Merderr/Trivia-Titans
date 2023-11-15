@@ -38,7 +38,7 @@ class QuestionRepository:
             # connect to the database
             with pool.connection() as conn:
                 # get a named cursor (something to run SQL with)
-                with conn.cursor(name='get_one_cursor') as db:
+                with conn.cursor(name="get_one_cursor") as db:
                     # Run our SELECT statement
                     db.execute(
                         """
@@ -46,7 +46,7 @@ class QuestionRepository:
                         FROM question
                         WHERE id = %s
                         """,
-                        [question_id]
+                        [question_id],
                     )
                     record = db.fetchone()
                     if record is None:
@@ -71,13 +71,15 @@ class QuestionRepository:
                     result_list = []
                     for record in result:
                         question = QuestionModelOut(
-                                id=record[0],
-                                category=record[1],
-                                type=record[2],
-                                difficulty=record[3],
-                                question=record[4],
-                                correct_answer=record[5],
-                                incorrect_answers=record[6] if isinstance(record[6], list) else [record[6]],
+                            id=record[0],
+                            category=record[1],
+                            type=record[2],
+                            difficulty=record[3],
+                            question=record[4],
+                            correct_answer=record[5],
+                            incorrect_answers=record[6]
+                            if isinstance(record[6], list)
+                            else [record[6]],
                         )
                         result_list.append(question)
                     return result_list
@@ -88,7 +90,11 @@ class QuestionRepository:
     def create(self, question: QuestionModelIn) -> QuestionModelOut:
         with pool.connection() as conn:
             with conn.cursor() as db:
-                incorrect_answers = question.incorrect_answers if isinstance(question.incorrect_answers, list) else [question.incorrect_answers]
+                incorrect_answers = (
+                    question.incorrect_answers
+                    if isinstance(question.incorrect_answers, list)
+                    else [question.incorrect_answers]
+                )
                 result = db.execute(
                     """
                     INSERT INTO question
@@ -109,11 +115,17 @@ class QuestionRepository:
                 id = result.fetchone()[0]
                 return self.question_in_to_out(id, question)
 
-    def update(self, question_id: int, question: QuestionModelIn) -> Union[QuestionModelOut, Error]:
+    def update(
+        self, question_id: int, question: QuestionModelIn
+    ) -> Union[QuestionModelOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    incorrect_answers = question.incorrect_answers if isinstance(question.incorrect_answers, list) else [question.incorrect_answers]
+                    incorrect_answers = (
+                        question.incorrect_answers
+                        if isinstance(question.incorrect_answers, list)
+                        else [question.incorrect_answers]
+                    )
                     db.execute(
                         """
                         UPDATE question
@@ -132,8 +144,8 @@ class QuestionRepository:
                             question.question,
                             question.correct_answer,
                             incorrect_answers,
-                            question_id
-                        ]
+                            question_id,
+                        ],
                     )
                 return self.question_in_to_out(question_id, question)
         except Exception as e:
@@ -149,7 +161,7 @@ class QuestionRepository:
                         DELETE  FROM question
                         WHERE id = %s
                         """,
-                        [question_id]
+                        [question_id],
                     )
                     return True
         except Exception as e:
@@ -168,5 +180,7 @@ class QuestionRepository:
             difficulty=record[3],
             question=record[4],
             correct_answer=record[5],
-            incorrect_answers=record[6] if isinstance(record[6], list) else [record[6]],
+            incorrect_answers=record[6]
+            if isinstance(record[6], list)
+            else [record[6]],
         )
