@@ -30,12 +30,12 @@ class QuestionRepository:
                     result = []
                     for record in db:
                         question = QuestionModel(
-                                category=record[0],
-                                type=record[1],
-                                difficulty=record[2],
-                                question=record[3],
-                                correct_answer=record[4],
-                                incorrect_answers=record[5],
+                            category=record[0],
+                            type=record[1],
+                            difficulty=record[2],
+                            question=record[3],
+                            correct_answer=record[4],
+                            incorrect_answers=record[5],
                         )
                         result.append(question)
                     return result
