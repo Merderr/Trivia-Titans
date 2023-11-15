@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./NavBar.css";
+import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const toggleNav = () => {
@@ -11,12 +12,24 @@ const NavBar = () => {
         ≡
       </button>
       <div className="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Sign In</a>
-        <a href="#">Sign Up</a>
-        <a href="#">Leaderboard</a>
-        <a href="#">My Account</a>
-        <a href="#">About Us</a>
+        <NavLink to="/" activeClassName="active" exact>
+          Main
+        </NavLink>
+        <NavLink to="/login" activeClassName="active">
+          Log In
+        </NavLink>
+        <NavLink to="/signup" activeClassName="active">
+          Sign Up
+        </NavLink>
+        <NavLink to="/leaderboard" activeClassName="active">
+          Leaderboard
+        </NavLink>
+        <NavLink to="/myaccount" activeClassName="active">
+          My Account
+        </NavLink>
+        <NavLink to="/aboutus" activeClassName="active">
+          About Us
+        </NavLink>
       </div>
     </div>
   );
