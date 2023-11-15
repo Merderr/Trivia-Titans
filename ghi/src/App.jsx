@@ -4,6 +4,9 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import NavBar from "./NavBar";
 import PlayButton from "./PlayButton";
+import Signup from "./components/SignUp";
+import Login from "./components/Login";
+
 function App() {
   const [count, setCount] = useState(0);
   return (
@@ -17,6 +20,11 @@ function App() {
         <PlayButton />
         <p></p>
       </div>
+      <Routes>
+        <Route exact path="/" element={<Main />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/login" element={<Login />} />
+      </Routes>
     </>
   );
 }
