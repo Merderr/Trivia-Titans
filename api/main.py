@@ -4,7 +4,7 @@ import os
 from routers import questions
 
 app = FastAPI()
-app.include_router(questions.router)
+app.include_router(questions.router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,6 +26,3 @@ def launch_details():
             "min": "00",
         }
     }
-
-
-app.include_router(questions.router, prefix="/api")
