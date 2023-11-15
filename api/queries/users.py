@@ -1,13 +1,16 @@
-from typing import List
 from pydantic import BaseModel
+from passlib.hash import bcrypt
 
 
-class User(BaseModel):
+class UserModel(BaseModel):
     username: str
-    scores: List[int] = []
+    password: str
+    name: str
+    score: int
 
-    def add_score(self, score: int):
-        self.scores.append(score)
+    def verify_password(self, plain_password: str):
+        return bcrypt.verify(plain_password, self.password)
 
-    def get_total_score(self):
-        return sum(self.scores)
+    @classmethod
+    def create_password_hash(cls, password: str):
+        return bcrypt.hash(password)
