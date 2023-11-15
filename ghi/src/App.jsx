@@ -1,24 +1,34 @@
 import React, { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./App.css";
 import NavBar from "./NavBar";
 import PlayButton from "./PlayButton";
+import Signup from "./components/SignUp";
+import Login from "./components/Login";
+import Home from "./Home";
 
 function App() {
   const [count, setCount] = useState(0);
   return (
-    <>
-      <header className="app-header">
-        <NavBar />
-      </header>
-      <div className="content-container"></div>
-      <h1>Trivia Titans</h1>
-      <div className="PlayButton">
-        <PlayButton />
-        <p></p>
-      </div>
-    </>
+    <Router>
+      <>
+        <header className="app-header">
+          <NavBar />
+        </header>
+        <div className="content-container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
+        {/* <h1>Trivia Titans</h1>
+        <div className="PlayButton">
+          <PlayButton />
+        </div> */}
+      </>
+    </Router>
   );
 }
+
 export default App;
