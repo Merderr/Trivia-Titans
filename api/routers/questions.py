@@ -24,13 +24,31 @@ def create_question(
 ):
     return repo.create(question)
 
+
 @router.get("/questions/{question_id}", response_model=Optional[QuestionModelOut])
 def get_one_question(
     question_id: int,
     response: Response,
     repo: QuestionRepository = Depends(),
 ) -> Optional[QuestionModelOut]:
-    question = repo.get_one(question_id)
+    question = repo.get_one_question(question_id)
     if question is None:
         response.status_code = 404
     return question
+
+
+@router.put("/questions/{question_id}", response_model=Union[QuestionModelOut, Error])
+def update_question(
+    question_id: int,
+    question: QuestionModelIn,
+    repo: QuestionRepository = Depends(),
+) -> Union[Error, QuestionModelOut]:
+    return repo.update(question_id, question)
+
+
+@router.delete("/questions/{question_id}", response_model=bool)
+def delete_question(
+    question_id: int,
+    repo: QuestionRepository = Depends(),
+) -> bool:
+    return repo.delete(question_id)
