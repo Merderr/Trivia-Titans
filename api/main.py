@@ -5,7 +5,6 @@ from routers import user
 
 app = FastAPI()
 
-app.include_router(user.router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -30,3 +29,4 @@ def launch_details():
 
 
 app.include_router(questions.router, prefix="/api")
+app.include_router(user.router)
