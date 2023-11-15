@@ -10,5 +10,6 @@ def get_trivia_question():
         response.raise_for_status()
         return response.json()
     except requests.RequestException as e:
-        raise Exception(f"Failed to fetch question from the external API. Error: {str(e)}")
-
+        raise Exception(
+            f"Failed to fetch question from the external API. Error: {str(e)}"
+        )
