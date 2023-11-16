@@ -9,7 +9,7 @@ services:
   fastapi:
     environment:
       DATABASE_URL: postgresql://example_user:secret@postgres/postgres-trivia-data
-      WAIT_HOSTS: db:5432
+      WAIT_HOSTS: postgres:5432
       PORT: 8000
     build:
       context: api
