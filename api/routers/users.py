@@ -1,11 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException
-from queries.users import (
-    # get_user_by_username,
-    # get_all_users,
-    create_user,
-    # update_user,
-    # delete_user,
-)
+from queries.users import create_user
+
+# (
+#     # get_user_by_username,
+#     # get_all_users,
+#     create_user
+#     # update_user,
+#     # delete_user,
+# )
 from queries.users import UserModel
 
 router = APIRouter()

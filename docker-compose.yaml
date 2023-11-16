@@ -8,7 +8,7 @@ volumes:
 services:
   fastapi:
     environment:
-      DATABASE_URL: postgresql://example_user:secret@db/trivia
+      DATABASE_URL: postgresql://example_user:secret@postgres/postgres-trivia-data
       WAIT_HOSTS: db:5432
       PORT: 8000
     build:
@@ -44,12 +44,12 @@ services:
       PUBLIC_URL: http://localhost:3000
       REACT_APP_API_HOST: http://localhost:8000
 
-  db:
+  postgres:
     image: postgres:14.5-bullseye
     environment:
       POSTGRES_PASSWORD: secret
       POSTGRES_USER: example_user
-      POSTGRES_DB: trivia
+      POSTGRES_DB: postgres-trivia-data
     ports:
       - "15432:5432"
     volumes:

@@ -1,11 +1,8 @@
 from pydantic import BaseModel
-import psycopg
+import os
+from psycopg_pool import ConnectionPool
 
-DATABASE_URL = (
-    "postgresql://your_username:your_password@localhost/your_database"
-)
-conn = psycopg.connect(DATABASE_URL)
-cursor = conn.cursor()
+pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
 
 
 class UserModel(BaseModel):
@@ -35,10 +32,10 @@ def create_user(username: str, password: str, name: str, score: int):
         VALUES (%s, %s, %s, %s)
         RETURNING *
     """
-    with conn.cursor() as cursor:
-        cursor.execute(query, (username, password, name, score))
-        conn.commit()
-        return cursor.fetchone()
+    with pool.connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(query, (username, password, name, score))
+    return cur.fetchone()
 
 
 # def update_user(username: str, new_name: str, new_score: int):
