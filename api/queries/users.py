@@ -1,11 +1,11 @@
 from pydantic import BaseModel
 from passlib.hash import bcrypt
-import psycopg2
+import psycopg
 
 DATABASE_URL = (
     "postgresql://your_username:your_password@localhost/your_database"
 )
-conn = psycopg2.connect(DATABASE_URL)
+conn = psycopg.connect(DATABASE_URL)
 cursor = conn.cursor()
 
 
