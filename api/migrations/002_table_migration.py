@@ -10,10 +10,11 @@ steps = [
             question VARCHAR(1000) NOT NULL,
             correct_answer VARCHAR(1000) NOT NULL,
             incorrect_answers VARCHAR(1000) NOT NULL
-        );
+        )
         """,
         # "Down" SQL statement
         """
         DROP TABLE question;
         """
-    ]]
+    ]
+]

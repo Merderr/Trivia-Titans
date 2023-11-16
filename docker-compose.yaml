@@ -44,7 +44,7 @@ services:
       PUBLIC_URL: http://localhost:3000
       REACT_APP_API_HOST: http://localhost:8000
 
-  db:
+  postgres:
     image: postgres:14.5-bullseye
     environment:
       POSTGRES_PASSWORD: secret
@@ -53,4 +53,4 @@ services:
     ports:
       - "15432:5432"
     volumes:
-      - postgres-trivia-data:/var/lib/postgresql/data
+      - ./trivia.sql:/docker-entrypoint-initdb.d/trivia.sql
