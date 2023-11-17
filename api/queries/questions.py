@@ -13,7 +13,9 @@ class QuestionModelIn(BaseModel):
     difficulty: str
     question: str
     correct_answer: str
-    incorrect_answers: List[str]
+    incorrect_answer_1: str
+    incorrect_answer_2: str
+    incorrect_answer_3: str
 
     class Config:
         orm_mode = True
@@ -26,7 +28,9 @@ class QuestionModelOut(BaseModel):
     difficulty: str
     question: str
     correct_answer: str
-    incorrect_answers: List[str]
+    incorrect_answer_1: str
+    incorrect_answer_2: str
+    incorrect_answer_3: str
 
     class Config:
         orm_mode = True
@@ -42,8 +46,8 @@ class QuestionRepository:
                     # Run our SELECT statement
                     db.execute(
                         """
-                        SELECT id, category, type, difficulty, question, correct_answer, incorrect_answers
-                        FROM question
+                        SELECT id, category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3
+                        FROM questions
                         WHERE id = %s
                         """,
                         [question_id],
@@ -63,8 +67,8 @@ class QuestionRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, category, type, difficulty, question, correct_answer, incorrect_answers
-                        FROM question
+                        SELECT id, category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3
+                        FROM questions
                         ORDER BY category;
                         """
                     )
@@ -77,9 +81,9 @@ class QuestionRepository:
                             difficulty=record[3],
                             question=record[4],
                             correct_answer=record[5],
-                            incorrect_answers=record[6]
-                            if isinstance(record[6], list)
-                            else [record[6]],
+                            incorrect_answer_1=record[6],
+                            incorrect_answer_2=record[7],
+                            incorrect_answer_3=record[8],
                         )
                         result_list.append(question)
                     return result_list
@@ -90,17 +94,12 @@ class QuestionRepository:
     def create(self, question: QuestionModelIn) -> QuestionModelOut:
         with pool.connection() as conn:
             with conn.cursor() as db:
-                incorrect_answers = (
-                    question.incorrect_answers
-                    if isinstance(question.incorrect_answers, list)
-                    else [question.incorrect_answers]
-                )
                 result = db.execute(
                     """
-                    INSERT INTO question
-                        (category, type, difficulty, question, correct_answer, incorrect_answers)
+                    INSERT INTO questions
+                        (category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3)
                     VALUES
-                        (%s, %s, %s, %s, %s, %s)
+                        (%s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
                     [
@@ -109,7 +108,9 @@ class QuestionRepository:
                         question.difficulty,
                         question.question,
                         question.correct_answer,
-                        incorrect_answers,
+                        question.incorrect_answer_1,
+                        question.incorrect_answer_2,
+                        question.incorrect_answer_3,
                     ],
                 )
                 id = result.fetchone()[0]
@@ -121,20 +122,17 @@ class QuestionRepository:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    incorrect_answers = (
-                        question.incorrect_answers
-                        if isinstance(question.incorrect_answers, list)
-                        else [question.incorrect_answers]
-                    )
                     db.execute(
                         """
-                        UPDATE question
+                        UPDATE questions
                         SET category = %s
                         , type = %s
                         , difficulty = %s
                         , question = %s
                         , correct_answer = %s
-                        , incorrect_answers = %s
+                        , incorrect_answer_1 = %s
+                        , incorrect_answer_2 = %s
+                        , incorrect_answer_3 = %s
                         WHERE id = %s
                         """,
                         [
@@ -143,7 +141,9 @@ class QuestionRepository:
                             question.difficulty,
                             question.question,
                             question.correct_answer,
-                            incorrect_answers,
+                            question.incorrect_answer_1,
+                            question.incorrect_answer_2,
+                            question.incorrect_answer_3,
                             question_id,
                         ],
                     )
@@ -158,7 +158,7 @@ class QuestionRepository:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        DELETE  FROM question
+                        DELETE  FROM questions
                         WHERE id = %s
                         """,
                         [question_id],
@@ -180,7 +180,7 @@ class QuestionRepository:
             difficulty=record[3],
             question=record[4],
             correct_answer=record[5],
-            incorrect_answers=record[6]
-            if isinstance(record[6], list)
-            else [record[6]],
+            incorrect_answer_1=record[6],
+            incorrect_answer_2=record[7],
+            incorrect_answer_3=record[8],
         )
