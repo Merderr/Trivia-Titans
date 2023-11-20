@@ -6,15 +6,32 @@ const Game = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [result, setResult] = useState(null);
 
+  const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
+    const allAnswers = [correctAnswer, ...incorrectAnswers];
+    return allAnswers.sort(() => Math.random() - 0.5);
+  };
+
   const getQuestion = async () => {
     try {
-      const url = 'http://localhost:8000/api/questions/50'; 
+      const url = 'http://localhost:8000/api/questions/50';
       const response = await fetch(url);
 
       if (response.ok) {
         const data = await response.json();
-        setQuestion(data);
-        setResult(null); 
+        const shuffledAnswers = shuffleAnswers(
+          data.correct_answer,
+          [
+            data.incorrect_answer_1,
+            data.incorrect_answer_2,
+            data.incorrect_answer_3,
+          ]
+        );
+
+        setQuestion({
+          ...data,
+          answers: shuffledAnswers,
+        });
+        setResult(null);
       } else {
         console.error("Failed to fetch question");
       }
@@ -41,42 +58,20 @@ const Game = () => {
         <p className="question">{question.question}</p>
       </div>
       <ul>
-        <li
-          onClick={() => handleAnswerClick(question.correct_answer)}
-          className={result === "correct" ? "correct" : ""}
-        >
-          {question.correct_answer}
-        </li>
-        <li
-          onClick={() => handleAnswerClick(question.incorrect_answer_1)}
-          className={
-            selectedAnswer === question.incorrect_answer_1 && result === "incorrect"
-              ? "incorrect"
-              : ""
-          }
-        >
-          {question.incorrect_answer_1}
-        </li>
-        <li
-          onClick={() => handleAnswerClick(question.incorrect_answer_2)}
-          className={
-            selectedAnswer === question.incorrect_answer_2 && result === "incorrect"
-              ? "incorrect"
-              : ""
-          }
-        >
-          {question.incorrect_answer_2}
-        </li>
-        <li
-          onClick={() => handleAnswerClick(question.incorrect_answer_3)}
-          className={
-            selectedAnswer === question.incorrect_answer_3 && result === "incorrect"
-              ? "incorrect"
-              : ""
-          }
-        >
-          {question.incorrect_answer_3}
-        </li>
+        {question.answers &&
+          question.answers.map((answer, index) => (
+            <li
+              key={index}
+              onClick={() => handleAnswerClick(answer)}
+              className={
+                (result === "correct" && answer === question.correct_answer && "correct") ||
+                (selectedAnswer === answer && result === "incorrect" && "incorrect") ||
+                ""
+              }
+            >
+              {answer}
+            </li>
+          ))}
       </ul>
     </div>
   );
