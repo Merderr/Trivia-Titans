@@ -22,6 +22,7 @@ CREATE TABLE users (
     score INTEGER
 );
 
+
 INSERT INTO questions (id, category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3) VALUES
 (1, 'General Knowledge', 'multiple', 'easy', 'What is the capital of France?', 'Paris', 'Berlin', 'Madrid', 'Rome'),
 (2, 'Science and Nature', 'multiple', 'medium', 'What is the unit of electrical capacitance?', 'Farad', 'Gauss', 'Henry', 'Watt'),

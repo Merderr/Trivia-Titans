@@ -1,0 +1,6 @@
+1, 'General Knowledge', 'multiple', 'easy', 'What is the capital of France?', 'Paris', 'Berlin', 'Madrid', 'Rome'
+2, 'Science and Nature', 'multiple', 'medium', 'What is the unit of electrical capacitance?', 'Farad', 'Gauss', 'Henry', 'Watt'
+3, 'History', 'multiple', 'easy', 'In which year did World War I begin?', '1914', '1918', '1925', '1939'
+4, 'Geography', 'multiple', 'medium', 'Which river is the longest in the world?', 'Nile', 'Amazon', 'Yangtze', 'Mississippi'
+5, 'Movies', 'multiple', 'hard', 'Who directed the 1994 film Pulp Fiction?', 'Quentin Tarantino', 'Martin Scorsese', 'Steven Spielberg', 'Christopher Nolan'
+6, 'Sports', 'multiple', 'easy', 'In which sport would you perform a slam dunk?', 'Basketball', 'Football', 'Tennis', 'Golf'
