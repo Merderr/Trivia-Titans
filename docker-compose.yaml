@@ -5,8 +5,6 @@ volumes:
     external: true
   postgres-trivia-data:
     external: true
-  jwtdown-db-data:
-    external: true
 services:
   fastapi:
     environment:
