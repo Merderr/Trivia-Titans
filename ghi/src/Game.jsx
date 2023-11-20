@@ -5,7 +5,6 @@ const Game = () => {
   const [question, setQuestion] = useState({});
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [result, setResult] = useState(null);
-
   const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
     const allAnswers = [correctAnswer, ...incorrectAnswers];
     return allAnswers.sort(() => Math.random() - 0.5);
@@ -13,7 +12,8 @@ const Game = () => {
 
   const getQuestion = async () => {
     try {
-      const url = 'http://localhost:8000/api/questions/50';
+      const randomNumber = Math.floor(Math.random() * 50) + 1;
+      const url = `http://localhost:8000/api/questions/${randomNumber}`;
       const response = await fetch(url);
 
       if (response.ok) {
@@ -46,6 +46,10 @@ const Game = () => {
     const isCorrect = selectedOption === question.correct_answer;
 
     setResult(isCorrect ? "correct" : "incorrect");
+
+    if (isCorrect) {
+      getQuestion();
+    }
   };
 
   useEffect(() => {
