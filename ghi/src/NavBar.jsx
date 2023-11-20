@@ -15,7 +15,7 @@ const NavBar = () => {
       </button>
       <div className="nav-links">
         <NavLink to="/" activeClassName="active" exact>
-          Main
+          Home
         </NavLink>
         <NavLink to="/login" activeClassName="active">
           Log In

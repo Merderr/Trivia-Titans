@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import PlayButton from "./PlayButton";
 
-function App() {
+function Home() {
   const [count, setCount] = useState(0);
 
   return (
@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

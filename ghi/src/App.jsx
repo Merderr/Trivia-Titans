@@ -5,7 +5,11 @@ import NavBar from "./NavBar";
 import PlayButton from "./PlayButton";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
-import Main from "./components/Main";
+import Home from "./Home";
+import Leaderboard from "./Leaderboard";
+import MyAccount from "./MyAccount";
+import AboutUs from "./AboutUs";
+import Game from "./Game";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,9 +21,13 @@ function App() {
         </header>
         <div className="content-container">
           <Routes>
-            <Route path="/" element={<Main />} />
+            <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/myaccount" element={<MyAccount />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/play" element={<Game />} />
           </Routes>
         </div>
         {/* <h1>Trivia Titans</h1>

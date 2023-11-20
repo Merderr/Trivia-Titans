@@ -4,7 +4,7 @@ import "./PlayButton.css";
 
 const PlayButton = () => {
   return (
-    <a href="#GAME URL HERE" className="play-button">
+    <a href="play" className="play-button">
       Play Now
     </a>
   );

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Leaderboard = () => {
+const Game = () => {
   return (
     <div>
-      <header>Leaderboard</header>
+      <header>Game</header>
         <p>Hello</p>
     </div>
   );
 };
 
-export default Leaderboard;
+export default Game;
