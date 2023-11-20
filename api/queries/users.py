@@ -57,3 +57,15 @@ def create_user(username: str, password: str, name: str, score: int):
 #         cursor.execute(query, (username,))
 #         conn.commit()
 #         return cursor.fetchone()
+
+#Mason Added this dont want to mess u up seth move down if needed
+
+def get_leaderboard():
+    query = """
+        SELECT * FROM users
+        ORDER BY score DESC
+    """
+    with pool.connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(query)
+            return cursor.fetchall()
