@@ -59,7 +59,6 @@ def create_user(username: str, password: str, name: str, score: int):
 #         return cursor.fetchone()
 
 #Mason Added this dont want to mess u up seth move down if needed
-
 def get_leaderboard():
     query = """
         SELECT * FROM users
