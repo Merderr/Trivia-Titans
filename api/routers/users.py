@@ -1,14 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
-from queries.users import create_user
-
-# (
-#     # get_user_by_username,
-#     # get_all_users,
-#     create_user
-#     # update_user,
-#     # delete_user,
-# )
-from queries.users import UserModel
+from fastapi import APIRouter, Depends, Response, HTTPException
+from queries.users import UserRepository, UserModelIn, UserModelOut, Error
+from typing import Union, List, Optional
 
 router = APIRouter()
 
@@ -20,14 +12,20 @@ router = APIRouter()
 #     raise HTTPException(status_code=404, detail="User not found")
 
 
-# @router.get("/users", response_model=list[UserModel])
-# def read_users():
-#     return get_all_users()
+@router.get("/users", response_model=Union[List[UserModelOut], Error])
+def get_all_users(
+    repo: UserRepository = Depends(),
+):
+    return repo.get_all_users()
 
 
-@router.post("/users", response_model=UserModel)
-def create_user_route(user: UserModel):
-    return create_user(user.username, user.password, user.name, user.score)
+@router.post("/users", response_model=Union[UserModelOut, Error])
+def create_user(
+    user: UserModelIn,
+    response: Response,
+    repo: UserRepository = Depends(),
+):
+    return repo.create_user(user)
 
 
 # @router.put("/users/{username}", response_model=UserModel)
