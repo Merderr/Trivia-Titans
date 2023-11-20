@@ -73,7 +73,7 @@ INSERT INTO questions (id, category, type, difficulty, question, correct_answer,
 (48, 'General Knowledge', 'multiple', 'easy', 'What is the currency of Brazil?', 'Real', 'Peso', 'Sol', 'Bolivar'),
 (49, 'Science and Nature', 'multiple', 'medium', 'What is the chemical symbol for the element magnesium?', 'Mg', 'Mn', 'Mu', 'Ma'),
 (50, 'History', 'multiple', 'hard', 'Who was the first woman to be elected as the Prime Minister of a country?', 'Sirimavo Bandaranaike', 'Indira Gandhi', 'Margaret Thatcher', 'Golda Meir')
-
+;
 
 INSERT INTO users (username, password, name, score) VALUES
 ('user1', 'password1', 'John Doe', 100),
@@ -96,3 +96,4 @@ INSERT INTO users (username, password, name, score) VALUES
 ('user18', 'password18', 'Quinn Moore', 250),
 ('user19', 'password19', 'Ryan Smith', 120),
 ('user20', 'password20', 'Samantha Davis', 170);
+;
