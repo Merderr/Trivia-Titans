@@ -126,7 +126,7 @@ class UserRepository:
         old_data = user.dict()
         return UserModelOut(id=id, **old_data)
 
-    def record_to_user_out(self, record):
+    def record_to_user_out(self, record) -> UserModelOut:
         return UserModelOut(
             id=record[0],
             username=record[1],
