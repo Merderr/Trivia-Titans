@@ -8,7 +8,7 @@ const Game = () => {
 
   const getQuestion = async () => {
     try {
-      const url = 'http://localhost:8000/api/questions/1'; 
+      const url = 'http://localhost:8000/api/questions/50'; 
       const response = await fetch(url);
 
       if (response.ok) {
@@ -36,11 +36,10 @@ const Game = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Question</h2>
-      <p>{question.question}</p>
-
-      <h3>Options:</h3>
+    <div className="game-container">
+      <div className="question-container">
+        <p className="question">{question.question}</p>
+      </div>
       <ul>
         <li
           onClick={() => handleAnswerClick(question.correct_answer)}

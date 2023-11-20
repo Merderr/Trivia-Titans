@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import './Leaderboard.css';
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const get_leaderboard = async () => {
@@ -7,6 +7,7 @@ const Leaderboard = () => {
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
+      const sortedData = data.sort((a, b) => b.score - a.score);
       setLeaderboard(data);
     }
     }
