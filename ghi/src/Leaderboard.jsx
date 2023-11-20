@@ -18,14 +18,14 @@ const Leaderboard = () => {
   return (
     <div>
       <h2>Leaderboard</h2>
-      <ul>
+      <ol>
         {leaderboard.map((user) => (
           <li key={user.name}>
             {user.name} - Score: {user.score}
           </li>
         ))}
 
-      </ul>
+      </ol>
     </div>
   );
 };

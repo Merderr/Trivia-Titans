@@ -1,0 +1,15 @@
+li {
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  list-style: none;
+}
+
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
+}
