@@ -4,7 +4,7 @@ import "./App.css";
 import NavBar from "./NavBar";
 import PlayButton from "./PlayButton";
 import Signup from "./components/SignUp";
-import Login from "./components/Login";
+import Login from "./Login";
 import Home from "./Home";
 import Leaderboard from "./Leaderboard";
 import MyAccount from "./MyAccount";
@@ -15,7 +15,7 @@ import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 function App() {
   const [count, setCount] = useState(0);
   return (
-    <AuthProvider>
+    <AuthProvider baseUrl={ import.meta.env.VITE_REACT_APP_API_HOST }>
       <Router>
         <>
           <header className="app-header">

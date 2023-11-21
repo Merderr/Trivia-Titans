@@ -1,32 +1,33 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../index.css";
+import useToken from "@galvanize-inc/jwtdown-for-react";
+import "./index.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
+  const { login } = useToken();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password);
-    if (ourToken === null) {
+    try {
+      console.log(username, password);
+      login(username, password);
+      // Handle successful login here
+    } catch (error) {
       setIsError(true);
       setErrorMessage(
         "Please wait a few minutes or username/password was entered incorrectly"
       );
-      setEmail("");
+      setUsername("");
       setPassword("");
     }
   };
 
-  let errorClass = "alert alert-danger d-none";
-
-  if (isError) {
-    errorClass = "alert alert-danger";
-  }
+  let errorClass = isError ? "alert alert-danger" : "alert alert-danger d-none";
 
   return (
     <div style={{ minHeight: "100vh" }}>
@@ -42,18 +43,18 @@ const Login = () => {
                   <div className="center-wrap">
                     <div className="section text-center">
                       <h4 className="mb-4 pb-3">Log In</h4>
-                      <form onSubmit={handleSubmit}>
+                      <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="form-group">
                           <label className="form-label">
-                            Enter your email:
+                            Enter your username:
                           </label>
                           <input
-                            name="email"
+                            name="username"
                             type="text"
-                            placeholder="email goes here..."
+                            placeholder="username goes here..."
                             className="form-control"
                             autoComplete="username"
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => setUsername(e.target.value)}
                           />
                         </div>
                         <div className="form-group mt-2">

@@ -12,6 +12,8 @@ from authenticator import authenticator
 
 from pydantic import BaseModel
 
+from typing import List
+
 from queries.users import (
     UserModelIn,
     UserModelOut,
@@ -55,3 +57,36 @@ async def create_user(
     form = UserForm(username=info.username, password=info.password)
     token = await authenticator.login(response, request, form, repo)
     return UserToken(user=user, **token.dict())
+
+
+@router.get("/api/users", response_model=List[UserModelOut])
+async def get_all_users(repo: UserRepository = Depends()):
+    return repo.get_all_users()
+
+
+@router.get("/api/users/{user_id}", response_model=UserModelOut)
+async def get_user(user_id: int, repo: UserRepository = Depends()):
+    user = repo.get_user_by_id(user_id)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found",
+        )
+    return user
+
+
+class AccountToken(Token):
+    account: UserModelOut
+
+
+@router.get("/token", response_model=AccountToken | None)
+async def get_token(
+    request: Request,
+    account: UserModelIn = Depends(authenticator.try_get_current_account_data)
+) -> AccountToken | None:
+    if account and authenticator.cookie_name in request.cookies:
+        return {
+            "access_token": request.cookies[authenticator.cookie_name],
+            "type": "Bearer",
+            "account": account,
+        }
