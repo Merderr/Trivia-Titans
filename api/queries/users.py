@@ -30,6 +30,7 @@ class UserModelOut(BaseModel):
     class Config:
         orm_mode = True
 
+
 class UserScoreOut(BaseModel):
     name: str
     score: int
@@ -47,18 +48,29 @@ class DuplicateAccountError(ValueError):
 
 
 class UserRepository:
-    # def get_user_by_username(username: str):
-    #     query = "SELECT * FROM users WHERE username = %s"
-    #     with conn.cursor() as cursor:
-    #         cursor.execute(query, (username,))
-    #         return cursor.fetchone()
-
-    # def get_all_users(self):
-    #     query = "SELECT * FROM users"
-    #     with pool.connection as conn:
-    #         with conn.cursor() as cur:
-    #             cur.execute(query)
-    #             return cur.fetchall()
+    def get_one_user(self, user_id: int) -> Optional[UserModelOut]:
+        try:
+            # connect to the database
+            with pool.connection() as conn:
+                # get a named cursor (something to run SQL with)
+                with conn.cursor(name="get_one_user") as db:
+                    # Run our SELECT statement
+                    db.execute(
+                        """
+                        SELECT id, username, password, name, score
+                        FROM users
+                        WHERE id = %s
+                        """,
+                        [user_id],
+                    )
+                    record = db.fetchone()
+                    if record is None:
+                        return None
+                    print(record)
+                    return self.record_to_user_out(record)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not find that user"}
 
     def get_user(self, username: str) -> UserOutWithPassword:
         try:
@@ -161,6 +173,15 @@ class UserRepository:
         }
         return old_data
 
+    def record_to_user_out(self, record) -> UserModelOut:
+        return UserModelOut(
+            id=record[0],
+            username=record[1],
+            password=record[2],
+            name=record[3],
+            score=record[4],
+        )
+
     # Mason Added this dont want to mess u up seth move down if needed
     def get_leaderboard(self):
         try:
@@ -184,4 +205,3 @@ class UserRepository:
         except Exception as e:
             print(e)
             return {"message": "Could not get leaderboard"}
-

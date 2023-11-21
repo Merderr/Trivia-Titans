@@ -12,6 +12,18 @@ router = APIRouter()
 #     raise HTTPException(status_code=404, detail="User not found")
 
 
+@router.get("/users/{user_id}", response_model=Optional[UserModelOut])
+def get_one_user(
+    user_id: int,
+    response: Response,
+    repo: UserRepository = Depends(),
+) -> Optional[UserModelOut]:
+    user = repo.get_one_user(user_id)
+    if user is None:
+        response.status_code = 404
+    return user
+
+
 @router.get("/users", response_model=Union[List[UserModelOut], Error])
 def get_all_users(
     repo: UserRepository = Depends(),
