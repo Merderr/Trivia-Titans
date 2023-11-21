@@ -25,6 +25,7 @@ def create_user(
     response: Response,
     repo: UserRepository = Depends(),
 ):
+    print(user)
     return repo.create_user(user)
 
 
