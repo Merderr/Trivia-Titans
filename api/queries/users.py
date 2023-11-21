@@ -30,6 +30,13 @@ class UserModelOut(BaseModel):
     class Config:
         orm_mode = True
 
+class UserScoreOut(BaseModel):
+    name: str
+    score: int
+
+    class Config:
+        orm_mode = True
+
 
 class UserOutWithPassword(UserModelOut):
     hashed_password: str
@@ -155,12 +162,26 @@ class UserRepository:
         return old_data
 
     # Mason Added this dont want to mess u up seth move down if needed
-    # def get_leaderboard():
-    #     query = """
-    #         SELECT * FROM users
-    #         ORDER BY score DESC
-    #     """
-    #     with pool.connection() as conn:
-    #         with conn.cursor() as cursor:
-    #             cursor.execute(query)
-    #             return cursor.fetchall()
+    def get_leaderboard(self):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT name, score
+                        FROM users
+                        ORDER BY score;
+                        """
+                    )
+                    result_list = []
+                    for record in result:
+                        user = UserScoreOut(
+                            name=record[0],
+                            score=record[1],
+                        )
+                        result_list.append(user)
+                    return result_list
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get leaderboard"}
+
