@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { get_leaderboard } from "./api/queries/users.py"
+import { getLeaderboard } from "../../api/queries/users";
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    getUserLeaderboard()
+    getLeaderboard()
       .then((data) => setLeaderboard(data))
       .catch((error) => console.error("Error fetching leaderboard:", error));
   }, []);
@@ -26,3 +26,19 @@ const Leaderboard = () => {
 };
 
 export default Leaderboard;
+
+
+
+
+// import React, { useState, useEffect } from "react";
+
+// const Leaderboard = () => {
+//   return (
+//     <div>
+//       <header>Leaderboard</header>
+//         <p>Hello</p>
+//     </div>
+//   );
+// };
+
+// export default Leaderboard;

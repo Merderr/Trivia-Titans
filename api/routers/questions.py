@@ -53,3 +53,4 @@ def delete_question(
     repo: QuestionRepository = Depends(),
 ) -> bool:
     return repo.delete(question_id)
+

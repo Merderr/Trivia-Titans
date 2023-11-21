@@ -30,6 +30,21 @@ class UserModelOut(BaseModel):
     class Config:
         orm_mode = True
 
+class UserScoreOut(BaseModel):
+    name: str
+    score: int
+
+    class Config:
+        orm_mode = True
+
+
+class UserOutWithPassword(UserModelOut):
+    hashed_password: str
+
+
+class DuplicateAccountError(ValueError):
+    pass
+
 
 class UserRepository:
     def get_one_user(self, user_id: int) -> Optional[UserModelOut]:
@@ -55,6 +70,29 @@ class UserRepository:
         except Exception as e:
             print(e)
             return {"message": "Could not find that user"}
+
+    def get_user(self, username: str) -> UserOutWithPassword:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        SELECT id, username, password, name, score
+                        FROM users
+                        WHERE username = %s;
+                        """,
+                        [username],
+                    )
+                    record = None
+                    row = db.fetchone()
+                    if row is not None:
+                        record = {}
+                        for i, column in enumerate(db.description):
+                            record[column.name] = row[i]
+                    return record
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get user"}
 
     def get_all_users(self) -> Union[Error, List[UserModelOut]]:
         try:
@@ -82,7 +120,9 @@ class UserRepository:
             print(e)
             return {"message": "Could not get users"}
 
-    def create_user(self, user: UserModelIn) -> UserModelOut:
+    def create_user(
+        self, user: UserModelIn, hashed_password: str
+    ) -> UserModelOut:
         with pool.connection() as conn:
             with conn.cursor() as db:
                 result = db.execute(
@@ -95,13 +135,13 @@ class UserRepository:
                     """,
                     [
                         user.username,
-                        user.password,
+                        hashed_password,
                         user.name,
                         user.score,
                     ],
                 )
                 id = result.fetchone()[0]
-                return self.user_in_to_out(id, user)
+                return self.user_in_to_out(id, user, hashed_password)
 
     # def update_user(username: str, new_name: str, new_score: int):
     #     query = """
@@ -122,9 +162,15 @@ class UserRepository:
     #         conn.commit()
     #         return cursor.fetchone()
 
-    def user_in_to_out(self, id: int, user: UserModelIn):
-        old_data = user.dict()
-        return UserModelOut(id=id, **old_data)
+    def user_in_to_out(self, id: int, user: UserModelOut, hashed_password):
+        old_data = {
+            "id": id,
+            "username": user.username,
+            "password": hashed_password,
+            "name": user.name,
+            "score": user.score,
+        }
+        return old_data
 
     def record_to_user_out(self, record) -> UserModelOut:
         return UserModelOut(
@@ -136,12 +182,26 @@ class UserRepository:
         )
 
     # Mason Added this dont want to mess u up seth move down if needed
-    # def get_leaderboard():
-    #     query = """
-    #         SELECT * FROM users
-    #         ORDER BY score DESC
-    #     """
-    #     with pool.connection() as conn:
-    #         with conn.cursor() as cursor:
-    #             cursor.execute(query)
-    #             return cursor.fetchall()
+    def get_leaderboard(self):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT name, score
+                        FROM users
+                        ORDER BY score;
+                        """
+                    )
+                    result_list = []
+                    for record in result:
+                        user = UserScoreOut(
+                            name=record[0],
+                            score=record[1],
+                        )
+                        result_list.append(user)
+                    return result_list
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get leaderboard"}
+
