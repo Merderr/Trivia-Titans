@@ -5,6 +5,9 @@ const Game = () => {
   const [question, setQuestion] = useState({});
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [result, setResult] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [score, setScore] = useState(0);
+
   const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
     const allAnswers = [correctAnswer, ...incorrectAnswers];
     return allAnswers.sort(() => Math.random() - 0.5);
@@ -48,8 +51,17 @@ const Game = () => {
     setResult(isCorrect ? "correct" : "incorrect");
 
     if (isCorrect) {
+      setScore((prevScore) => prevScore + 1);
       getQuestion();
+    } else {
+      setShowModal(true);
     }
+  };
+
+  const handlePlayAgainClick = () => {
+    setShowModal(false);
+    setScore(0);
+    getQuestion();
   };
 
   useEffect(() => {
@@ -77,6 +89,15 @@ const Game = () => {
             </li>
           ))}
       </ul>
+      <div className="score-container">
+        <p>Score: {score}</p>
+      </div>
+      <div className={`modal-container ${showModal ? 'show' : ''}`}>
+        <div className="modal">
+          <p>Unlucky, play again?</p>
+          <button onClick={handlePlayAgainClick}>Yes</button>
+        </div>
+      </div>
     </div>
   );
 };
