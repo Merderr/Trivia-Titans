@@ -24,6 +24,7 @@ const Signup = () => {
     login(accountData.email, accountData.password);
     e.target.reset();
     navigate("/");
+    console.log(e)
   };
 
   return (
@@ -131,6 +132,9 @@ const Signup = () => {
                             }}
                           />
                         </div>
+                        <button type="submit" className="btn btn-primary">
+                          Sign Up
+                        </button>
                       </form>
                     </div>
                     <p

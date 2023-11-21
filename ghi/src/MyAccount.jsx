@@ -1,10 +1,36 @@
- import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const MyAccount = () => {
+  const [userData, setUserData] = useState(null);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/api/users');//THIS NEEDS TO BE CHANGED WHEN SETH MAKES A GET ONE USER ENDPOINT
+      if (response.ok) {
+        const data = await response.json();
+        setUserData(data);
+      } else {
+        console.error('Failed to fetch user data');
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   return (
     <div>
       <header>My Account</header>
-        <p>Hello</p>
+      {userData && (
+        <div>
+          <p>Hello, {userData.name}</p>
+          <p>Username: {userData.username}</p>
+          <p>High Score: {userData.score}</p>
+        </div>
+      )}
     </div>
   );
 };
