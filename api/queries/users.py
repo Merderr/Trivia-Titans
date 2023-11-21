@@ -30,6 +30,7 @@ class UserModelOut(BaseModel):
     class Config:
         orm_mode = True
 
+
 class UserScoreOut(BaseModel):
     name: str
     score: int
@@ -204,4 +205,3 @@ class UserRepository:
         except Exception as e:
             print(e)
             return {"message": "Could not get leaderboard"}
-
