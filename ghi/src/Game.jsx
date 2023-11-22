@@ -95,6 +95,7 @@ const Game = () => {
       <div className={`modal-container ${showModal ? 'show' : ''}`}>
         <div className="modal">
           <p>Correct answer was {question.correct_answer}</p>
+          <p>Score : {score}</p>
           <p>Play again?</p>
           <button onClick={handlePlayAgainClick}>Yes</button>
         </div>
