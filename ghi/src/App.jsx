@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from "./NavBar";
-import PlayButton from "./PlayButton";
+import PlayButton from "./components/PlayButton";
 import Signup from "./components/SignUp";
 import Login from "./Login";
 import Home from "./Home";
-import Leaderboard from "./Leaderboard";
-import MyAccount from "./MyAccount";
-import AboutUs from "./AboutUs";
-import Game from "./Game";
+import Leaderboard from "./components/Leaderboard";
+import MyAccount from "./components/MyAccount";
+import AboutUs from "./components/AboutUs";
+import Game from "./components/Game";
 import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {
   const [count, setCount] = useState(0);
   return (
-    <AuthProvider baseUrl={ import.meta.env.VITE_REACT_APP_API_HOST }>
+    <AuthProvider baseUrl={import.meta.env.VITE_REACT_APP_API_HOST}>
       <Router>
         <>
           <header className="app-header">
