@@ -7,6 +7,7 @@ from fastapi import (
     APIRouter,
     Request,
 )
+
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
 
@@ -66,13 +67,42 @@ async def get_all_users(repo: UserRepository = Depends()):
 
 @router.get("/api/users/{user_id}", response_model=UserModelOut)
 async def get_user(user_id: int, repo: UserRepository = Depends()):
-    user = repo.get_user_by_id(user_id)
+    user = repo.get_one_user(user_id)
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="User not found",
         )
     return user
+
+
+@router.put("/api/users/{user_id}", response_model=UserModelOut)
+async def update_user(
+    user_id: int, info: UserModelIn, repo: UserRepository = Depends()
+):
+    user = repo.get_one_user(user_id)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found",
+        )
+    updated_user = repo.update_user(user, info)
+    return updated_user
+
+
+@router.delete("/api/users/{user_id}", response_class=Response)
+async def delete_user(user_id: int, repo: UserRepository = Depends()):
+    user = repo.get_one_user(user_id)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found",
+        )
+    repo.delete_user(user)
+    return Response(
+        content={"message": "User deleted successfully"},
+        status_code=status.HTTP_200_OK,
+    )
 
 
 class AccountToken(Token):
@@ -82,7 +112,7 @@ class AccountToken(Token):
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: UserModelIn = Depends(authenticator.try_get_current_account_data)
+    account: UserModelIn = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
     if account and authenticator.cookie_name in request.cookies:
         return {

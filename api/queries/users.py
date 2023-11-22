@@ -1,3 +1,6 @@
+from pstats import Stats
+import statistics
+from fastapi import HTTPException
 from pydantic import BaseModel
 import os
 from psycopg_pool import ConnectionPool
@@ -144,24 +147,47 @@ class UserRepository:
                 id = result.fetchone()[0]
                 return self.user_in_to_out(id, user, hashed_password)
 
-    # def update_user(username: str, new_name: str, new_score: int):
-    #     query = """
-    #         UPDATE users
-    #         SET name = %s, score = %s
-    #         WHERE username = %s
-    #         RETURNING *
-    #     """
-    #     with conn.cursor() as cursor:
-    #         cursor.execute(query, (new_name, new_score, username))
-    #         conn.commit()
-    #         return cursor.fetchone()
+    def update_user(self, user_id: int, updated_user_data: dict):
+        query = """
+            UPDATE users
+            SET name = %s, score = %s
+            WHERE id = %s
+            RETURNING *;
+        """
+        values = (
+            updated_user_data.get("name"),
+            updated_user_data.get("score"),
+            user_id,
+        )
 
-    # def delete_user(username: str):
-    #     query = "DELETE FROM users WHERE username = %s RETURNING *"
-    #     with conn.cursor() as cursor:
-    #         cursor.execute(query, (username,))
-    #         conn.commit()
-    #         return cursor.fetchone()
+        with self.pool.connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(query, values)
+                updated_user = cursor.fetchone()
+
+                if not updated_user:
+                    raise HTTPException(
+                        status_code=Stats.HTTP_404_NOT_FOUND,
+                        detail=f"User with ID {user_id} not found",
+                    )
+
+                return self.user_in_to_out(updated_user)
+
+    def delete_user(self, user_id: int):
+        query = "DELETE FROM users WHERE id = %s RETURNING *;"
+
+        with self.pool.connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(query, (user_id,))
+                deleted_user = cursor.fetchone()
+
+                if not deleted_user:
+                    raise HTTPException(
+                        status_code=statistics.HTTP_404_NOT_FOUND,
+                        detail=f"User with ID {user_id} not found",
+                    )
+
+                return deleted_user
 
     def user_in_to_out(self, id: int, user: UserModelOut, hashed_password):
         old_data = {
