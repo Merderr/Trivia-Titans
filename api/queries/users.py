@@ -1,3 +1,5 @@
+from fastapi import HTTPException, status
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import os
 from psycopg_pool import ConnectionPool
@@ -144,24 +146,74 @@ class UserRepository:
                 id = result.fetchone()[0]
                 return self.user_in_to_out(id, user, hashed_password)
 
-    # def update_user(username: str, new_name: str, new_score: int):
-    #     query = """
-    #         UPDATE users
-    #         SET name = %s, score = %s
-    #         WHERE username = %s
-    #         RETURNING *
-    #     """
-    #     with conn.cursor() as cursor:
-    #         cursor.execute(query, (new_name, new_score, username))
-    #         conn.commit()
-    #         return cursor.fetchone()
+    def delete_user(self, user_id: int) -> Union[None, JSONResponse]:
+        try:
+            print(f"Deleting user with ID: {user_id}")
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM users
+                        WHERE id = %s;
+                        """,
+                        [int(user_id)],  # Ensure user_id is cast to int
+                    )
+            print(f"User with ID {user_id} deleted successfully.")
+            return JSONResponse(content=None, status_code=204)
+        except Exception as e:
+            print(f"Error deleting user with ID {user_id}: {e}")
+            return JSONResponse(
+                content={"message": "Could not delete user"}, status_code=500
+            )
 
-    # def delete_user(username: str):
-    #     query = "DELETE FROM users WHERE username = %s RETURNING *"
-    #     with conn.cursor() as cursor:
-    #         cursor.execute(query, (username,))
-    #         conn.commit()
-    #         return cursor.fetchone()
+    def update_user(
+        self, user_id: int, new_info: dict, hashed_password: str
+    ) -> Union[None, JSONResponse]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    if not new_info:
+                        return JSONResponse(
+                            content={"message": "No updates provided"},
+                            status_code=422,
+                        )
+
+                    set_values = tuple(new_info.values())
+
+                    print("SET values:", set_values)
+
+                    set_clause = (
+                        ", ".join(
+                            f"{key} = %s"
+                            for key in new_info.keys()
+                            if key != "password"
+                        )
+                        or "password = %s"
+                    )
+
+                    db.execute(
+                        f"""
+                        UPDATE users
+                        SET {set_clause}, password = %s
+                        WHERE id = %s;
+                        """,
+                        (
+                            *[
+                                new_info[key]
+                                for key in new_info.keys()
+                                if key != "password"
+                            ],
+                            hashed_password,
+                            user_id,
+                        ),
+                    )
+
+                    return JSONResponse(content=None, status_code=200)
+        except Exception as e:
+            print(e)
+            return JSONResponse(
+                content={"message": "Could not update user"}, status_code=500
+            )
 
     def user_in_to_out(self, id: int, user: UserModelOut, hashed_password):
         old_data = {
