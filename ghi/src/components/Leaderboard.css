@@ -1,5 +1,5 @@
 
-/* Container styles */
+
 .leaderboard-container {
   display: flex;
   flex-direction: column;
@@ -8,26 +8,26 @@
   height: 100vh;
 }
 
-/* Leaderboard header styles */
+
 h2 {
   text-align: center;
   margin-top: 20px;
 }
 
-/* List container styles */
+
 .list-container {
-  flex-grow: 1; /* Allow the list container to grow and take remaining space */
-  overflow-y: auto; /* Enable vertical scrolling for the list container */
+  flex-grow: 1; 
+  overflow-y: auto; 
 }
 
-/* List styles */
+
 ol {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* List item styles */
+
 li {
   margin: 10px 0;
   padding: 10px;

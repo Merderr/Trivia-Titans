@@ -30,7 +30,7 @@ const Game = () => {
         usedNumbers.length = 0
       }
 
-      const url = {import.meta.env.VITE_REACT_APP_API_HOST}`/api/questions/${randomNumber}`;
+      const url = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/questions/${randomNumber}`;
       const response = await fetch(url);
 
       if (response.ok) {
