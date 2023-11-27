@@ -15,11 +15,6 @@ console.log(user)
       </header>
       <div>
         <h1 className="title">TRIVIA TITANS</h1>
-      <div className="content-container">
-        <h1>Trivia Titans</h1>
-        {isAuthenticated && user && (
-          <p>Welcome, {user.name}!</p>
-        )}
       </div>
       <div className="PlayButton">
         <PlayButton />
