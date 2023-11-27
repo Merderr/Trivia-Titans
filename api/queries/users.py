@@ -52,11 +52,8 @@ class DuplicateAccountError(ValueError):
 class UserRepository:
     def get_one_user(self, user_id: int) -> Optional[UserModelOut]:
         try:
-            # connect to the database
             with pool.connection() as conn:
-                # get a named cursor (something to run SQL with)
                 with conn.cursor(name="get_one_user") as db:
-                    # Run our SELECT statement
                     db.execute(
                         """
                         SELECT id, username, password, name, score
