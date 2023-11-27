@@ -14,7 +14,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(username, password);
       login(username, password);
       // Handle successful login here
     } catch (error) {
