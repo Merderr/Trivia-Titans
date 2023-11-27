@@ -1,6 +1,5 @@
-from pstats import Stats
-import statistics
-from fastapi import HTTPException
+from fastapi import HTTPException, status
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import os
 from psycopg_pool import ConnectionPool
@@ -147,47 +146,74 @@ class UserRepository:
                 id = result.fetchone()[0]
                 return self.user_in_to_out(id, user, hashed_password)
 
-    def update_user(self, user_id: int, updated_user_data: dict):
-        query = """
-            UPDATE users
-            SET name = %s, score = %s
-            WHERE id = %s
-            RETURNING *;
-        """
-        values = (
-            updated_user_data.get("name"),
-            updated_user_data.get("score"),
-            user_id,
-        )
+    def delete_user(self, user_id: int) -> Union[None, JSONResponse]:
+        try:
+            print(f"Deleting user with ID: {user_id}")
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM users
+                        WHERE id = %s;
+                        """,
+                        [int(user_id)],  # Ensure user_id is cast to int
+                    )
+            print(f"User with ID {user_id} deleted successfully.")
+            return JSONResponse(content=None, status_code=204)
+        except Exception as e:
+            print(f"Error deleting user with ID {user_id}: {e}")
+            return JSONResponse(
+                content={"message": "Could not delete user"}, status_code=500
+            )
 
-        with self.pool.connection() as conn:
-            with conn.cursor() as cursor:
-                cursor.execute(query, values)
-                updated_user = cursor.fetchone()
+    def update_user(
+        self, user_id: int, new_info: dict, hashed_password: str
+    ) -> Union[None, JSONResponse]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    if not new_info:
+                        return JSONResponse(
+                            content={"message": "No updates provided"},
+                            status_code=422,
+                        )
 
-                if not updated_user:
-                    raise HTTPException(
-                        status_code=Stats.HTTP_404_NOT_FOUND,
-                        detail=f"User with ID {user_id} not found",
+                    set_values = tuple(new_info.values())
+
+                    print("SET values:", set_values)
+
+                    set_clause = (
+                        ", ".join(
+                            f"{key} = %s"
+                            for key in new_info.keys()
+                            if key != "password"
+                        )
+                        or "password = %s"
                     )
 
-                return self.user_in_to_out(updated_user)
-
-    def delete_user(self, user_id: int):
-        query = "DELETE FROM users WHERE id = %s RETURNING *;"
-
-        with self.pool.connection() as conn:
-            with conn.cursor() as cursor:
-                cursor.execute(query, (user_id,))
-                deleted_user = cursor.fetchone()
-
-                if not deleted_user:
-                    raise HTTPException(
-                        status_code=statistics.HTTP_404_NOT_FOUND,
-                        detail=f"User with ID {user_id} not found",
+                    db.execute(
+                        f"""
+                        UPDATE users
+                        SET {set_clause}, password = %s
+                        WHERE id = %s;
+                        """,
+                        (
+                            *[
+                                new_info[key]
+                                for key in new_info.keys()
+                                if key != "password"
+                            ],
+                            hashed_password,
+                            user_id,
+                        ),
                     )
 
-                return deleted_user
+                    return JSONResponse(content=None, status_code=200)
+        except Exception as e:
+            print(e)
+            return JSONResponse(
+                content={"message": "Could not update user"}, status_code=500
+            )
 
     def user_in_to_out(self, id: int, user: UserModelOut, hashed_password):
         old_data = {

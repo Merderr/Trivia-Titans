@@ -8,6 +8,10 @@ from fastapi import (
     Request,
 )
 
+import json
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
+
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
 
@@ -86,8 +90,21 @@ async def update_user(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="User not found",
         )
-    updated_user = repo.update_user(user, info)
-    return updated_user
+
+    hashed_password = authenticator.hash_password(info.password)
+
+    info_dict = dict(info)
+
+    # Update the user's information
+    updated_user = repo.update_user(user_id, info_dict, hashed_password)
+
+    # Convert the updated user to JSON
+    updated_user_json = jsonable_encoder(updated_user)
+
+    return JSONResponse(
+        content=updated_user_json,
+        status_code=status.HTTP_200_OK,
+    )
 
 
 @router.delete("/api/users/{user_id}", response_class=Response)
@@ -98,10 +115,11 @@ async def delete_user(user_id: int, repo: UserRepository = Depends()):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="User not found",
         )
-    repo.delete_user(user)
+    repo.delete_user(user_id)  # Pass user_id instead of user object
     return Response(
-        content={"message": "User deleted successfully"},
+        content=json.dumps({"message": "User deleted successfully"}),
         status_code=status.HTTP_200_OK,
+        media_type="application/json",
     )
 
 
