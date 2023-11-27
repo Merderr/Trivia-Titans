@@ -102,7 +102,7 @@ const Game = () => {
       <div className="question-container">
         <p className="question">{question.question}</p>
       </div>
-      <ul>
+      <ul className="answer">
         {question.answers &&
           question.answers.map((answer, index) => (
             <li
