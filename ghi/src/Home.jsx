@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
 import PlayButton from "./components/PlayButton";
+import "./Home.css";
 
 function Home() {
   const [count, setCount] = useState(0);
@@ -10,8 +11,8 @@ function Home() {
       <header className="app-header">
         <NavBar />
       </header>
-      <div className="content-container">
-        <h1>Trivia Titans</h1>
+      <div>
+        <h1 className="title">TRIVIA TITANS</h1>
       </div>
       <div className="PlayButton">
         <PlayButton />

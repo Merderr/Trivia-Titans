@@ -17,6 +17,7 @@
 }
 body {
   margin-top: 50px;
+  background-color: #091833;
   background-image: url("FIND A COOL BACKGROUND AND PUT IT HERE");
   background-size: cover;
   animation: moveBackground 100s linear infinite;
