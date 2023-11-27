@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@galvanize-inc/jwtdown-for-react": "^0.2.2"
+    "@galvanize-inc/jwtdown-for-react": "^0.2.2",
+    "jsonwebtoken": "^9.0.2"
   }
 }

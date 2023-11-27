@@ -5,12 +5,7 @@ from routers import questions
 from routers import users
 from authenticator import authenticator
 
-
 app = FastAPI()
-app.include_router(authenticator.router)
-app.include_router(questions.router, prefix="/api")
-app.include_router(users.router)
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -20,6 +15,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(authenticator.router)
+app.include_router(questions.router, prefix="/api")
+app.include_router(users.router)
 
 @app.get("/api/launch-details")
 def launch_details():

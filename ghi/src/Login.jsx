@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import "./index.css";
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -10,13 +11,19 @@ const Login = () => {
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
   const { login } = useToken();
+  const { token } = useToken();
+  const [newToken, setNewToken] = useState(undefined);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(username, password);
-      login(username, password);
-      // Handle successful login here
+      console.log(username, password)
+      await login(username, password);
+        setTimeout(() => {
+          setNewToken(token);
+        }, 1000);
+        navigateLogin();
+      console.log("token", token)
     } catch (error) {
       setIsError(true);
       setErrorMessage(
@@ -26,7 +33,24 @@ const Login = () => {
       setPassword("");
     }
   };
+  const navigateLogin = async (e) => {
+    
+  }
 
+  useEffect(() => {
+    if(newToken === undefined){
+      }
+      else {
+        navigate("/")
+      }
+  }, [newToken]);
+  useEffect(() => {
+    console.log(token)
+    if (token !== null){
+      navigate("/")
+    }
+  }, []);
+  
   let errorClass = isError ? "alert alert-danger" : "alert alert-danger d-none";
 
   return (

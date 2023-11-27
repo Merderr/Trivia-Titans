@@ -5,6 +5,7 @@ const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
+
   const get_leaderboard = async () => {
     const url = hostURL + "/leaderboard/";
     const response = await fetch(url);
@@ -20,7 +21,7 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div>
+    <div className="leaderboard-container">
       <h2>Leaderboard</h2>
       <ol>
         {leaderboard.map((user) => (

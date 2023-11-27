@@ -7,7 +7,11 @@ const MyAccount = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(hostURL + '/api/users');//THIS NEEDS TO BE CHANGED WHEN SETH MAKES A GET ONE USER ENDPOINT
+      const response = await fetch(`${hostURL}/api/users`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
@@ -25,7 +29,6 @@ const MyAccount = () => {
 
   return (
     <div>
-      <header>My Account</header>
       {userData && (
         <div>
           <p>Hello, {userData.name}</p>

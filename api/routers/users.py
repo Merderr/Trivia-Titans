@@ -6,13 +6,13 @@ from fastapi import (
     APIRouter,
     Request,
 )
+import json
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-
 from pydantic import BaseModel
-
 from typing import List
-
 from queries.users import (
     UserModelIn,
     UserModelOut,
@@ -28,6 +28,10 @@ class UserForm(BaseModel):
 
 class UserToken(Token):
     user: UserModelOut
+
+
+class AccountToken(Token):
+    account: UserModelOut
 
 
 class HttpError(BaseModel):
@@ -74,8 +78,45 @@ async def get_user(user_id: int, repo: UserRepository = Depends()):
     return user
 
 
-class AccountToken(Token):
-    account: UserModelOut
+@router.put("/api/users/{user_id}", response_model=UserModelOut)
+async def update_user(
+    user_id: int, info: UserModelIn, repo: UserRepository = Depends()
+):
+    user = repo.get_one_user(user_id)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found",
+        )
+
+    hashed_password = authenticator.hash_password(info.password)
+
+    info_dict = dict(info)
+
+    updated_user = repo.update_user(user_id, info_dict, hashed_password)
+
+    updated_user_json = jsonable_encoder(updated_user)
+
+    return JSONResponse(
+        content=updated_user_json,
+        status_code=status.HTTP_200_OK,
+    )
+
+
+@router.delete("/api/users/{user_id}", response_class=Response)
+async def delete_user(user_id: int, repo: UserRepository = Depends()):
+    user = repo.get_one_user(user_id)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found",
+        )
+    repo.delete_user(user_id)
+    return Response(
+        content=json.dumps({"message": "User deleted successfully"}),
+        status_code=status.HTTP_200_OK,
+        media_type="application/json",
+    )
 
 
 @router.get("/token", response_model=AccountToken | None)
@@ -93,5 +134,5 @@ async def get_token(
 
 @router.get("/leaderboard")
 def get_leaderboard_route(queries: UserRepository = Depends()):
-    leaderboard = queries.get_leaderboard()
-    return leaderboard
+   leaderboard = queries.get_leaderboard()
+   return leaderboard

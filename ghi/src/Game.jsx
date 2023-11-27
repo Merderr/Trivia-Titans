@@ -30,7 +30,7 @@ const Game = () => {
         usedNumbers.length = 0
       }
 
-      const url = {import.meta.env.VITE_REACT_APP_API_HOST}`/api/questions/${randomNumber}`;
+      const url = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/questions/${randomNumber}`;
       const response = await fetch(url);
 
       if (response.ok) {
@@ -109,6 +109,7 @@ const Game = () => {
       <div className={`modal-container ${showModal ? 'show' : ''}`}>
         <div className="modal">
           <p>Correct answer was {question.correct_answer}</p>
+          <p>Score : {score}</p>
           <p>Play again?</p>
           <button onClick={handlePlayAgainClick}>Yes</button>
         </div>
