@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
-import PlayButton from "./PlayButton";
+import PlayButton from "./components/PlayButton";
 
 function Home() {
   const [count, setCount] = useState(0);

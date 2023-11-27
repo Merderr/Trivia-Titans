@@ -1,48 +1,56 @@
 import React, { useState, useEffect } from "react";
 import "./Game.css";
 
+const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
+
+const usedNumbers = [];
+
 const Game = () => {
   const [question, setQuestion] = useState({});
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [result, setResult] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [score, setScore] = useState(0);
+  const [maxNumber, setMaxNumber] = useState(1);
 
   const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
     const allAnswers = [correctAnswer, ...incorrectAnswers];
     return allAnswers.sort(() => Math.random() - 0.5);
   };
 
-  const usedNumbers = []
-  const maxNumber = 50
+  const getMaxNumber = async () => {
+    const url = hostURL + `/api/questions`;
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const data = await response.json();
+      setMaxNumber(data.length);
+    }
+  };
 
   const getQuestion = async () => {
     try {
-      let randomNumber
+      let randomNumber;
       do {
-        randomNumber = Math.floor(Math.random() * maxNumber) + 1
-      } while (usedNumbers.includes(randomNumber))
-      console.log(usedNumbers)
+        randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+      } while (usedNumbers.includes(randomNumber));
 
-      usedNumbers.push(randomNumber)
+      usedNumbers.push(randomNumber);
 
       if (usedNumbers.length === maxNumber) {
-        usedNumbers.length = 0
+        usedNumbers.length = 0;
       }
 
-      const url = {import.meta.env.VITE_REACT_APP_API_HOST}`/api/questions/${randomNumber}`;
+      const url = hostURL + `/api/questions/${randomNumber}`;
       const response = await fetch(url);
 
       if (response.ok) {
         const data = await response.json();
-        const shuffledAnswers = shuffleAnswers(
-          data.correct_answer,
-          [
-            data.incorrect_answer_1,
-            data.incorrect_answer_2,
-            data.incorrect_answer_3,
-          ]
-        );
+        const shuffledAnswers = shuffleAnswers(data.correct_answer, [
+          data.incorrect_answer_1,
+          data.incorrect_answer_2,
+          data.incorrect_answer_3,
+        ]);
 
         setQuestion({
           ...data,
@@ -79,8 +87,12 @@ const Game = () => {
   };
 
   useEffect(() => {
-    getQuestion();
-  }, []);
+    const fetchData = async () => {
+      await getMaxNumber();
+      getQuestion();
+    };
+    fetchData();
+  }, [maxNumber]);
 
   return (
     <div className="game-container">
@@ -94,8 +106,12 @@ const Game = () => {
               key={index}
               onClick={() => handleAnswerClick(answer)}
               className={
-                (result === "correct" && answer === question.correct_answer && "correct") ||
-                (selectedAnswer === answer && result === "incorrect" && "incorrect") ||
+                (result === "correct" &&
+                  answer === question.correct_answer &&
+                  "correct") ||
+                (selectedAnswer === answer &&
+                  result === "incorrect" &&
+                  "incorrect") ||
                 ""
               }
             >
@@ -106,10 +122,9 @@ const Game = () => {
       <div className="score-container">
         <p>Score: {score}</p>
       </div>
-      <div className={`modal-container ${showModal ? 'show' : ''}`}>
+      <div className={`modal-container ${showModal ? "show" : ""}`}>
         <div className="modal">
           <p>Correct answer was {question.correct_answer}</p>
-          <p>Score : {score}</p>
           <p>Play again?</p>
           <button onClick={handlePlayAgainClick}>Yes</button>
         </div>

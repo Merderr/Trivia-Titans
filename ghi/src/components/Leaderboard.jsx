@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import './Leaderboard.css';
+import "./Leaderboard.css";
+
+const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
 
   const get_leaderboard = async () => {
-    const url = 'http://localhost:8000/leaderboard/';
+    const url = hostURL + "/leaderboard/";
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
@@ -21,15 +23,13 @@ const Leaderboard = () => {
   return (
     <div className="leaderboard-container">
       <h2>Leaderboard</h2>
-      <div className="list-container">
-        <ol>
-          {leaderboard.map((user) => (
-            <li key={user.name}>
-              {user.name} - Score: {user.score}
-            </li>
-          ))}
-        </ol>
-      </div>
+      <ol>
+        {leaderboard.map((user) => (
+          <li key={user.name}>
+            {user.name} - Score: {user.score}
+          </li>
+        ))}
+      </ol>
     </div>
   );
 };
