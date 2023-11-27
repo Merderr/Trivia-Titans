@@ -8,11 +8,8 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-
 from pydantic import BaseModel
-
 from typing import List
-
 from queries.users import (
     UserModelIn,
     UserModelOut,
@@ -28,6 +25,10 @@ class UserForm(BaseModel):
 
 class UserToken(Token):
     user: UserModelOut
+
+
+class AccountToken(Token):
+    account: UserModelOut
 
 
 class HttpError(BaseModel):
@@ -74,10 +75,6 @@ async def get_user(user_id: int, repo: UserRepository = Depends()):
     return user
 
 
-class AccountToken(Token):
-    account: UserModelOut
-
-
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
@@ -92,6 +89,12 @@ async def get_token(
 
 
 @router.get("/leaderboard")
-def get_leaderboard_route(queries: UserRepository = Depends()):
+def get_leaderboard_route(
+    queries: UserRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
     leaderboard = queries.get_leaderboard()
-    return leaderboard
+    if account_data:
+        return leaderboard
+    else:
+        print("not logged")
