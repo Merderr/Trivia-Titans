@@ -89,12 +89,6 @@ async def get_token(
 
 
 @router.get("/leaderboard")
-def get_leaderboard_route(
-    queries: UserRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
-):
-    leaderboard = queries.get_leaderboard()
-    if account_data:
-        return leaderboard
-    else:
-        print("not logged")
+def get_leaderboard_route(queries: UserRepository = Depends()):
+   leaderboard = queries.get_leaderboard()
+   return leaderboard
