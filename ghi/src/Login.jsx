@@ -13,16 +13,14 @@ const Login = () => {
   const { login } = useToken();
   const { token } = useToken();
   const [newToken, setNewToken] = useState(undefined);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(username, password)
       await login(username, password);
         setTimeout(() => {
           setNewToken(token);
         }, 1000);
-        navigateLogin();
       console.log("token", token)
     } catch (error) {
       setIsError(true);
@@ -33,9 +31,6 @@ const Login = () => {
       setPassword("");
     }
   };
-  const navigateLogin = async (e) => {
-    
-  }
 
   useEffect(() => {
     if(newToken === undefined){
@@ -45,8 +40,8 @@ const Login = () => {
       }
   }, [newToken]);
   useEffect(() => {
-    console.log(token)
     if (token !== null){
+      console.log("already logged in")
       navigate("/")
     }
   }, []);
