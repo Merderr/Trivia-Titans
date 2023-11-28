@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto&family=Rubik:ital,wght@0,800;1,800&family=Teko:wght@700&display=swap');
 
 .play-button {
-  font-size: 88px; /* 10% bigger than 80px */
+  font-size: 88px;
   padding: 1px 2px;
   color: white;
   border: none;
@@ -21,10 +21,10 @@ html, body {
 }
 
 .game-button {
-  min-width: 330px; /* 10% bigger than 300px */
-  min-height: 66px; /* 10% bigger than 60px */
+  min-width: 330px;
+  min-height: 66px;
   font-family: 'Nunito', sans-serif;
-  font-size: 30.8px; /* 10% bigger than 28px */
+  font-size: 30.8px;
   text-transform: uppercase;
   letter-spacing: 1.3px;
   font-weight: 700;
@@ -33,21 +33,21 @@ html, body {
   background: linear-gradient(90deg, #711c91 0%, #ea00d9 100%);
   border: none;
   border-radius: 1000px;
-  box-shadow: 13.2px 13.2px 26.4px rgba(234, 0, 217, 0.64); /* 10% bigger */
+  box-shadow: 13.2px 13.2px 26.4px rgba(234, 0, 217, 0.64);
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
   outline: none;
   position: relative;
-  padding: 11px; /* 10% bigger */
+  padding: 11px;
 }
 
 .game-button::before {
   content: '';
   border-radius: 1000px;
-  min-width: calc(330px + 13.2px); /* 10% bigger */
-  min-height: calc(66px + 13.2px); /* 10% bigger */
-  border: 7.2px solid #ea00d9; /* 10% bigger */
-  box-shadow: 0 0 66px rgba(234, 0, 217, 0.64); /* 10% bigger */
+  min-width: calc(330px + 13.2px);
+  min-height: calc(66px + 13.2px);
+  border: 7.2px solid #ea00d9;
+  box-shadow: 0 0 66px rgba(234, 0, 217, 0.64);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -67,10 +67,10 @@ html, body {
 
 .game-button::after {
   content: '';
-  width: 33px; /* 10% bigger */
-  height: 33px; /* 10% bigger */
+  width: 33px;
+  height: 33px;
   border-radius: 100%;
-  border: 7.2px solid #ea00d9; /* 10% bigger */
+  border: 7.2px solid #ea00d9;
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -81,13 +81,13 @@ html, body {
 
 @keyframes ring {
   0% {
-    width: 33px; /* 10% bigger */
-    height: 33px; /* 10% bigger */
+    width: 33px;
+    height: 33px;
     opacity: 1;
   }
   100% {
-    width: 330px; /* 10% bigger */
-    height: 330px; /* 10% bigger */
+    width: 330px;
+    height: 330px;
     opacity: 0;
   }
 }
