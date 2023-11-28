@@ -4,7 +4,7 @@ const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
 const MyAccount = () => {
   const [userData, setUserData] = useState(null);
-
+  const [storageUser, setStorageUser] = useState();
   const fetchUserData = async () => {
     try {
       const response = await fetch(`${hostURL}/api/users`, {
@@ -25,15 +25,16 @@ const MyAccount = () => {
 
   useEffect(() => {
     fetchUserData();
+    setStorageUser(JSON.parse(localStorage.getItem("user")))
   }, []);
 
   return (
     <div>
       {userData && (
         <div>
-          <p>Hello, {userData.name}</p>
-          <p>Username: {userData.username}</p>
-          <p>High Score: {userData.score}</p>
+          <p>Hello, {storageUser.name}</p>
+          <p>Username: {storageUser.username}</p>
+          <p>High Score: {storageUser.score}</p>
         </div>
       )}
     </div>

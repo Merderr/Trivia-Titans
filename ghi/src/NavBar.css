@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto&display=swap');
+
 .nav-container {
   position: fixed;
   top: 10px;
@@ -5,22 +7,33 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: #ea00d9; /* Magenta */
+  font-family: 'Poppins', sans-serif;
 }
+
 .toggle-button {
-  background: none;
-  color: #fff;
+  background: #091833; /* Dark Blue */
+  color: #ea00d9; /* Magenta */
   border: none;
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
   padding: 5px 10px;
 }
+
 .nav-links {
   display: none;
 }
+
 .nav-container.open .nav-links {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.nav-links a {
+  color: #ea00d9; /* Magenta */
+  text-decoration: none;
+  padding: 10px;
+  margin: 5px;
 }
