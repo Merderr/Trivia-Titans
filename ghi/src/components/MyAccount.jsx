@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
@@ -7,19 +7,19 @@ const MyAccount = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`${hostURL}/api/users`, {
-        method: 'GET',
-        credentials: 'include',
+      const response = await fetch(`${hostURL}/api/users/`, {
+        method: "GET",
+        credentials: "include",
       });
 
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
       } else {
-        console.error('Failed to fetch user data');
+        console.error("Failed to fetch user data");
       }
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error("Error fetching user data:", error);
     }
   };
 
