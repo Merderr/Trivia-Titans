@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
-import "./index.css";
-
+import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -13,15 +12,15 @@ const Login = () => {
   const { login } = useToken();
   const { token } = useToken();
   const [newToken, setNewToken] = useState(undefined);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await login(username, password);
-        setTimeout(() => {
-          setNewToken(token);
-        }, 1000);
-      console.log("token", token)
+      setTimeout(() => {
+        setNewToken(token);
+      }, 1000);
+      console.log("token", token);
     } catch (error) {
       setIsError(true);
       setErrorMessage(
@@ -33,78 +32,55 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if(newToken === undefined){
-      }
-      else {
-        navigate("/")
-      }
+    if (newToken === undefined) {
+    } else {
+      navigate("/");
+    }
   }, [newToken]);
+
   useEffect(() => {
-    if (token !== null){
-      console.log("already logged in")
-      navigate("/")
+    if (token !== null) {
+      console.log("already logged in");
+      navigate("/");
     }
   }, []);
-  
+
   let errorClass = isError ? "alert alert-danger" : "alert alert-danger d-none";
 
   return (
-    <div style={{ minHeight: "100vh" }}>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-6">
-            <div
-              className="card-3d-wrap mx-auto"
-              style={{ boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.3)" }}
-            >
-              <div className="card-3d-wrapper">
-                <div className="card-front">
-                  <div className="center-wrap">
-                    <div className="section text-center">
-                      <h4 className="mb-4 pb-3">Log In</h4>
-                      <form onSubmit={(e) => handleSubmit(e)}>
-                        <div className="form-group">
-                          <label className="form-label">
-                            Enter your username:
-                          </label>
-                          <input
-                            name="username"
-                            type="text"
-                            placeholder="username goes here..."
-                            className="form-control"
-                            autoComplete="username"
-                            onChange={(e) => setUsername(e.target.value)}
-                          />
-                        </div>
-                        <div className="form-group mt-2">
-                          <label className="form-label">
-                            Enter your Password:
-                          </label>
-                          <input
-                            name="password"
-                            type="password"
-                            placeholder="password goes here..."
-                            className="form-control"
-                            autoComplete="current-password"
-                            onChange={(e) => setPassword(e.target.value)}
-                          />
-                        </div>
-                        <div className={errorClass}>{errorMessage}</div>
-                        <div style={{ marginTop: "15px" }}>
-                          <input
-                            className="btn btn-primary"
-                            type="submit"
-                            value="Login"
-                          />
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div className="login-container">
+      <div className="login-card">
+        <h1 className="login-title">LOGIN</h1>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="form-group">
+            <input
+              name="username"
+              type="text"
+              placeholder="Username"
+              className="form-control"
+              autoComplete="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
-        </div>
+          <div className="form-group">
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              className="form-control"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className={errorClass}>{errorMessage}</div>
+          <div className="form-group">
+            <button className="login-btn" type="submit">
+              Login
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

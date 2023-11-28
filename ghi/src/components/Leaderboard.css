@@ -10,18 +10,20 @@
 
 
 h2 {
+  color: white;
   text-align: center;
   margin-top: 20px;
 }
 
 
 .list-container {
-  flex-grow: 1; 
-  overflow-y: auto; 
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 
 ol {
+  color: white;
   list-style: none;
   padding: 0;
   margin: 0;
