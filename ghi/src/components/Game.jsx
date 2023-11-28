@@ -104,23 +104,35 @@ const Game = () => {
       </div>
       <ul className="answer">
         {question.answers &&
-          question.answers.map((answer, index) => (
-            <li
-              key={index}
-              onClick={() => handleAnswerClick(answer)}
-              className={
-                (result === "correct" &&
-                  answer === question.correct_answer &&
-                  "correct") ||
-                (selectedAnswer === answer &&
-                  result === "incorrect" &&
-                  "incorrect") ||
-                ""
+          question.answers
+            .reduce((rows, answer, index) => {
+              if (index % 2 === 0) {
+                rows.push([]);
               }
-            >
-              {answer}
-            </li>
-          ))}
+              rows[rows.length - 1].push(answer);
+              return rows;
+            }, [])
+            .map((row, rowIndex) => (
+              <div key={rowIndex} className="answer-row">
+                {row.map((answer, colIndex) => (
+                  <button
+                    key={colIndex}
+                    onClick={() => handleAnswerClick(answer)}
+                    className={
+                      (result === "correct" &&
+                        answer === question.correct_answer &&
+                        "correct") ||
+                      (selectedAnswer === answer &&
+                        result === "incorrect" &&
+                        "incorrect") ||
+                      ""
+                    }
+                  >
+                    {answer}
+                  </button>
+                ))}
+              </div>
+            ))}
       </ul>
       <div className="score-container">
         <p>Score: {score}</p>
