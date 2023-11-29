@@ -26,6 +26,22 @@ const AboutUs = () => {
             and passion to the world of technology."
           </p>
           {/* Add more content as needed */}
+          <div className="about-us-header">Hamza Ahmed from Ocean City, MD</div>
+          <p>
+            "Hey there! I'm Hamza, a running enthusiast, amatuer cook and a
+            passionate coder. Originally from Pakistan, I made a bold shift from
+            PA school to the dynamic world of programming. When I'm not immersed
+            in the world of coding, you'll likely find me pounding the pavement,
+            training for the next marathon. Running isn't just a hobby for me;
+            it's a metaphor for life—endurance, determination, and the thrill of
+            crossing the finish line. In addition to coding and running, I wear
+            another hat as I take care of the family business. Time is a rare
+            commodity for me, but the juggling act keeps life interesting. It's
+            a challenge I embrace wholeheartedly. Life's a marathon, not a
+            sprint, and I believe in savoring every step of the journey. Join me
+            as I navigate the intersections of coding, running, family, and the
+            delightful chaos that is life.""
+          </p>
         </div>
       </div>
     </div>
