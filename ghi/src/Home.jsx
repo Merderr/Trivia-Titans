@@ -9,6 +9,7 @@ function Home() {
   const { token } = useToken();
   const [user, setUser] = useState("");
   const [storageUser, setStorageUser] = useState();
+
   const getUser = async (e) => {
     if (token !== null) {
       const getToken = await fetch("http://localhost:8000/token", {
@@ -25,6 +26,7 @@ function Home() {
     getUser();
     setStorageUser(JSON.parse(localStorage.getItem("user")));
   }, []);
+
   return (
     <>
       <header className="app-header">

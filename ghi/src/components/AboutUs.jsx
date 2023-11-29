@@ -25,7 +25,6 @@ const AboutUs = () => {
             be on the lookout for exciting opportunities to contribute my skills
             and passion to the world of technology."
           </p>
-          {/* Add more content as needed */}
           <div className="about-us-header">Hamza Ahmed from Ocean City, MD</div>
           <p>
             "Hey there! I'm Hamza, a running enthusiast, amatuer cook and a

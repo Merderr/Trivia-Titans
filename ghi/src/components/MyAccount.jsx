@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./MyAccount.css";
+import React, { useState, useEffect } from "react";
+import "./MyAccount.css";
 
 const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
@@ -46,7 +48,9 @@ const MyAccount = () => {
           <p className="account-title">Hello, {storageUser.name}</p>
           <div className="account-info">
             <span className="info-label">Username:</span>
-            <span className="info-value">{storageUser.username}</span>
+            <span className="info-value">
+              {storageUser && storageUser.username}
+            </span>
           </div>
           {userData && (
             <div className="account-info">
