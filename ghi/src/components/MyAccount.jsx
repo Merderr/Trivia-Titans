@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./MyAccount.css";
-import React, { useState, useEffect } from "react";
-import "./MyAccount.css";
 
 const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
@@ -19,7 +17,6 @@ const MyAccount = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("User Data:", data); // Log the data to the console
         setUserData(data);
       } else {
         console.error("Failed to fetch user data");
@@ -36,7 +33,6 @@ const MyAccount = () => {
   useEffect(() => {
     fetchUserData();
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    console.log("Stored User:", storedUser);
     setStorageUser(storedUser);
   }, []);
 
