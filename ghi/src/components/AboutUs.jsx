@@ -14,7 +14,7 @@ const AboutUs = () => {
             "Hi, I'm Seth, a passionate individual with a diverse set of
             interests. When I'm not immersed in the world of coding, you'll find
             me crafting beats and melodies, diving into captivating video games,
-            exploring the art of filmm, experimenting with new recipes in the
+            exploring the art of film, experimenting with new recipes in the
             kitchen, and getting lost in the pages of a good book. 💑 I've been
             happily married to my wonderful wife Kaley for two years, and we
             navigate the journey of life together. 📚 Currently on the verge of
