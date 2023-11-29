@@ -10,22 +10,20 @@ function Home() {
   const [user, setUser] = useState("");
   const [storageUser, setStorageUser] = useState();
   const getUser = async (e) => {
-    if(token !== null){
-      const getToken = await fetch("http://localhost:8000/token", 
-        {
-          credentials: "include",
-        }
-      )
-      if(getToken.ok){
+    if (token !== null) {
+      const getToken = await fetch("http://localhost:8000/token", {
+        credentials: "include",
+      });
+      if (getToken.ok) {
         const data = await getToken.json();
-        setUser(data.account)
-        localStorage.setItem("user", JSON.stringify(data.account))
+        setUser(data.account);
+        localStorage.setItem("user", JSON.stringify(data.account));
       }
     }
-  }
+  };
   useEffect(() => {
-      getUser();
-      setStorageUser(JSON.parse(localStorage.getItem("user")))
+    getUser();
+    setStorageUser(JSON.parse(localStorage.getItem("user")));
   }, []);
   return (
     <>
@@ -35,9 +33,11 @@ function Home() {
       <div>
         <h1 className="title">TRIVIA TITANS</h1>
       </div>
-      <div>
-        <h2>Welcome, {storageUser && storageUser.name} </h2>
-      </div>
+      {token && storageUser && (
+        <div>
+          <h2>Welcome, {storageUser.name} </h2>
+        </div>
+      )}
       <div className="PlayButton">
         <PlayButton />
       </div>
