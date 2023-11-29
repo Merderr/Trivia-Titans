@@ -25,7 +25,17 @@ const AboutUs = () => {
             be on the lookout for exciting opportunities to contribute my skills
             and passion to the world of technology."
           </p>
-          {/* Add more content as needed */}
+        </div>
+        <div className="about-us-header">Mason Doney from Chicago, IL</div>
+        <div className="about-us-content">
+          <p>
+            "Hey there! I'm Mason Doney, hailing from the vibrant city of
+            Chicago, IL. When I'm not knee-deep in code, you'll catch me
+            unleashing my competitive spirit in video games or tearing up the
+            sports field with my friends. 🎮⚽ In the world of technology, I'm
+            always up for a challenge and love bringing ideas to life through
+            coding. Looking forward to making a mark in the tech landscape!
+          </p>
         </div>
       </div>
     </div>
