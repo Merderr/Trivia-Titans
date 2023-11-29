@@ -41,6 +41,7 @@ const AboutUs = () => {
             sprint, and I believe in savoring every step of the journey. Join me
             as I navigate the intersections of coding, running, family, and the
             delightful chaos that is life.""
+          </p>
         </div>
         <div className="about-us-header">Mason Doney from Chicago, IL</div>
         <div className="about-us-content">
