@@ -10,6 +10,7 @@ import Leaderboard from "./components/Leaderboard";
 import MyAccount from "./components/MyAccount";
 import AboutUs from "./components/AboutUs";
 import Game from "./components/Game";
+import Logout from "./Logout";
 import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {
@@ -30,12 +31,9 @@ function App() {
               <Route path="/myaccount" element={<MyAccount />} />
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/play" element={<Game />} />
+              <Route path="/logout" element={<Logout />} />
             </Routes>
           </div>
-          {/* <h1>Trivia Titans</h1>
-        <div className="PlayButton">
-          <PlayButton />
-        </div> */}
         </>
       </Router>
     </AuthProvider>

@@ -10,9 +10,9 @@ const MyAccount = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`${hostURL}/api/users`, {
-        method: 'GET',
-        credentials: 'include',
+      const response = await fetch(`${hostURL}/api/users/`, {
+        method: "GET",
+        credentials: "include",
       });
 
       if (response.ok) {

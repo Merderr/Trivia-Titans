@@ -155,5 +155,5 @@ async def get_token(
 
 @router.get("/leaderboard")
 def get_leaderboard_route(queries: UserRepository = Depends()):
-   leaderboard = queries.get_leaderboard()
-   return leaderboard
+    leaderboard = queries.get_leaderboard()
+    return leaderboard
