@@ -12,12 +12,12 @@ const Game = () => {
   const [showModal, setShowModal] = useState(false);
   const [score, setScore] = useState(0);
   const [maxNumber, setMaxNumber] = useState(1);
-
+  const [storageUser, setStorageUser] = useState(0);
+  
   const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
     const allAnswers = [correctAnswer, ...incorrectAnswers];
     return allAnswers.sort(() => Math.random() - 0.5);
   };
-
   const getMaxNumber = async () => {
     const url = hostURL + `/api/questions`;
     const response = await fetch(url);
@@ -80,11 +80,37 @@ const Game = () => {
     }
   };
 
-  const handlePlayAgainClick = () => {
-    setShowModal(false);
-    setScore(0);
-    getQuestion();
-  };
+  const handlePlayAgainClick = async () => {
+  if (storageUser && score > storageUser.score) {
+    const updatedUser = { ...storageUser, score };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    setStorageUser(updatedUser);
+
+    try {
+      const userUrl = `${hostURL}/api/users/${storageUser.id}/update-score`;
+      const response = await fetch(userUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ score }),
+      });
+
+      if (response.ok) {
+        console.log("User score updated successfully");
+
+      } else {
+        console.error("Failed to update user score");
+      }
+    } catch (error) {
+      console.error("Error updating user score:", error);
+    }
+  }
+
+  setShowModal(false);
+  setScore(0);
+  getQuestion();
+};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,6 +119,9 @@ const Game = () => {
     };
     fetchData();
   }, [maxNumber]);
+  useEffect(() => {
+    setStorageUser(JSON.parse(localStorage.getItem("user")))
+  }, []);
 
   return (
     <div className="game-container">

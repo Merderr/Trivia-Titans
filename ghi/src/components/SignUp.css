@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto&family=Rubik:ital,wght@0,800;1,800&family=Teko:wght@700&display=swap');
+
+.signup-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.signup-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(255, 255, 255, 0.823);
+    padding: 20px;
+    width: 300px;
+}
+
+.signup-title {
+    font-family: Rubik;
+    font-style: italic;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 35px;
+    color: #333;
+    position: relative;
+}
+
+.signup-title:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 7px;
+    background: linear-gradient(to right, #0abdc6, #133e7c);
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.form-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signup-btn {
+    font-family: Poppins;
+    background-color: #ea00dae9;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(234, 0, 218, 0.899), 0 6px 10px rgba(113, 28, 145, 0.3);
+}
+
+.signup-btn:hover {
+    background-color: #711c91;
+}
