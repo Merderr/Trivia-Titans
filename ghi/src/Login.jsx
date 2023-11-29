@@ -76,7 +76,7 @@ const Login = () => {
           </div>
           <div className={errorClass}>{errorMessage}</div>
           <div className="form-group">
-            <button className="login-btn" type="submit">
+            <button className="login-btn" type="submit" value="Login">
               Login
             </button>
           </div>
