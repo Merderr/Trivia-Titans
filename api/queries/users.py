@@ -254,3 +254,24 @@ class UserRepository:
         except Exception as e:
             print(e)
             return {"message": "Could not get leaderboard"}
+
+    def update_user_score(self, user_id: int, new_score: int) -> Union[None, JSONResponse]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE users
+                        SET score = %s
+                        WHERE id = %s;
+                        """,
+                        (new_score, user_id),
+                    )
+
+                    return JSONResponse(content=None, status_code=200)
+        except Exception as e:
+            print(e)
+            return JSONResponse(
+                content={"message": "Could not update user score"},
+                status_code=500,
+            )   
