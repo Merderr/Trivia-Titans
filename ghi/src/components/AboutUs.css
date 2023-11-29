@@ -35,6 +35,8 @@
   background-color: #f5f5f5; /* Light Gray */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 550px; /* Set a fixed height as an example */
+  overflow-y: auto; /* Add a scrollbar if content overflows */
 }
 
 .about-us-header {
