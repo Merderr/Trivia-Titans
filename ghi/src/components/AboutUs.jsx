@@ -14,7 +14,7 @@ const AboutUs = () => {
             "Hi, I'm Seth, a passionate individual with a diverse set of
             interests. When I'm not immersed in the world of coding, you'll find
             me crafting beats and melodies, diving into captivating video games,
-            exploring the art of filmm, experimenting with new recipes in the
+            exploring the art of film, experimenting with new recipes in the
             kitchen, and getting lost in the pages of a good book. 💑 I've been
             happily married to my wonderful wife Kaley for two years, and we
             navigate the journey of life together. 📚 Currently on the verge of
@@ -25,6 +25,7 @@ const AboutUs = () => {
             be on the lookout for exciting opportunities to contribute my skills
             and passion to the world of technology."
           </p>
+<<<<<<< HEAD
           {/* Add more content as needed */}
           <div className="about-us-header">Hamza Ahmed from Ocean City, MD</div>
           <p>
@@ -41,6 +42,18 @@ const AboutUs = () => {
             sprint, and I believe in savoring every step of the journey. Join me
             as I navigate the intersections of coding, running, family, and the
             delightful chaos that is life.""
+=======
+        </div>
+        <div className="about-us-header">Mason Doney from Chicago, IL</div>
+        <div className="about-us-content">
+          <p>
+            "Hey there! I'm Mason Doney, hailing from the vibrant city of
+            Chicago, IL. When I'm not knee-deep in code, you'll catch me
+            unleashing my competitive spirit in video games or tearing up the
+            sports field with my friends. 🎮⚽ In the world of technology, I'm
+            always up for a challenge and love bringing ideas to life through
+            coding. Looking forward to making a mark in the tech landscape!
+>>>>>>> b7179a0eda4471ed9338b2c795afa11c486d46e0
           </p>
         </div>
       </div>
