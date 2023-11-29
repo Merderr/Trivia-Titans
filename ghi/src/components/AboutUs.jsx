@@ -25,8 +25,6 @@ const AboutUs = () => {
             be on the lookout for exciting opportunities to contribute my skills
             and passion to the world of technology."
           </p>
-<<<<<<< HEAD
-          {/* Add more content as needed */}
           <div className="about-us-header">Hamza Ahmed from Ocean City, MD</div>
           <p>
             "Hey there! I'm Hamza, a running enthusiast, amatuer cook and a
@@ -42,7 +40,7 @@ const AboutUs = () => {
             sprint, and I believe in savoring every step of the journey. Join me
             as I navigate the intersections of coding, running, family, and the
             delightful chaos that is life.""
-=======
+          </p>
         </div>
         <div className="about-us-header">Mason Doney from Chicago, IL</div>
         <div className="about-us-content">
@@ -53,7 +51,6 @@ const AboutUs = () => {
             sports field with my friends. 🎮⚽ In the world of technology, I'm
             always up for a challenge and love bringing ideas to life through
             coding. Looking forward to making a mark in the tech landscape!
->>>>>>> b7179a0eda4471ed9338b2c795afa11c486d46e0
           </p>
         </div>
       </div>
