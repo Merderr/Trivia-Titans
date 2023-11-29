@@ -25,17 +25,19 @@ const MyAccount = () => {
 
   useEffect(() => {
     fetchUserData();
-    setStorageUser(JSON.parse(localStorage.getItem("user")))
+    setStorageUser(JSON.parse(localStorage.getItem("user")));
   }, []);
 
   return (
     <div>
-      {userData && (
+      {userData ? (
         <div>
-          <p>Hello, {storageUser.name}</p>
-          <p>Username: {storageUser.username}</p>
-          <p>High Score: {storageUser.score}</p>
+          <p>Hello, {storageUser && storageUser.name}</p>
+          <p>Username: {storageUser && storageUser.username}</p>
+          <p>High Score: {storageUser && storageUser.score}</p>
         </div>
+      ) : (
+        <p>No user data available</p>
       )}
     </div>
   );
