@@ -16,7 +16,7 @@ import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 function App() {
   const [count, setCount] = useState(0);
   const domain = /https:\/\/[^/]+/;
-  const basename = process.env.PUBLIC_URL.replace(domain, "");
+  const basename = process.env.VITE_PUBLIC_URL.replace(domain, "");
   return (
     <BrowserRouter basename={basename}>
       <AuthProvider baseUrl={import.meta.env.VITE_REACT_APP_API_HOST}>
