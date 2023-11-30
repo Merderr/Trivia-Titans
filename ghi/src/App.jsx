@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar";
 import PlayButton from "./components/PlayButton";
 import Signup from "./components/SignUp";
@@ -27,7 +28,6 @@ function App() {
             </header>
             <div className="content-container">
               <Routes>
-                <Route path="/" element={<Home />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
