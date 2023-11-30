@@ -35,9 +35,7 @@ function Home() {
 
   return (
     <>
-      <header className="app-header">
-        <NavBar />
-      </header>
+      <header className="app-header"></header>
       <div className="home-container">
         <div>
           <div>
