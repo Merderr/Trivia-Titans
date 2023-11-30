@@ -20,7 +20,6 @@ const Login = () => {
       setTimeout(() => {
         setNewToken(token);
       }, 1000);
-      console.log("token", token);
     } catch (error) {
       setIsError(true);
       setErrorMessage(
