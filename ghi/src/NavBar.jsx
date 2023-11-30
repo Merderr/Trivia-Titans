@@ -33,7 +33,7 @@ const NavBar = () => {
           About Us
         </NavLink>
         <NavLink to="/logout" activeClassName="active">
-          Log out
+          Log Out
         </NavLink>
       </div>
     </div>

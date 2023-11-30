@@ -5,8 +5,8 @@ const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
 const MyAccount = () => {
   const [userData, setUserData] = useState(null);
-  const [storageUser, setStorageUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [storageUser, setStorageUser] = useState(null);
 
   const fetchUserData = async () => {
     try {
@@ -32,29 +32,28 @@ const MyAccount = () => {
 
   useEffect(() => {
     fetchUserData();
-    setStorageUser(JSON.parse(localStorage.getItem("user")));
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    setStorageUser(storedUser);
   }, []);
 
   return (
     <div className="account-container">
       {loading && <p>Loading...</p>}
-      {userData && (
+      {storageUser && (
         <div className="account-card">
-          <p className="account-title">
-            Hello, {storageUser && storageUser.name}
-          </p>
+          <p className="account-title">Hello, {storageUser.name}</p>
           <div className="account-info">
             <span className="info-label">Username:</span>
             <span className="info-value">
               {storageUser && storageUser.username}
             </span>
           </div>
-          <div className="account-info">
-            <span className="info-label">High Score:</span>
-            <span className="info-value">
-              {storageUser && storageUser.score}
-            </span>
-          </div>
+          {userData && (
+            <div className="account-info">
+              <span className="info-label">High Score:</span>
+              <span className="info-value">{storageUser.score}</span>
+            </div>
+          )}
         </div>
       )}
     </div>
