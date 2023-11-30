@@ -44,7 +44,6 @@ class UserScoreUpdate(BaseModel):
 
 
 router = APIRouter()
-app = APIRouter()
 
 
 @router.put("/api/users/{user_id}/update-score", response_model=UserModelOut)
@@ -160,8 +159,3 @@ def get_leaderboard_route(
 ):
     leaderboard = queries.get_leaderboard()
     return leaderboard
-
-
-@app.get("/")
-def root():
-    return {"message": "You hit the root path!"}

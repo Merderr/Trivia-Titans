@@ -23,5 +23,10 @@ def index():
     return trivia
 
 
+@app.get("/")
+def root():
+    return {"message": "You hit the root path!"}
+
+
 # Run the Flask app (127.0.0.1:5000 by default).
 app.run()
