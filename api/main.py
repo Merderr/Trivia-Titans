@@ -23,6 +23,7 @@ app.add_middleware(
 app.include_router(authenticator.router)
 app.include_router(questions.router, prefix="/api")
 app.include_router(users.router)
+app.include_router(users.router, prefix="/token")
 
 
 @app.get("/api/launch-details")
