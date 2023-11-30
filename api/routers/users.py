@@ -7,6 +7,7 @@ from fastapi import (
     Request,
 )
 import json
+from typing import Optional
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from jwtdown_fastapi.authentication import Token
@@ -43,23 +44,23 @@ class UserScoreUpdate(BaseModel):
 
 
 router = APIRouter()
+app = APIRouter()
+
 
 @router.put("/api/users/{user_id}/update-score", response_model=UserModelOut)
 async def update_user_score(
-    user_id:int, 
+    user_id: int,
     score_data: UserScoreUpdate,
     repo: UserRepository = Depends(),
 ):
     user = repo.get_one_user(user_id)
     if user is None:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="User Not Found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="User Not Found"
         )
     user = repo.update_user_score(user_id, score_data.score)
 
     return user
-
 
 
 @router.post("/api/users", response_model=UserToken | HttpError)
@@ -154,6 +155,13 @@ async def get_token(
 
 
 @router.get("/leaderboard")
-def get_leaderboard_route(queries: UserRepository = Depends()):
-   leaderboard = queries.get_leaderboard()
-   return leaderboard
+def get_leaderboard_route(
+    queries: UserRepository = Depends(),
+):
+    leaderboard = queries.get_leaderboard()
+    return leaderboard
+
+
+@app.get("/")
+def root():
+    return {"message": "You hit the root path!"}

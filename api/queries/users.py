@@ -50,10 +50,10 @@ class DuplicateAccountError(ValueError):
 
 
 class UserRepository:
-    def get_one_user(self, user_id: int) -> Optional[UserModelOut]:
+    def get_user_by_id(self, user_id: int) -> Optional[UserModelOut]:
         try:
             with pool.connection() as conn:
-                with conn.cursor(name="get_one_user") as db:
+                with conn.cursor(name="get_user_by_id") as db:
                     db.execute(
                         """
                         SELECT id, username, password, name, score
@@ -255,7 +255,9 @@ class UserRepository:
             print(e)
             return {"message": "Could not get leaderboard"}
 
-    def update_user_score(self, user_id: int, new_score: int) -> Union[None, JSONResponse]:
+    def update_user_score(
+        self, user_id: int, new_score: int
+    ) -> Union[None, JSONResponse]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -274,4 +276,4 @@ class UserRepository:
             return JSONResponse(
                 content={"message": "Could not update user score"},
                 status_code=500,
-            )   
+            )

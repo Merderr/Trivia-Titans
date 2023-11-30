@@ -32,6 +32,9 @@ const NavBar = () => {
         <NavLink to="/aboutus" activeClassName="active">
           About Us
         </NavLink>
+        <NavLink to="/logout" activeClassName="active">
+          Log Out
+        </NavLink>
       </div>
     </div>
   );
