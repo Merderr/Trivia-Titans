@@ -12,7 +12,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         os.environ.get(
-            "https://rc678-galvanize.gitlab.io", "http://localhost:3000"
+            "http://localhost:3000/",
+            "https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/",
         )
     ],
     allow_credentials=True,
@@ -23,7 +24,6 @@ app.add_middleware(
 app.include_router(authenticator.router)
 app.include_router(questions.router, prefix="/api")
 app.include_router(users.router)
-app.include_router(users.router, prefix="/token")
 
 
 @app.get("/api/launch-details")
