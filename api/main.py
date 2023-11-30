@@ -7,16 +7,13 @@ from authenticator import authenticator
 
 app = FastAPI()
 
-x = "https://module3-project-gamma-ice-"
-y = "climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/"
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         os.environ.get(
-            "https://rc678-galvanize.gitlab.io",
-            "http://localhost:3000",
-            x + y,
+            "http://localhost:3000/",
+            "https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/",
         )
     ],
     allow_credentials=True,

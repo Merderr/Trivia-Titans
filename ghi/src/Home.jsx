@@ -10,25 +10,27 @@ function Home() {
   const [user, setUser] = useState("");
   const [storageUser, setStorageUser] = useState();
 
-  const getUser = async (e) => {
-    if (token !== null) {
-      const getToken = await fetch(
-        `${import.meta.env.VITE_REACT_APP_API_HOST}/token`,
-        {
-          credentials: "include",
-        }
-      );
-      if (getToken.ok) {
-        const data = await getToken.json();
-        setUser(data.account);
-        localStorage.setItem("user", JSON.stringify(data.account));
-      }
-    }
-  };
-  useEffect(() => {
-    getUser();
-    setStorageUser(JSON.parse(localStorage.getItem("user")));
-  }, []);
+  // const getUser = async (e) => {
+  //   if (token !== null) {
+  //     const getToken = await fetch(
+  //       `${import.meta.env.VITE_REACT_APP_API_HOST}/token`,
+  //       {
+  //         credentials: "include",
+  //       }
+  //     );
+  //     if (getToken.ok) {
+  //       const data = await getToken.json();
+  //       if (data) {
+  //         setUser(data.account);
+  //         localStorage.setItem("user", JSON.stringify(data.account));
+  //       }
+  //     }
+  //   }
+  // };
+  // useEffect(() => {
+  //   getUser();
+  //   setStorageUser(JSON.parse(localStorage.getItem("user")));
+  // }, []);
 
   return (
     <>
