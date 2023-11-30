@@ -7,6 +7,7 @@ from fastapi import (
     Request,
 )
 import json
+from typing import Optional
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from jwtdown_fastapi.authentication import Token
@@ -43,6 +44,7 @@ class UserScoreUpdate(BaseModel):
 
 
 router = APIRouter()
+app = APIRouter()
 
 
 @router.put("/api/users/{user_id}/update-score", response_model=UserModelOut)
@@ -153,6 +155,13 @@ async def get_token(
 
 
 @router.get("/leaderboard")
-def get_leaderboard_route(queries: UserRepository = Depends()):
+def get_leaderboard_route(
+    queries: UserRepository = Depends(),
+):
     leaderboard = queries.get_leaderboard()
     return leaderboard
+
+
+@app.get("/")
+def root():
+    return {"message": "You hit the root path!"}
