@@ -14,7 +14,6 @@ app.add_middleware(
         os.environ.get(
             "https://rc678-galvanize.gitlab.io",
             "http://localhost:3000",
-            "https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/",
         )
     ],
     allow_credentials=True,
