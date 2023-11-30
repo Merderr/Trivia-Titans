@@ -102,7 +102,7 @@ async def get_user(user_id: int, repo: UserRepository = Depends()):
 async def update_user(
     user_id: int, info: UserModelIn, repo: UserRepository = Depends()
 ):
-    user = repo.get_one_user(user_id)
+    user = repo.get_user_by_id(user_id)
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -150,6 +150,11 @@ async def get_token(
             "type": "Bearer",
             "account": account,
         }
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User not found",
+        )
 
 
 @router.get("/leaderboard")

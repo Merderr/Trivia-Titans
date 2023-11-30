@@ -17,9 +17,9 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(username, password);
-      setTimeout(() => {
-        setNewToken(token);
-      }, 1000);
+      // setTimeout(() => {
+      //   setNewToken(token);
+      // }, 1000);
     } catch (error) {
       setIsError(true);
       setErrorMessage(
@@ -31,18 +31,17 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (newToken === undefined) {
-    } else {
+    if (token) {
       navigate("/");
     }
-  }, [newToken]);
+  }, [token]);
 
-  useEffect(() => {
-    if (token !== null) {
-      console.log("already logged in");
-      navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (token !== null) {
+  //     console.log("already logged in");
+  //     navigate("/");
+  //   }
+  // }, []);
 
   let errorClass = isError ? "alert alert-danger" : "alert alert-danger d-none";
 

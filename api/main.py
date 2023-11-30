@@ -10,7 +10,12 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.environ.get("CORS_HOST", "http://localhost:3000")],
+    allow_origins=[
+        os.environ.get(
+            "http://localhost:3000/",
+            "https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/",
+        )
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

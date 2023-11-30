@@ -17,13 +17,13 @@ function App() {
   const [count, setCount] = useState(0);
   const domain = /https?:\/\/[^/]+/;
   const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "");
+  const backend = import.meta.env.VITE_REACT_APP_API_HOST;
   return (
     <Router basename={basename}>
       <AuthProvider baseUrl={import.meta.env.VITE_REACT_APP_API_HOST}>
         <>
-          <header className="app-header">
-            <NavBar />
-          </header>
+          <NavBar></NavBar>
+          <header className="app-header"></header>
           <div className="content-container">
             <Routes>
               <Route path="/" element={<Home />} />
