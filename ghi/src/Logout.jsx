@@ -18,6 +18,7 @@ const Logout = () => {
     } catch (error) {
       setErrorMessage("Please wait for logout");
     }
+    navigate("/");
   };
 
   useEffect(() => {
