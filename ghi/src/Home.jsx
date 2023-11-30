@@ -32,16 +32,20 @@ function Home() {
       <header className="app-header">
         <NavBar />
       </header>
-      <div>
-        <h1 className="title">TRIVIA TITANS</h1>
-      </div>
-      {token && storageUser && (
+      <div className="home-container">
         <div>
-          <h2>Welcome, {storageUser.name} </h2>
+          <div>
+            <h1 className="title">TRIVIA TITANS</h1>
+          </div>
+          {token && storageUser && (
+            <div>
+              <h2 className="welcome-title">Welcome, {storageUser.name} </h2>
+            </div>
+          )}
+          <div className="PlayButton">
+            <PlayButton />
+          </div>
         </div>
-      )}
-      <div className="PlayButton">
-        <PlayButton />
       </div>
     </>
   );
