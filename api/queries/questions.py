@@ -46,7 +46,9 @@ class QuestionRepository:
                     # Run our SELECT statement
                     db.execute(
                         """
-                        SELECT id, category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3
+                        SELECT id, category, type, difficulty, question,
+                        correct_answer, incorrect_answer_1, incorrect_answer_2,
+                        incorrect_answer_3
                         FROM questions
                         WHERE id = %s
                         """,
@@ -67,7 +69,9 @@ class QuestionRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3
+                        SELECT id, category, type, difficulty, question,
+                        correct_answer, incorrect_answer_1, incorrect_answer_2,
+                        incorrect_answer_3
                         FROM questions
                         ORDER BY category;
                         """
@@ -97,7 +101,9 @@ class QuestionRepository:
                 result = db.execute(
                     """
                     INSERT INTO questions
-                        (category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3)
+                        (category, type, difficulty, question,
+                        correct_answer, incorrect_answer_1,
+                        incorrect_answer_2, incorrect_answer_3)
                     VALUES
                         (%s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id;

@@ -7,7 +7,6 @@ from fastapi import (
     Request,
 )
 import json
-from typing import Optional
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from jwtdown_fastapi.authentication import Token

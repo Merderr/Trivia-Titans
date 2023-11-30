@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from routers import questions
@@ -18,6 +18,7 @@ app.add_middleware(
 app.include_router(authenticator.router)
 app.include_router(questions.router, prefix="/api")
 app.include_router(users.router)
+
 
 @app.get("/api/launch-details")
 def launch_details():
