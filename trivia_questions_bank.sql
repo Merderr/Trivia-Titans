@@ -1,52 +1,3 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS question;
-
-
-CREATE TABLE questions (
-    id SERIAL PRIMARY KEY,
-    category VARCHAR(1000) NOT NULL,
-    type VARCHAR(1000) NOT NULL,
-    difficulty VARCHAR(1000) NOT NULL,
-    question VARCHAR(1000) NOT NULL,
-    correct_answer VARCHAR(1000) NOT NULL,
-    incorrect_answer_1 VARCHAR(1000) NOT NULL,
-    incorrect_answer_2 VARCHAR(1000) NOT NULL,
-    incorrect_answer_3 VARCHAR(1000) NOT NULL
-);
-
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY NOT NULL,
-    username TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
-    name TEXT NOT NULL,
-    score INTEGER
-);
-
-
-INSERT INTO users (username, password, name, score) VALUES
-('user1', 'password1', 'John Doe', 100),
-('user2', 'password2', 'Jane Smith', 150),
-('user3', 'password3', 'Bob Johnson', 200),
-('user4', 'password4', 'Alice Brown', 120),
-('user5', 'password5', 'Charlie Davis', 180),
-('user6', 'password6', 'Eva White', 90),
-('user7', 'password7', 'Frank Lee', 210),
-('user8', 'password8', 'Grace Miller', 130),
-('user9', 'password9', 'Henry Taylor', 160),
-('user10', 'password10', 'Ivy Wilson', 110),
-('user11', 'password11', 'Jack Robinson', 140),
-('user12', 'password12', 'Katie Harris', 170),
-('user13', 'password13', 'Leo Martin', 190),
-('user14', 'password14', 'Mia Anderson', 200),
-('user15', 'password15', 'Nick White', 80),
-('user16', 'password16', 'Olivia Clark', 220),
-('user17', 'password17', 'Paul Taylor', 230),
-('user18', 'password18', 'Quinn Moore', 250),
-('user19', 'password19', 'Ryan Smith', 120),
-('user20', 'password20', 'Samantha Davis', 170);
-;
-
-
 -- Geography Easy Questions
 INSERT INTO questions (category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3) VALUES
 ('Geography', 'multiple', 'easy', 'Which continent is known as the "Land Down Under"?', 'Australia', 'Africa', 'Asia', 'Europe'),
@@ -83,6 +34,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Geography', 'multiple', 'easy', 'In which U.S. state is the Zion National Park located?', 'Utah', 'Arizona', 'Nevada', 'Colorado'),
 ('Geography', 'multiple', 'easy', 'Which strait separates Greenland and Iceland?', 'Denmark Strait', 'Baffin Bay', 'Davis Strait', 'Norwegian Sea'),
 ('Geography', 'multiple', 'easy', 'In which continent is the Sahara Desert located?', 'Africa', 'Asia', 'South America', 'Australia'),
+('Geography', 'multiple', 'easy', 'What is the largest island in the world?', 'Greenland', 'New Guinea', 'Borneo', 'Madagascar'),
 ('Geography', 'multiple', 'easy', 'In which U.S. state is Mount Rushmore located?', 'South Dakota', 'North Dakota', 'Wyoming', 'Montana'),
 ('Geography', 'multiple', 'easy', 'Which sea is the largest landlocked body of water in the world?', 'Caspian Sea', 'Aral Sea', 'Dead Sea', 'Black Sea'),
 ('Geography', 'multiple', 'easy', 'In which European country is the city of Vienna located?', 'Austria', 'Switzerland', 'Czech Republic', 'Hungary'),
@@ -123,6 +75,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Geography', 'multiple', 'medium', 'In which continent is the Amazon Rainforest located?', 'South America', 'Africa', 'Asia', 'North America'),
 ('Geography', 'multiple', 'medium', 'What is the smallest country in the world?', 'Vatican City', 'Monaco', 'San Marino', 'Nauru'),
 ('Geography', 'multiple', 'medium', 'Which two European countries are separated by the Pyrenees Mountains?', 'Spain and France', 'Italy and Switzerland', 'Austria and Germany', 'Norway and Sweden'),
+('Geography', 'multiple', 'medium', 'Which is the largest island in the world?', 'Greenland', 'Australia', 'Borneo', 'Madagascar'),
 ('Geography', 'multiple', 'medium', 'What is the capital city of South Africa?', 'Pretoria', 'Cape Town', 'Johannesburg', 'Durban'),
 ('Geography', 'multiple', 'medium', 'Which sea is bordered by Italy, Croatia, and Greece?', 'Adriatic Sea', 'Mediterranean Sea', 'Ionian Sea', 'Aegean Sea'),
 ('Geography', 'multiple', 'medium', 'In which country can you find the ancient city of Petra?', 'Jordan', 'Egypt', 'Iraq', 'Lebanon'),
@@ -144,6 +97,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Geography', 'multiple', 'medium', 'Which African country is known as the "Giant of Africa"?', 'Nigeria', 'South Africa', 'Ethiopia', 'Kenya'),
 ('Geography', 'multiple', 'medium', 'What is the capital city of Sweden?', 'Stockholm', 'Oslo', 'Copenhagen', 'Helsinki'),
 ('Geography', 'multiple', 'medium', 'What is the capital city of Egypt?', 'Cairo', 'Alexandria', 'Luxor', 'Aswan'),
+('Geography', 'multiple', 'medium', 'Which island country is known as the "Pearl of the Indian Ocean"?', 'Sri Lanka', 'Maldives', 'Mauritius', 'Seychelles'),
 ('Geography', 'multiple', 'medium', 'What is the capital city of Spain?', 'Madrid', 'Barcelona', 'Seville', 'Valencia'),
 ('Geography', 'multiple', 'medium', 'Which two countries are connected by the Channel Tunnel?', 'France and the United Kingdom', 'Germany and Austria', 'Italy and Switzerland', 'Spain and Portugal'),
 ('Geography', 'multiple', 'medium', 'What is the capital city of India?', 'New Delhi', 'Mumbai', 'Kolkata', 'Chennai'),
@@ -215,12 +169,14 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Geography', 'multiple', 'hard', 'Which mountain range is often called the "Backbone of the World"?', 'The Himalayas', 'The Andes', 'The Rockies', 'The Alps'),
 ('Geography', 'multiple', 'hard', 'In which African country is the Great Rift Valley located?', 'Kenya', 'Ethiopia', 'Tanzania', 'Uganda'),
 ('Geography', 'multiple', 'hard', 'What is the highest mountain in Africa?', 'Mount Kilimanjaro', 'Mount Kenya', 'Ras Dashen', 'Simien Mountains'),
+('Geography', 'multiple', 'hard', 'In which U.S. state is Death Valley, the lowest point in North America?', 'California', 'Nevada', 'Arizona', 'Utah'),
 ('Geography', 'multiple', 'hard', 'In which country can you find the Karakoram Highway, one of the highest paved international roads?', 'Pakistan', 'India', 'China', 'Afghanistan'),
 ('Geography', 'multiple', 'hard', 'Which island group is known for its famous giant tortoises?', 'Galápagos Islands', 'Hawaiian Islands', 'Maldives', 'Andaman and Nicobar Islands'),
 ('Geography', 'multiple', 'hard', 'What is the deepest point in the Atlantic Ocean?', 'Puerto Rico Trench', 'Mariana Trench', 'Sargasso Sea', 'Mid-Atlantic Ridge'),
 ('Geography', 'multiple', 'hard', 'In which U.S. state is the Crater Lake National Park located?', 'Oregon', 'Washington', 'California', 'Idaho'),
 ('Geography', 'multiple', 'hard', 'Which desert is the largest in Asia?', 'Gobi Desert', 'Karakum Desert', 'Taklamakan Desert', 'Thar Desert'),
 ('Geography', 'multiple', 'hard', 'In which African country is the Kalahari Desert located?', 'Botswana', 'Namibia', 'South Africa', 'Angola'),
+('Geography', 'multiple', 'hard', 'In which U.S. state is the White Sands National Park located?', 'New Mexico', 'Arizona', 'Texas', 'Utah'),
 ('Geography', 'multiple', 'hard', 'What is the highest mountain in Oceania?', 'Puncak Jaya (Carstensz Pyramid)', 'Mount Wilhelm', 'Mount Cook', 'Mauna Kea'),
 ('Geography', 'multiple', 'hard', 'Which lake is the largest in Central Asia?', 'Caspian Sea', 'Aral Sea', 'Lake Balkhash', 'Issyk-Kul'),
 ('Geography', 'multiple', 'hard', 'In which U.S. state is the Bryce Canyon National Park located?', 'Utah', 'Arizona', 'Colorado', 'Nevada'),
@@ -280,7 +236,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('History', 'multiple', 'easy', 'Who was the first man to walk on the moon?', 'Neil Armstrong', 'Buzz Aldrin', 'Michael Collins', 'Yuri Gagarin'),
 ('History', 'multiple', 'easy', 'In what year was the Declaration of Independence signed?', '1776', '1775', '1777', '1774'),
 ('History', 'multiple', 'easy', 'Who was the British monarch during the American Revolution?', 'King George III', 'Queen Victoria', 'King George II', 'Queen Elizabeth I'),
-('History', 'multiple', 'easy', 'What was the name of the first ship that brought the Pilgrims to America?', 'Mayflower', 'Santa Maria', 'Pinta', 'Nina'),
+('History', 'multiple', 'easy', 'What was the name of the ship that brought the Pilgrims to America?', 'Mayflower', 'Santa Maria', 'Pinta', 'Nina'),
 ('History', 'multiple', 'easy', 'What was the name of the last queen of France?', 'Marie Antoinette', 'Catherine de Medici', 'Anne of Austria', 'Mary Stuart'),
 ('History', 'multiple', 'easy', 'Who was the Roman god of war?', 'Mars', 'Jupiter', 'Neptune', 'Pluto'),
 ('History', 'multiple', 'easy', 'What was the name of the first satellite launched into space?', 'Sputnik 1', 'Apollo 11', 'Voyager 1', 'Hubble Space Telescope'),
@@ -304,10 +260,11 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 -- History difficult Questions
 INSERT INTO questions (category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3) VALUES
 ('History', 'multiple', 'difficult', 'Who was the first European explorer to reach India by sea?', 'Vasco da Gama', 'Christopher Columbus', 'Ferdinand Magellan', 'John Cabot'),
-('History', 'multiple', 'difficult', 'What year did the Spanish Civil War occur?', '1936-1939', '1914-1918', '1939-1945', '1886-1889'),
+('History', 'multiple', 'difficult', 'What year did the Spanish Civil War occur?', '1936-1939', '1914-1918', '1939-1945', '1918-1921'),
 ('History', 'multiple', 'difficult', 'Which ancient civilization invented the wheel?', 'Sumerians', 'Egyptians', 'Romans', 'Greeks'),
 ('History', 'multiple', 'difficult', 'Who was the first female Prime Minister of Australia?', 'Julia Gillard', 'Margaret Thatcher', 'Indira Gandhi', 'Angela Merkel'),
 ('History', 'multiple', 'difficult', 'When did Australia become a federation?', '1901', '1910', '1890', '1920'),
+('History', 'multiple', 'difficult', 'Who was Australias longest serving prime minister?', 'Robert Menzies', 'John Howard', 'Malcolm Fraser', 'Gough Whitlam'),
 ('History', 'multiple', 'difficult', 'Which iconic LGBTQ rights event in the United States occurred in June 1969 and is often considered the catalyst for the modern LGBTQ rights movement?', 'Stonewall riots', 'Comptons Cafeteria riot', 'Mattachine Society protest', 'Daughters of Bilitis sit-in'),
 ('History', 'multiple', 'difficult', 'Who was the fourth president of the United States?', 'James Madison', 'George Washington', 'Thomas Jefferson', 'John Adams'),
 ('History', 'multiple', 'difficult', 'Which era marked a switch from agricultural practices to industrial practices?', 'The Industrial Revolution', 'The Agricultural Revolution', 'The Renaissance', 'The Enlightenment'),
@@ -347,6 +304,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Nature and Science', 'multiple', 'easy', 'What is the nearest planet to the sun?', 'Mercury', 'Venus', 'Earth', 'Mars'),
 ('Nature and Science', 'multiple', 'easy', 'How many teeth does an adult human typically have?', '32', '30', '28', '34'),
 ('Nature and Science', 'multiple', 'easy', 'What is the largest planet in the solar system?', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'),
+('Nature and Science', 'multiple', 'easy', 'What do bees collect and use to create honey?', 'Nectar', 'Pollen', 'Water', 'Sap'),
 ('Nature and Science', 'multiple', 'easy', 'What is the hottest planet in the solar system?', 'Venus', 'Mercury', 'Mars', 'Jupiter'),
 ('Nature and Science', 'multiple', 'easy', 'What is the rarest blood type?', 'AB-', 'O+', 'A-', 'B+'),
 ('Nature and Science', 'multiple', 'easy', 'On what part of your body would you find the pinna?', 'Ear', 'Hand', 'Foot', 'Nose'),
@@ -394,6 +352,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Nature and Science', 'multiple', 'difficult', 'What is the largest ocean on Earth?', 'Pacific Ocean', 'Atlantic Ocean', 'Indian Ocean', 'Arctic Ocean'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the tallest mountain on Earth?', 'Mount Everest', 'K2', 'Kangchenjunga', 'Lhotse'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the longest river on Earth?', 'Nile', 'Amazon', 'Yangtze', 'Mississippi'),
+('Nature and Science', 'multiple', 'difficult', 'What is the largest desert on Earth?', 'Antarctic Desert', 'Sahara Desert', 'Arabian Desert', 'Gobi Desert'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the smallest bone in the human body?', 'Stapes', 'Malleus', 'Incus', 'Cochlea'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the largest gland in the human body?', 'Liver', 'Pancreas', 'Thyroid', 'Adrenal'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the powerhouse of the cell?', 'Mitochondria', 'Nucleus', 'Ribosome', 'Endoplasmic reticulum'),
@@ -410,6 +369,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Nature and Science', 'multiple', 'difficult', 'What is the chemical symbol for sodium?', 'Na', 'S', 'So', 'Sa'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the smallest planet in the solar system?', 'Mercury', 'Mars', 'Venus', 'Earth'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the chemical symbol for tin?', 'Sn', 'Ti', 'Tn', 'Si'),
+('Nature and Science', 'multiple', 'difficult', 'What is the largest country by land area?', 'Russia', 'Canada', 'China', 'United States'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the chemical symbol for copper?', 'Cu', 'Co', 'Cp', 'Cr'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the highest waterfall in the world?', 'Angel Falls', 'Niagara Falls', 'Victoria Falls', 'Iguazu Falls'),
 ('Nature and Science', 'multiple', 'difficult', 'What is the chemical symbol for zinc?', 'Zn', 'Zi', 'Zc', 'Z'),
@@ -468,7 +428,8 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Entertainment and Movies', 'multiple', 'difficult', 'What is the highest-grossing animated film of all time, as of 2023?', 'Frozen II', 'The Lion King', 'Toy Story 4', 'Finding Nemo'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'In the movie "Eternal Sunshine of the Spotless Mind," what company provides the memory erasure service?', 'Lacuna, Inc.', 'MindWipe Solutions', 'ForgetMeNot Labs', 'MemoryGuard Systems'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which actress won an Academy Award for her role in the 2015 film "Room"?', 'Brie Larson', 'Jennifer Lawrence', 'Cate Blanchett', 'Natalie Portman'),
-('Entertainment and Movies', 'multiple', 'difficult', 'In the film "The Matrix," what pill does Neo take from Morpheus?', 'Red Pill', 'Blue Pill', 'Green Pill', 'Yellow Pill'),
+('Entertainment and Movies', 'multiple', 'difficult', 'What is the fictional African country featured in the 2018 film "Black Panther"?', 'Wakanda', 'Zamunda', 'Genovia', 'Elbonia'),
+('Entertainment and Movies', 'multiple', 'difficult', 'In the film "The Matrix," what pill does Morpheus offer Neo?', 'Red Pill', 'Blue Pill', 'Green Pill', 'Yellow Pill'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Who played the role of Howard Hughes in the 2004 film "The Aviator"?', 'Leonardo DiCaprio', 'Tom Hanks', 'Johnny Depp', 'Brad Pitt'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'What is the name of the fictional band in the film "Almost Famous"?', 'Stillwater', 'Fever Dog', 'Penny Lane', 'Golden Slumbers'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'In the movie "The Usual Suspects," who is Keyser Söze?', 'Roger "Verbal" Kint', 'Dean Keaton', 'Michael McManus', 'Fred Fenster'),
@@ -485,6 +446,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Entertainment and Movies', 'multiple', 'difficult', 'In the movie "The Grand Budapest Hotel," who played the character M. Gustave?', 'Ralph Fiennes', 'Jude Law', 'Bill Murray', 'Edward Norton'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which 2000 film directed by Darren Aronofsky explores the intense and competitive world of ballet?', 'Black Swan', 'Whiplash', 'The Wrestler', 'The Fountain'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Who directed the 1973 classic horror film "The Exorcist"?', 'William Friedkin', 'Alfred Hitchcock', 'Stanley Kubrick', 'John Carpenter'),
+('Entertainment and Movies', 'multiple', 'difficult', 'In the 1995 film "Se7en," what are the seven deadly sins that the killer uses as inspiration for his murders?', 'Lust, Gluttony, Greed, Sloth, Wrath, Envy, Pride', 'Greed, Envy, Wrath, Pride, Lust, Sloth, Gluttony', 'Pride, Lust, Greed, Sloth, Wrath, Envy, Gluttony', 'Sloth, Pride, Envy, Gluttony, Lust, Wrath, Greed'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Who played the character of Tommy DeVito in the 1990 film "Goodfellas"?', 'Joe Pesci', 'Robert De Niro', 'Ray Liotta', 'Al Pacino'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'In the film "City of God," what is the name of the Brazilian city where the story is set?', 'Rio de Janeiro', 'São Paulo', 'Brasília', 'Salvador'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which actress won the Academy Award for Best Actress for her role in the 2016 film "La La Land"?', 'Emma Stone', 'Natalie Portman', 'Cate Blanchett', 'Jennifer Lawrence'),
@@ -509,6 +471,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Entertainment and Movies', 'multiple', 'difficult', 'In Disneys "Aladdin," what is the name of the tiger that is Jasmines loyal companion?', 'Rajah', 'Sultan', 'Abu', 'Iago'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Who is the voice actor for the character Scar in Disneys "The Lion King"?', 'Jeremy Irons', 'James Earl Jones', 'Patrick Stewart', 'Ian McKellen'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'In the animated film "Pocahontas," what is the name of Pocahontass hummingbird companion?', 'Flit', 'Buzz', 'Zazu', 'Wings'),
+('Entertainment and Movies', 'multiple', 'difficult', 'What is the name of the fictional city where the events of Disneys "Zootopia" take place?', 'Zootopia', 'Animania', 'Wildropolis', 'Beastburg'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which Disney animated film features the character Frou-Frou, a white horse who serves as a ladys maid to the Duchess?', 'The Aristocats', 'Cinderella', 'Sleeping Beauty', 'Beauty and the Beast'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'What is the birth name of the Sith Lord commonly known as Darth Vader?', 'Anakin Skywalker', 'Obi-Wan Kenobi', 'Luke Skywalker', 'Kylo Ren'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'In "Star Wars: Episode VI - Return of the Jedi," what is the name of the desert palace where Jabba the Hutt resides?', 'Jabbas Palace', 'Mos Eisley Cantina', 'Tatooine Outpost', 'Hutt Hideaway'),
@@ -540,7 +503,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Entertainment and Movies', 'multiple', 'difficult', 'Who is the lead vocalist of the rock band Paramore?', 'Hayley Williams', 'Amy Lee', 'Lzzy Hale', 'Florence Welch'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which contemporary R&B artist released the critically acclaimed album "Channel Orange" in 2012?', 'Frank Ocean', 'The Weeknd', 'Miguel', 'Solange'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which American singer-songwriter is known for her folk-rock style and albums like "Jagged Little Pill"?', 'Alanis Morissette', 'Sheryl Crow', 'Tori Amos', 'Ani DiFranco'),
-('Entertainment and Movies', 'multiple', 'difficult', 'Who is the lead singer of the alternative rock band Radiohead, known for albums like "OK Computer" and "Kid A"?', 'Thom Yorke', 'Chris Martin', 'Eddie Vedder', 'Damon Albarn'),
+('Entertainment and Movies', 'multiple', 'difficult', 'Who is the lead singer of the alternative rock band Radiohead, known for albums like "OK Computer" and "Kid A"?', 'Thom Yorke', 'Chris Martin', 'Eddie Vedder', 'Damon Albarn')
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which British singer-songwriter released the 2011 album "21," featuring hits like "Rolling in the Deep" and "Someone Like You"?', 'Adele', 'Ed Sheeran', 'Sam Smith', 'Florence Welch'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'What is the stage name of the American rapper and actor whose real name is Marshall Bruce Mathers III?', 'Eminem', 'Jay-Z', 'Kendrick Lamar', 'Drake'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which American singer, known for her powerful vocals and hits like "Vision of Love" and "We Belong Together," is often referred to as the "Songbird Supreme"?', 'Mariah Carey', 'Whitney Houston', 'Celine Dion', 'Beyoncé');
