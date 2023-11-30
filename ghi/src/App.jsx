@@ -21,9 +21,8 @@ function App() {
     <Router basename={basename}>
       <AuthProvider baseUrl={import.meta.env.VITE_REACT_APP_API_HOST}>
         <>
-          <header className="app-header">
-            <NavBar />
-          </header>
+          <NavBar></NavBar>
+          <header className="app-header"></header>
           <div className="content-container">
             <Routes>
               <Route path="/" element={<Home />} />

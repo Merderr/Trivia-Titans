@@ -29,9 +29,7 @@ function Home() {
 
   return (
     <>
-      <header className="app-header">
-        <NavBar />
-      </header>
+      <header className="app-header"></header>
       <div>
         <h1 className="title">TRIVIA TITANS</h1>
       </div>
