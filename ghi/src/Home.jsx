@@ -12,9 +12,12 @@ function Home() {
 
   const getUser = async (e) => {
     if (token !== null) {
-      const getToken = await fetch("http://localhost:8000/token", {
-        credentials: "include",
-      });
+      const getToken = await fetch(
+        `${import.meta.env.VITE_REACT_APP_API_HOST}/token`,
+        {
+          credentials: "include",
+        }
+      );
       if (getToken.ok) {
         const data = await getToken.json();
         setUser(data.account);
