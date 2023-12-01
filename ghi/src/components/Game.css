@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto&display=swap");
 
 .game-container {
   background-color: #091833;
@@ -15,7 +15,6 @@
 .question-container {
   text-align: center;
   margin-bottom: 20px;
-
 }
 
 .question {
@@ -52,7 +51,7 @@ li {
   color: #ea00d9; /* Magenta */
   position: fixed;
   top: 10px;
-  right: 80px;
+  right: 150px;
   font-size: 37px;
   font-weight: bold;
 }
@@ -76,7 +75,7 @@ li {
 .modal {
   background: #091833; /* Dark Blue */
   color: #ea00d9; /* Magenta */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 20px;
   border-radius: 5px;
   text-align: center;
@@ -106,7 +105,8 @@ li {
   width: 600px;
   border: 0px solid #ccc;
   list-style: none;
-  box-shadow: 0 5px 10px rgba(234, 0, 218, 0.899), 0 6px 10px rgba(113, 28, 145, 0.3);
+  box-shadow: 0 5px 10px rgba(234, 0, 218, 0.899),
+    0 6px 10px rgba(113, 28, 145, 0.3);
   transition: box-shadow 0.3s ease-in-out;
 
   &:hover {

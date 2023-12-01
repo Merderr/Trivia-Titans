@@ -4,42 +4,47 @@ import "./MyAccount.css";
 const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
 const MyAccount = () => {
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [serverUser, setServerUser] = useState(null);
+  const [loadingHighScore, setLoadingHighScore] = useState(true);
   const [storageUser, setStorageUser] = useState(null);
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`${hostURL}/api/users/`, {
+      const response = await fetch(`${hostURL}/api/users/${storageUser.id}`, {
         method: "GET",
         credentials: "include",
       });
 
       if (response.ok) {
         const data = await response.json();
-        setUserData(data);
+        setServerUser(data);
       } else {
         console.error("Failed to fetch user data");
-        alert("Oops! Something went wrong. Please try again later.");
+        alert("Oops! Something went wrong fetching user data.");
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
-      alert("Oops! Something went wrong. Please try again later.");
+      alert("Oops! Something went wrong fetching user data.");
     } finally {
-      setLoading(false);
+      setLoadingHighScore(false);
     }
   };
 
   useEffect(() => {
-    fetchUserData();
+    // fetchUserData();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     setStorageUser(storedUser);
   }, []);
 
+  useEffect(() => {
+    if (storageUser) {
+      fetchUserData();
+    }
+  }, [storageUser]);
+
   return (
     <div className="account-container">
-      {loading && <p>Loading...</p>}
-      {storageUser && (
+      {storageUser ? (
         <div className="account-card">
           <p className="account-title">Hello, {storageUser.name}</p>
           <div className="account-info">
@@ -48,13 +53,17 @@ const MyAccount = () => {
               {storageUser && storageUser.username}
             </span>
           </div>
-          {userData && (
+          {loadingHighScore ? (
+            <p>Loading high score...</p>
+          ) : (
             <div className="account-info">
               <span className="info-label">High Score:</span>
-              <span className="info-value">{storageUser.score}</span>
+              <span className="info-value">{serverUser?.score}</span>
             </div>
           )}
         </div>
+      ) : (
+        <p>No user data available.</p>
       )}
     </div>
   );

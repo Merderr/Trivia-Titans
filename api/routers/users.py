@@ -51,7 +51,7 @@ async def update_user_score(
     score_data: UserScoreUpdate,
     repo: UserRepository = Depends(),
 ):
-    user = repo.get_one_user(user_id)
+    user = repo.get_user_by_id(user_id)
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="User Not Found"

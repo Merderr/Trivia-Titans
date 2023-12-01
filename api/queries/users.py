@@ -268,6 +268,7 @@ class UserRepository:
                         """,
                         (new_score, user_id),
                     )
+                    print(new_score)
 
                     return JSONResponse(content=None, status_code=200)
         except Exception as e:
