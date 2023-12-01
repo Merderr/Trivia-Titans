@@ -13,6 +13,7 @@ origins = [
     os.environ.get("CORS_HOST", None),
 ]
 
+# test
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
