@@ -46,7 +46,7 @@ services:
       HOST_OS: ${OS}
       NODE_ENV: development
       HOST: "0.0.0.0"
-      VITE_PUBLIC_URL: http://localhost:3000
+      VITE_PUBLIC_URL: https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/
       VITE_REACT_APP_API_HOST: http://localhost:8000
 
   postgres:

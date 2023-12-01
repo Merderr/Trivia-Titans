@@ -13,6 +13,7 @@ origins = [
     os.environ.get("CORS_HOST", None),
 ]
 
+# test
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -20,6 +21,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# test
 
 app.include_router(authenticator.router)
 app.include_router(questions.router, prefix="/api")
