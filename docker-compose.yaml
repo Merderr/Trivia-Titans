@@ -28,7 +28,7 @@ services:
     volumes:
       - pg-admin:/var/lib/pgadmin
     ports:
-      - 8082:80
+      - 8082:8000
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@gmail.com
       PGADMIN_DEFAULT_PASSWORD: pass
