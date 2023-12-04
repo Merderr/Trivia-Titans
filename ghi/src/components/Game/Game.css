@@ -73,20 +73,22 @@ li {
 }
 
 .modal {
-  background: #091833; /* Dark Blue */
-  color: #ea00d9; /* Magenta */
+  background: #091833;
+  color: white;
   font-family: "Poppins", sans-serif;
-  padding: 20px;
-  border-radius: 5px;
+  font-size: 25px;
+  padding: 40px;
+  border-radius: 10px;
   text-align: center;
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.194);
 }
 
 .modal button {
   margin-top: 10px;
   padding: 10px;
   cursor: pointer;
-  background-color: #091833; /* Dark Blue */
-  color: #ea00d9; /* Magenta */
+  background-color: #091833;
+  color: #ea00d9;
 }
 
 .answer-row {

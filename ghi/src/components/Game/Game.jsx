@@ -13,7 +13,7 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [maxNumber, setMaxNumber] = useState(1);
   const [storageUser, setStorageUser] = useState(0);
-  
+
   const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
     const allAnswers = [correctAnswer, ...incorrectAnswers];
     return allAnswers.sort(() => Math.random() - 0.5);
@@ -170,7 +170,7 @@ const Game = () => {
         <div className="modal">
           <p>Correct answer was {question.correct_answer}</p>
           <p>Play again?</p>
-          <button onClick={handlePlayAgainClick}>Yes</button>
+          <button onClick={handlePlayAgainClick}>YES</button>
         </div>
       </div>
     </div>

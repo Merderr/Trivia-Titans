@@ -392,7 +392,6 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 ('Entertainment and Movies', 'multiple', 'easy', 'Who played the character of Gollum in "The Lord of the Rings"?', 'Andy Serkis', 'Ian McKellen', 'Viggo Mortensen', 'Sean Astin'),
 ('Entertainment and Movies', 'multiple', 'easy', 'Who directed the movie "Inception"?', 'Christopher Nolan', 'Steven Spielberg', 'James Cameron', 'Quentin Tarantino'),
 ('Entertainment and Movies', 'multiple', 'easy', 'Who played the character of Maximus in "Gladiator"?', 'Russell Crowe', 'Joaquin Phoenix', 'Tom Hanks', 'Brad Pitt'),
-('Entertainment and Movies', 'multiple', 'easy', 'Who is the villain in "The Dark Knight"?', 'The Joker', 'The Penguin', 'The Riddler', 'Two-Face'),
 ('Entertainment and Movies', 'multiple', 'easy', 'Who played the character of Black Widow in "The Avengers"?', 'Scarlett Johansson', 'Gwyneth Paltrow', 'Natalie Portman', 'Elizabeth Olsen'),
 ('Entertainment and Movies', 'multiple', 'easy', 'Who directed the movie "E.T. the Extra-Terrestrial"?', 'Steven Spielberg', 'George Lucas', 'James Cameron', 'Martin Scorsese'),
 ('Entertainment and Movies', 'multiple', 'easy', 'Who played the character of Indiana Jones?', 'Harrison Ford', 'Tom Cruise', 'Brad Pitt', 'Robert Downey Jr.'),
