@@ -40,7 +40,7 @@ build-api-image:
     - main
 # Build the React/JavaScript front-end
 build-front-end-job:
-  stage: build
+  stage: dist
   image: node:lts-bullseye
   #needs:
   #- lint-test-job
@@ -55,10 +55,10 @@ build-front-end-job:
     - cd ghi
     - npm install
     - npm run build
-    - cp build/index.html build/404.html
+    - cp dist/index.html dist/404.html
   artifacts:
     paths:
-      - ghi/build/
+      - ghi/dist/
 
 # Deploy the React/JavaScript front-end to GitLab pages
 pages:
