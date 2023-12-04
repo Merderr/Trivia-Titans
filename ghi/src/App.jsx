@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import NavBar from "./NavBar";
+import NavBar from "./components/Navbar/NavBar";
 import PlayButton from "./components/PlayButton";
-import Signup from "./components/SignUp";
-import Login from "./Login";
-import Home from "./Home";
-import Leaderboard from "./components/Leaderboard";
-import MyAccount from "./components/MyAccount";
-import AboutUs from "./components/AboutUs";
-import Game from "./components/Game";
-import Logout from "./Logout";
+import Signup from "./components/SignUp/SignUp";
+import Login from "./components/Login/Login";
+import Home from "./components/Home/Home";
+import Leaderboard from "./components/Leaderboard/Leaderboard";
+import MyAccount from "./components/MyAccount/MyAccount";
+import AboutUs from "./components/AboutUs/AboutUs";
+import Game from "./components/Game/Game";
+import Logout from "./components/Logout/Logout";
 import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {

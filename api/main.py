@@ -2,22 +2,27 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import questions
 from routers import users
+import os
 from authenticator import authenticator
 
 app = FastAPI()
 
+origins = [
+    "https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/",
+    "http://localhost:3000",
+    os.environ.get("CORS_HOST", None),
+]
 
+# test
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/",
-        "http://localhost:3000",
-        "http://localhost:8000",
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# test
 
 app.include_router(authenticator.router)
 app.include_router(questions.router, prefix="/api")

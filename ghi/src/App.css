@@ -22,7 +22,7 @@ body {
   animation: moveBackground 100s linear infinite;
   height: 100vh;
   overflow: hidden;
-  background-image: url("Cybercity3.png");
+  background-image: url("images/Cybercity3.png");
   background-repeat: no-repeat;
 
 }

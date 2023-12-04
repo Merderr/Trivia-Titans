@@ -7,13 +7,13 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  color: #ea00d9;
+  color: rgb(255, 255, 255); /* Magenta */
   font-family: "Poppins", sans-serif;
 }
 
 .toggle-button {
-  background: #091833;
-  color: #ea00d9;
+  background: #091833; /* Dark Blue */
+  color: rgb(255, 255, 255); /* Magenta */
   border: none;
   cursor: pointer;
   font-size: 16px;
@@ -32,7 +32,7 @@
 }
 
 .nav-links a {
-  color: #ea00d9;
+  color: rgb(255, 255, 255); /* Magenta */
   text-decoration: none;
   padding: 10px;
   margin: 5px;

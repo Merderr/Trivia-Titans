@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from "./NavBar";
-import PlayButton from "./components/PlayButton";
+import NavBar from "../Navbar/NavBar";
+import PlayButton from "../PlayButton";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import "./Home.css";
 import { useEffect, useState } from "react";
