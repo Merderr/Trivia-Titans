@@ -38,3 +38,16 @@ def test_get_token():
     assert response.json()["account"]["name"] == "string"
     assert "score" in response.json()["account"]
     assert response.json()["account"]["score"] == 0
+
+
+
+def test_get_user():
+    user_id = 1
+    response = client.get(f"/api/users/{user_id}")
+    data = response.json()
+    assert response.status_code == 200
+    assert "user_id" in data and data["user_id"] == 1
+    assert "username" in data and data["username"] == "expected_username"
+    assert "password" in data and data["password"] == "expected_password"
+    assert "name" in data and data["name"] == "expected_name"
+    assert "score" in data and data["score"] == "expected_score"
