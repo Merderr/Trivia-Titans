@@ -91,3 +91,17 @@ html, body {
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 440px) {
+  .game-button {
+    min-width: 200px;
+    min-height: 40px;
+    font-size: 18.5px;
+    padding: 7px;
+  }
+
+  .game-button::before {
+    min-width: calc(200px + 8px);
+    min-height: calc(40px + 8px);
+  }
+}
