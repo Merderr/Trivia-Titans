@@ -31,7 +31,6 @@ const MyAccount = () => {
   };
 
   useEffect(() => {
-    // fetchUserData();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     setStorageUser(storedUser);
   }, []);

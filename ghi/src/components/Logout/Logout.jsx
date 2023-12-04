@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
-// import "./index.css";
 
-//test
-//test2
 const Logout = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

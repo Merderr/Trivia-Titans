@@ -81,36 +81,35 @@ const Game = () => {
   };
 
   const handlePlayAgainClick = async () => {
-  if (storageUser && score > storageUser.score) {
-    const updatedUser = { ...storageUser, score };
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-    setStorageUser(updatedUser);
+    if (storageUser && score > storageUser.score) {
+      const updatedUser = { ...storageUser, score };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      setStorageUser(updatedUser);
 
-    try {
-      const userUrl = `${hostURL}/api/users/${storageUser.id}/update-score`;
-      const response = await fetch(userUrl, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ score }),
-      });
+      try {
+        const userUrl = `${hostURL}/api/users/${storageUser.id}/update-score`;
+        const response = await fetch(userUrl, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ score }),
+        });
 
-      if (response.ok) {
-        console.log("User score updated successfully");
-
-      } else {
-        console.error("Failed to update user score");
+        if (response.ok) {
+          console.log("User score updated successfully");
+        } else {
+          console.error("Failed to update user score");
+        }
+      } catch (error) {
+        console.error("Error updating user score:", error);
       }
-    } catch (error) {
-      console.error("Error updating user score:", error);
     }
-  }
 
-  setShowModal(false);
-  setScore(0);
-  getQuestion();
-};
+    setShowModal(false);
+    setScore(0);
+    getQuestion();
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -120,7 +119,7 @@ const Game = () => {
     fetchData();
   }, [maxNumber]);
   useEffect(() => {
-    setStorageUser(JSON.parse(localStorage.getItem("user")))
+    setStorageUser(JSON.parse(localStorage.getItem("user")));
   }, []);
 
   return (

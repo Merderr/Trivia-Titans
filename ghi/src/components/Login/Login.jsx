@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import "./Login.css";
 
-//test push
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,9 +17,6 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(username, password);
-      // setTimeout(() => {
-      //   setNewToken(token);
-      // }, 1000);
     } catch (error) {
       setIsError(true);
       setErrorMessage(
@@ -37,13 +32,6 @@ const Login = () => {
       navigate("/");
     }
   }, [token]);
-
-  // useEffect(() => {
-  //   if (token !== null) {
-  //     console.log("already logged in");
-  //     navigate("/");
-  //   }
-  // }, []);
 
   let errorClass = isError ? "alert alert-danger" : "alert alert-danger d-none";
 

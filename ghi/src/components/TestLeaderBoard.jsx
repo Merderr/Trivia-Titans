@@ -19,16 +19,12 @@ const Leaderboard = () => {
             {user.username} - Score: {user.score}
           </li>
         ))}
-
       </ul>
     </div>
   );
 };
 
 export default Leaderboard;
-
-
-
 
 // import React, { useState, useEffect } from "react";
 
