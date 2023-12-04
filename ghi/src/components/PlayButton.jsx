@@ -4,9 +4,9 @@ import "./PlayButton.css";
 const PlayButton = () => {
   return (
     <div>
-      <a href="play" className="play-button">
+      <Link href="play" className="play-button">
         <button className="game-button">Play Now</button>
-      </a>
+      </Link>
     </div>
   );
 };

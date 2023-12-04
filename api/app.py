@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.get("/")
 def root():
-    return {"message": "You hit the root path!"}
+    return {"message": "You hit the root path! Trivia Titans"}
 
 
 # Run the Flask app (127.0.0.1:5000 by default).
