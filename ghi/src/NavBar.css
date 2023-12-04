@@ -10,10 +10,10 @@
   color: rgb(255, 255, 255), 184, 192); /* Magenta */
   font-family: "Poppins", sans-serif;
 }
-
+/* df */
 .toggle-button {
-  background: #091833; /* Dark Blue */
-  color: rgb(255, 255, 255); /* Magenta */
+  background: #091833; 
+  color: rgb(255, 255, 255); 
   border: none;
   cursor: pointer;
   font-size: 16px;
