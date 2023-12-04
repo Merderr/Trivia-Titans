@@ -63,7 +63,9 @@ const MyAccount = () => {
           )}
         </div>
       ) : (
-        <p>No user data available.</p>
+        <p className="dark-background">
+          NO USER DATA AVAILABLE. PLEASE LOG IN OR SIGN UP.
+        </p>
       )}
     </div>
   );

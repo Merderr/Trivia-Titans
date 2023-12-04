@@ -41,3 +41,9 @@ Worked on getting frontend authorization working with JWT-Down. Ran into a lot o
 Went back through my work to fix up any create or get calls that weren't interacting with the password hashing the way we wanted them to, also moved on to update_user and delete_user.
 
 # 11/27/2023 Update User/Delete User:
+
+Worked on adding score updating functionality to game, ensuring that user High Score is dynamic.
+
+# 11/28/2023 Update User/Delete User:
+
+#
