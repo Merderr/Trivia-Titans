@@ -41,3 +41,23 @@ Worked on getting frontend authorization working with JWT-Down. Ran into a lot o
 Went back through my work to fix up any create or get calls that weren't interacting with the password hashing the way we wanted them to, also moved on to update_user and delete_user.
 
 # 11/27/2023 Update User/Delete User:
+
+Worked on adding score updating functionality to game, ensuring that user High Score is dynamic.
+
+# 11/28/2023 Update User/Delete User:
+
+Got Delete User up and working in Docs, moved on to Update.
+
+# 11/29/2023 Update User/Delete User:
+
+Got update user mostly working, need to fine tune it to ensure it will work with the score updating with each game.
+
+# 11/30/2023 Update User/Delete User:
+
+Fully integrated Update User to work with the game, fixing bugs that were resetting the score to zero when certain interactions with the navbar took place.
+
+# 12/1/2023 Minor QoL Fixes
+
+Changed font on certain pages to be easier to read amongst purple/pink background, including the NavBar.
+
+# 12/4/2023

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import "./Login.css";
 
-//test push
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,15 +11,13 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useToken();
   const { token } = useToken();
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [newToken, setNewToken] = useState(undefined);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await login(username, password);
-      // setTimeout(() => {
-      //   setNewToken(token);
-      // }, 1000);
     } catch (error) {
       setIsError(true);
       setErrorMessage(
@@ -38,14 +34,9 @@ const Login = () => {
     }
   }, [token]);
 
-  // useEffect(() => {
-  //   if (token !== null) {
-  //     console.log("already logged in");
-  //     navigate("/");
-  //   }
-  // }, []);
-
-  let errorClass = isError ? "alert alert-danger" : "alert alert-danger d-none";
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   return (
     <div className="login-container">
@@ -66,15 +57,25 @@ const Login = () => {
           <div className="form-group">
             <input
               name="password"
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               placeholder="Password"
               className="form-control"
-              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <button
+              type="button"
+              className="btn btn-outline-secondary"
+              onClick={togglePasswordVisibility}
+            >
+              {passwordVisible ? "Hide" : "Show password"}
+            </button>
           </div>
-          <div className={errorClass}>{errorMessage}</div>
+          {isError && (
+            <div className="alert alert-danger" role="alert">
+              {errorMessage}
+            </div>
+          )}
           <div className="form-group">
             <button className="login-btn" type="submit" value="Login">
               Login

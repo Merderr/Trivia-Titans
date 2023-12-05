@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto&family=Rubik:ital,wght@0,800;1,800&family=Teko:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto&family=Rubik:ital,wght@0,800;1,800&family=Teko:wght@700&display=swap");
 
 .play-button {
   padding: 45px;
@@ -8,7 +8,8 @@
   cursor: pointer;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -22,7 +23,7 @@ html, body {
 .game-button {
   min-width: 330px;
   min-height: 66px;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 30.8px;
   text-transform: uppercase;
   letter-spacing: 1.3px;
@@ -41,7 +42,7 @@ html, body {
 }
 
 .game-button::before {
-  content: '';
+  content: "";
   border-radius: 1000px;
   min-width: calc(330px + 13.2px);
   min-height: calc(66px + 13.2px);
@@ -52,20 +53,22 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: all .3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 
-.game-button:hover, .button:focus {
+.game-button:hover,
+.button:focus {
   color: #ffffff;
   transform: translateY(-6px);
 }
 
-.game-button:hover::before, button:focus::before {
+.game-button:hover::before,
+button:focus::before {
   opacity: 1;
 }
 
 .game-button::after {
-  content: '';
+  content: "";
   width: 33px;
   height: 33px;
   border-radius: 100%;
