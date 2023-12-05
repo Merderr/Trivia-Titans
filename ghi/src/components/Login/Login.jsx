@@ -11,6 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useToken();
   const { token } = useToken();
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [newToken, setNewToken] = useState(undefined);
 
   const handleSubmit = async (e) => {
@@ -33,7 +34,9 @@ const Login = () => {
     }
   }, [token]);
 
-  let errorClass = isError ? "alert alert-danger" : "alert alert-danger d-none";
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   return (
     <div className="login-container">
@@ -54,15 +57,25 @@ const Login = () => {
           <div className="form-group">
             <input
               name="password"
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               placeholder="Password"
               className="form-control"
-              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <button
+              type="button"
+              className="btn btn-outline-secondary"
+              onClick={togglePasswordVisibility}
+            >
+              {passwordVisible ? "Hide" : "Show password"}
+            </button>
           </div>
-          <div className={errorClass}>{errorMessage}</div>
+          {isError && (
+            <div className="alert alert-danger" role="alert">
+              {errorMessage}
+            </div>
+          )}
           <div className="form-group">
             <button className="login-btn" type="submit" value="Login">
               Login
