@@ -63,15 +63,15 @@ li {
 }
 
 .correct {
-  background-color: #4caf50; /* Green */
+  background-color: #4caf50;
 }
 
 .incorrect {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
 }
 
 .score-container {
-  color: #ea00d9; /* Magenta */
+  color: #ea00d9;
   position: fixed;
   top: 10px;
   right: 150px;
@@ -165,11 +165,6 @@ li {
   margin-right: auto;
   width: 115%;
   height: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 40px;
   padding: 5px;
 }
 .score-container {
@@ -219,16 +214,13 @@ li {
   border-radius: 40px;
   padding:10px;
 }
-.score-container {
-  color: #ea00d9;
+
+  .score-container {
   margin-left: auto;
   margin-right: auto;
   position: center;
   top: 0px;
   right: auto;
   font-size: 30px;
-  font-weight: bold;
 }
-
-
 }
