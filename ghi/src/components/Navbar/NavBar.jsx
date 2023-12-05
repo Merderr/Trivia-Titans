@@ -5,7 +5,7 @@ import useToken from "@galvanize-inc/jwtdown-for-react";
 
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { logout } = useToken();
+  const { logout, token } = useToken();
   const [storageUser, setStorageUser] = useState();
 
   const toggleNav = () => {
@@ -30,12 +30,16 @@ const NavBar = () => {
         <NavLink to="/" activeClassName="active">
           Home
         </NavLink>
-        <NavLink to="/login" activeClassName="active">
-          Log In
-        </NavLink>
-        <NavLink to="/signup" activeClassName="active">
-          Sign Up
-        </NavLink>
+        {token ? null : (
+          <>
+            <NavLink to="/login" activeClassName="active">
+              Log In
+            </NavLink>
+            <NavLink to="/signup" activeClassName="active">
+              Sign Up
+            </NavLink>
+          </>
+        )}
         <NavLink to="/leaderboard" activeClassName="active">
           Leaderboard
         </NavLink>

@@ -10,7 +10,7 @@ import Leaderboard from "./components/Leaderboard/Leaderboard";
 import MyAccount from "./components/MyAccount/MyAccount";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Game from "./components/Game/Game";
-import Logout from "./components/Logout/Logout";
+// import Logout from "./components/Logout/Logout";
 import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
               <Route path="/myaccount" element={<MyAccount />} />
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/play" element={<Game />} />
-              <Route path="/logout" element={<Logout />} />
+              {/* <Route path="/logout" element={<Logout />} /> */}
             </Routes>
           </div>
         </>
