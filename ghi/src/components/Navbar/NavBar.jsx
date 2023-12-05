@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
+import useToken from "@galvanize-inc/jwtdown-for-react";
+
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { logout } = useToken();
+  const [storageUser, setStorageUser] = useState();
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
 
+  const handleLogout = async () => {
+    try {
+      setStorageUser(localStorage.setItem("user", "null"));
+      await logout();
+    } catch (error) {
+      setErrorMessage("Please wait for logout");
+    }
+  };
+
   return (
     <div className={`nav-container ${isNavOpen ? "open" : ""}`}>
       <button onClick={toggleNav} className="toggle-button">
-        ≡
+        =
       </button>
       <div className="nav-links">
         <NavLink to="/" activeClassName="active">
@@ -32,7 +45,7 @@ const NavBar = () => {
         <NavLink to="/aboutus" activeClassName="active">
           About Us
         </NavLink>
-        <NavLink to="/logout" activeClassName="active">
+        <NavLink to="/" activeClassName="active" onClick={handleLogout}>
           Log Out
         </NavLink>
       </div>
