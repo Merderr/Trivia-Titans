@@ -4,6 +4,7 @@ from main import app
 
 router = APIRouter()
 
+
 @app.get("/api/token")
 async def get_token():
     return {
@@ -18,6 +19,7 @@ async def get_token():
         },
     }
 
+
 @router.get("/api/users/1")
 async def get_user():
     return {
@@ -27,6 +29,7 @@ async def get_user():
         "name": "expected_name",
         "score": 100,
     }
+
 
 client = TestClient(app)
 
@@ -51,7 +54,6 @@ def test_get_token():
     assert response.json()["account"]["score"] == 0
 
 
-
 def test_get_user():
     user_id = 1
     response = client.get(f"/api/users/{user_id}")
@@ -62,3 +64,24 @@ def test_get_user():
     assert "password" in data and data["password"] == "expected_password"
     assert "name" in data and data["name"] == "expected_name"
     assert "score" in data and data["score"] == 100
+
+
+def test_create_user():
+    user_data = {
+        "username": "new_user",
+        "password": "new_password",
+        "name": "New User",
+        "score": 50,
+    }
+
+    response = client.post("/api/users", json=user_data)
+
+    assert response.status_code == 200
+    assert "user" in response.json()
+    assert "token_type" in response.json()
+    assert "access_token" in response.json()["token_type"]
+
+    # Add more assertions based on your test requirements
+    assert response.json()["user"]["username"] == user_data["username"]
+    assert response.json()["user"]["name"] == user_data["name"]
+    assert response.json()["user"]["score"] == user_data["score"]

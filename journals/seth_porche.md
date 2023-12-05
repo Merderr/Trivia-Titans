@@ -46,4 +46,18 @@ Worked on adding score updating functionality to game, ensuring that user High S
 
 # 11/28/2023 Update User/Delete User:
 
-#
+Got Delete User up and working in Docs, moved on to Update.
+
+# 11/29/2023 Update User/Delete User:
+
+Got update user mostly working, need to fine tune it to ensure it will work with the score updating with each game.
+
+# 11/30/2023 Update User/Delete User:
+
+Fully integrated Update User to work with the game, fixing bugs that were resetting the score to zero when certain interactions with the navbar took place.
+
+# 12/1/2023 Minor QoL Fixes
+
+Changed font on certain pages to be easier to read amongst purple/pink background, including the NavBar.
+
+# 12/4/2023
