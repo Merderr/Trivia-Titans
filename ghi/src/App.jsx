@@ -19,7 +19,7 @@ function App() {
   const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "");
   console.log(basename);
   return (
-    <BrowserRouter basename={basename}>
+    <Router basename={basename}>
       <AuthProvider baseUrl={import.meta.env.VITE_REACT_APP_API_HOST}>
         <>
           <header className="app-header"></header>
@@ -38,7 +38,7 @@ function App() {
           </div>
         </>
       </AuthProvider>
-    </BrowserRouter>
+    </Router>
   );
 }
 
