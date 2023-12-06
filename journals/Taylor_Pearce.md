@@ -27,3 +27,27 @@ Worked on getting frontend authorization working with JWT-Down. Ran into a lot o
 
 # 11/22/2023 Game Functionality:
 Cleaned up some of the code and worked on improving game play. Added functionality that prevents questions from repeating, and creating a useState for the max number of questions in the application.
+
+# 11/27/2023 Gameplay Aesthetics:
+Looked up examples of styles, color patterns, and components to add into the web application. Lots of research. Decided to try for a purple blue cyberpunk retro game feel. Updated the aethestics for the gameplay page. Utilized examples online with our web applications color scheme and style.
+
+# 11/28/2023 Login / Signup Page Aethestics:
+Updated the aethestics for the login and signup page. Utilized examples online with our web applications color scheme and style.
+
+# 11/29/2023 SQL Trivia Question Bank:
+Worked to create Trivia questions in format that our SQL tables will accept. Question data entries were setup to be inputted upon running docker.
+
+# 11/30/2023 Aesthetics and background:
+Worked on updating home page aesthetics. Got backgrounds to test that I created in stable diffusion. Went with a cyberpunk city with our color palette.
+
+# 12/1/2023 Aesthetics and questions:
+Worked on background aesthetics for web application. Utilized stable diffusion and Adobe photo shop to create a stylish background. Reviewed and pruned Trivia questions.
+
+# 12/4/2023 Dynamic Screen Size:
+Worked on creating a dynamic based on screen size for smartphones and tablets. Utilized media queries in css. Reorganized frontend folders based on suggestions from instructors.
+
+# 12/5/2023 Dynamic Screen Size:
+Worked on creating a dynamic based on screen size for smartphones and tablets. Utilized media queries in css.
+
+# 12/6/2023 Tests and Aesthetics:
+Worked on pytest, and minor game aesthetics.

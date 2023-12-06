@@ -64,11 +64,11 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button
-              type="button"
-              className="btn btn-outline-secondary"
+              type="checkbox"
+              className="show-pass-btn"
               onClick={togglePasswordVisibility}
             >
-              {passwordVisible ? "Hide" : "Show password"}
+              {passwordVisible ? "Hide Password" : "Show Password"}
             </button>
           </div>
           {isError && (
