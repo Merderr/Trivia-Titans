@@ -2,8 +2,6 @@ from fastapi.testclient import TestClient
 from fastapi import APIRouter
 from main import app
 
-router = APIRouter()
-
 
 @app.get("/api/token")
 async def get_token():
@@ -53,7 +51,8 @@ def test_get_token():
     assert "score" in response.json()["account"]
     assert response.json()["account"]["score"] == 0
 
-#Mason
+
+# Mason
 def test_get_user():
     user_id = 1
     response = client.get(f"/api/users/{user_id}")
