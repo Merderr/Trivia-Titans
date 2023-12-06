@@ -27,6 +27,11 @@ app.include_router(questions.router, prefix="/api")
 app.include_router(users.router)
 
 
+@app.get("/")
+def root():
+    return {"message": "You hit the root path! Trivia Titans"}
+
+
 @app.get("/api/launch-details")
 def launch_details():
     return {
