@@ -55,7 +55,7 @@ def delete_question(
     return repo.delete(question_id)
 
 
-@router.get("/questions/create_all", response_model=bool)
+@router.get("/createallquestions/", response_model=bool)
 def create_all(repo: QuestionRepository = Depends()) -> bool:
     repo.create_all()
     return True
