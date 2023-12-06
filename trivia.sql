@@ -43,7 +43,6 @@ INSERT INTO users (username, password, name, score) VALUES
 ('user17', 'password17', 'Paul Taylor', 18),
 ('user18', 'password18', 'Quinn Moore', 18),
 ('user19', 'password19', 'Ryan Smith', 22),
-('mason', 'mason', 'mason', 33),
 ('user20', 'password20', 'Samantha Davis', 25);
 ;
 
