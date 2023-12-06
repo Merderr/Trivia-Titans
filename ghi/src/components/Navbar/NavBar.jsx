@@ -19,6 +19,8 @@ const NavBar = () => {
     } catch (error) {
       setErrorMessage("Please wait for logout");
     }
+    alert("Please wait for logout");
+    location.reload();
   };
 
   return (
