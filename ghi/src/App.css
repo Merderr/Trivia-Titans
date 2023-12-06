@@ -4,12 +4,6 @@
   padding: 2rem;
   text-align: center;
 }
-.PlayButton {
-  padding: 2em;
-}
-.read-the-docs {
-  color: #888;
-}
 .app-header {
   display: flex;
   justify-content: flex-start;
@@ -18,10 +12,15 @@
 body {
   margin-top: 50px;
   background-color: #091833;
-
-  animation: moveBackground 100s linear infinite;
   height: 100vh;
   overflow: hidden;
   background-image: url("images/Cybercity3.png");
   background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1300px) {
+  body {
+  background-position: center;
+  background-size: 350%;
+}
 }

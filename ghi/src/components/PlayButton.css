@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto&family=Rubik:ital,wght@0,800;1,800&family=Teko:wght@700&display=swap");
 
 .play-button {
-  font-size: 88px;
-  padding: 1px 2px;
+  padding: 45px;
   color: white;
   border: none;
   border-radius: 5px;
@@ -93,4 +92,23 @@ button:focus::before {
     height: 330px;
     opacity: 0;
   }
+}
+
+@media screen and (max-width: 699px) {
+  .game-button {
+    min-width: 200px;
+    min-height: 40px;
+    font-size: 18.5px;
+    padding: 7px;
+  }
+
+  .game-button::before {
+    min-width: calc(200px + 8px);
+    min-height: calc(40px + 8px);
+  }
+
+  .play-button {
+  padding: 30px;
+}
+
 }

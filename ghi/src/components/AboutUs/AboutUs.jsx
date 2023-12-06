@@ -8,7 +8,8 @@ const AboutUs = () => {
         <h1 className="title">ABOUT THE DEVELOPERS</h1>
       </div>
       <div className="about-us-container">
-        <div className="about-us-header">Seth Porche from Tampa, FL</div>
+        <div className="about-us-header">Seth Porche</div>
+        <div className="about-us-city">Tampa, FL</div>
         <div className="about-us-content">
           <p>
             "Hi, I'm Seth, a passionate individual with a diverse set of
@@ -25,7 +26,8 @@ const AboutUs = () => {
             be on the lookout for exciting opportunities to contribute my skills
             and passion to the world of technology."
           </p>
-          <div className="about-us-header">Hamza Ahmed from Ocean City, MD</div>
+          <div className="about-us-header">Hamza Ahmed</div>
+          <div className="about-us-city">Ocean City, MD</div>
           <p>
             "Hey there! I'm Hamza, a running enthusiast, amatuer cook and a
             passionate coder. Originally from Pakistan, I made a bold shift from
@@ -42,7 +44,8 @@ const AboutUs = () => {
             delightful chaos that is life.""
           </p>
         </div>
-        <div className="about-us-header">Mason Doney from Chicago, IL</div>
+        <div className="about-us-header">Mason Doney</div>
+        <div className="about-us-city">Chicago, IL</div>
         <div className="about-us-content">
           <p>
             "Hey there! I'm Mason Doney, hailing from the vibrant city of
@@ -51,6 +54,20 @@ const AboutUs = () => {
             sports field with my friends. 🎮⚽ In the world of technology, I'm
             always up for a challenge and love bringing ideas to life through
             coding. Looking forward to making a mark in the tech landscape!
+          </p>
+        </div>
+        <div className="about-us-header">Taylor Pearce</div>
+        <div className="about-us-city">Denver, CO</div>
+        <div className="about-us-content">
+          <p>
+            Greetings! I'm Taylor, a software engineer hailing from the
+            Mile High City. Originating from a civil engineering background, I
+            seamlessly made the leap into the dynamic realm of full-stack
+            programming. Beyond coding, I'm an avid participant in the world of
+            competitive dodgeball and when I'm not chucking balls at people I
+            spend my downtime restoring furniture at my workshop studio in
+            Denver. I hope Trivia Titans brings you as much joy as it brought me
+            building this application with this team.
           </p>
         </div>
       </div>

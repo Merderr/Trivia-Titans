@@ -39,16 +39,16 @@ function Home() {
       <div className="home-container">
         <div>
           <div>
-            <h1 className="title">TRIVIA TITANS</h1>
+            <h1 className="main-title">TRIVIA TITANS</h1>
           </div>
           {token && storageUser && (
             <div>
               <h2 className="welcome-title">Welcome, {storageUser.name} </h2>
             </div>
           )}
-          <div className="PlayButton">
+
             <PlayButton />
-          </div>
+
         </div>
       </div>
     </>

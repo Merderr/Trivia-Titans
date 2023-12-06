@@ -3,8 +3,8 @@ import "./PlayButton.css";
 
 const PlayButton = () => {
   return (
-    <div>
-      <a href="play" className="play-button">
+    <div className="play-button">
+      <a href="play">
         <button className="game-button">Play Now</button>
       </a>
     </div>

@@ -124,8 +124,8 @@ const Game = () => {
 
   return (
     <div className="game-container">
-      <div className="content-container">
-        <h1 className="title">TRIVIA TITANS</h1>
+      <div>
+        <h1 className="game-title">TRIVIA TITANS</h1>
       </div>
       <div className="question-container">
         <p className="question">{question.question}</p>
