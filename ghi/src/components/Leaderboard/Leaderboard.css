@@ -30,3 +30,13 @@
 .leaderboard-item:last-child {
   border-bottom: none; /* Remove border from the last item */
 }
+
+.leaderboard-item.highlighted {
+  background-color: #ffcc00;
+  font-weight: bold;
+}
+
+.leaderboard-item.highlighted span {
+  /* Adjust the color or any other styles for the highlighted text */
+  color: #3ce74a;
+}
