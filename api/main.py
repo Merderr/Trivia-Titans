@@ -39,7 +39,7 @@ def launch_details():
             "module": 3,
             "week": 17,
             "day": 5,
-            "hour": 19,
+            "hour": 50,
             "min": "11",
         }
     }
