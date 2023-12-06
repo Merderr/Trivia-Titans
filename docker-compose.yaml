@@ -10,7 +10,7 @@ volumes:
 services:
   fastapi:
     environment:
-      DATABASE_URL: postgresql://example_user:secret@postgres/postgrestriviadata
+      DATABASE_URL: postgresql://exampleuser:secret@postgres/postgrestriviadata
       WAIT_HOSTS: postgres:5432
       PORT: 8000
       WAIT_BEFORE: 5
