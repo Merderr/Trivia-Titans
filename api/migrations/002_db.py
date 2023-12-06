@@ -35,18 +35,4 @@ steps = [
         DROP TABLE IF EXISTS question;
         """,
     ],
-    [
-        """
-        CREATE TABLE questionbank (
-          category VARCHAR(1000) NOT NULL,
-          type VARCHAR(1000) NOT NULL,
-          difficulty VARCHAR(1000) NOT NULL,
-          question VARCHAR(1000) NOT NULL,
-          correct_answer VARCHAR(1000) NOT NULL,
-          incorrect_answer_1 VARCHAR(1000) NOT NULL,
-          incorrect_answer_2 VARCHAR(1000) NOT NULL,
-          incorrect_answer_3 VARCHAR(1000) NOT NULL
-        );
-        """
-    ],
 ]
