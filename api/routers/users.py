@@ -82,7 +82,7 @@ async def create_user(
     return UserToken(user=user, **token.dict())
 
 
-@router.get("/api/users", response_model=List[UserModelOut])
+@router.get("/api/users", response_model=List[UserModelOut] | dict)
 async def get_all_users(repo: UserRepository = Depends()):
     return repo.get_all_users()
 
