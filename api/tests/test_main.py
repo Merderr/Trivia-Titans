@@ -27,7 +27,7 @@ async def get_user():
         "username": "expected_username",
         "password": "expected_password",
         "name": "expected_name",
-        "score": 100,
+        "score": 12,
     }
 
 
@@ -63,7 +63,7 @@ def test_get_user():
     assert "username" in data and data["username"] == "expected_username"
     assert "password" in data and data["password"] == "expected_password"
     assert "name" in data and data["name"] == "expected_name"
-    assert "score" in data and data["score"] == 100
+    assert "score" in data and data["score"] == 12
 
 
 def test_create_user():
