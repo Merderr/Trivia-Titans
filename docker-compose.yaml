@@ -3,7 +3,7 @@ volumes:
     external: true
   pg-admin:
     external: true
-  postgres-trivia-data:
+  postgrestriviadata:
     external: true
   jwtdown-db-data:
     external: true
