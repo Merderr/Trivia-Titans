@@ -2,8 +2,6 @@ from fastapi.testclient import TestClient
 from fastapi import APIRouter
 from main import app
 
-router = APIRouter()
-
 
 @app.get("/api/token")
 async def get_token():
@@ -27,7 +25,7 @@ async def get_user():
         "username": "expected_username",
         "password": "expected_password",
         "name": "expected_name",
-        "score": 100,
+        "score": 12,
     }
 
 
@@ -69,6 +67,7 @@ def test_get_token():
     assert response.json()["account"]["score"] == 0
 
 
+# Mason
 def test_get_user():
     user_id = 1
     response = client.get(f"/api/users/{user_id}")
@@ -78,7 +77,7 @@ def test_get_user():
     assert "username" in data and data["username"] == "expected_username"
     assert "password" in data and data["password"] == "expected_password"
     assert "name" in data and data["name"] == "expected_name"
-    assert "score" in data and data["score"] == 100
+    assert "score" in data and data["score"] == 12
 
 
 def test_create_user():

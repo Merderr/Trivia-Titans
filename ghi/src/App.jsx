@@ -13,10 +13,22 @@ import Game from "./components/Game/Game";
 import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {
+  const originalError = console.error;
+
+  console.error = function (message) {
+    originalError.apply(console, arguments);
+
+    if (
+      message instanceof Error &&
+      message.message.includes("Failed to get token after login. Got")
+    ) {
+      alert(`${message}`);
+    }
+  };
+
   const [count, setCount] = useState(0);
   const domain = /https?:\/\/[^/]+/;
   const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "");
-  console.log(basename);
   return (
     <Router basename={basename}>
       <AuthProvider baseUrl={import.meta.env.VITE_REACT_APP_API_HOST}>

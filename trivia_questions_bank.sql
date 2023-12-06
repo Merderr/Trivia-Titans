@@ -419,7 +419,7 @@ INSERT INTO questions (category, type, difficulty, question, correct_answer, inc
 
 -- Entertainment and Movies Difficult Questions
 INSERT INTO questions (category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3) VALUES
-('Entertainment and Movies', 'multiple', 'difficult', 'In the film "Inception," what is the name of the device used to enter and manipulate dreams?', 'Totem', 'Dreamweaver', 'Mind Matrix', 'Reality Spinner'),
+('Entertainment and Movies', 'multiple', 'difficult', 'In the film "Inception," what is the name of the device used to enter and manipulate dreams?', 'PASIV Device', 'Dreamweaver', 'Mind Matrix', 'Reality Spinner'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Who directed the 1994 film "Pulp Fiction"?', 'Quentin Tarantino', 'Martin Scorsese', 'Christopher Nolan', 'Steven Spielberg'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'In the movie "Blade Runner," what is the term used for bioengineered beings that are virtually identical to humans?', 'Replicants', 'Synthoids', 'Humanoids', 'BioClones'),
 ('Entertainment and Movies', 'multiple', 'difficult', 'Which actor played the character of Anton Chigurh in the film "No Country for Old Men"?', 'Javier Bardem', 'Heath Ledger', 'Daniel Day-Lewis', 'Tom Hardy'),
