@@ -17,11 +17,18 @@ const Leaderboard = () => {
     }
   };
 
+  const fetchCurrentUser = () => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (storedUser) {
+      setCurrentUser(storedUser.name);
+    }
+  };
+
   useEffect(() => {
     getLeaderboard();
+    fetchCurrentUser();
   }, []);
-
-  console.log(currentUser);
 
   return (
     <div className="leaderboard-container">
@@ -35,7 +42,6 @@ const Leaderboard = () => {
             }`}
           >
             <span>{user.name}</span> - Score: {user.score}
-            {console.log("User Name:", user.name, "Current User:", currentUser)}
           </li>
         ))}
       </ol>
