@@ -100,8 +100,8 @@ class QuestionRepository:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    INSERT INTO questions (category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3)
-                    VALUES ('Geography', 'multiple', 'easy', 'Which continent is known as the "Land Down Under"?', 'Australia', 'Africa', 'Asia', 'Europe');
+                    INSERT INTO questions (id, category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3)
+                    VALUES ('1', 'Geography', 'multiple', 'easy', 'Which continent is known as the "Land Down Under"?', 'Australia', 'Africa', 'Asia', 'Europe');
                     """
                 )
 
