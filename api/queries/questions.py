@@ -95,6 +95,18 @@ class QuestionRepository:
             print(e)
             return {"message": "Could not get questions"}
 
+    def create_all(self):
+        with pool.connection() as conn:
+            with conn.cursor() as db:
+                db.execute(
+                    """
+                    INSERT INTO questions (
+                    category, type, difficulty, question, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3)
+                    VALUES
+                    ('Geography', 'multiple', 'easy', 'Which continent is known as the "Land Down Under"?', 'Australia', 'Africa', 'Asia', 'Europe'),
+                    """
+                )
+
     def create(self, question: QuestionModelIn) -> QuestionModelOut:
         with pool.connection() as conn:
             with conn.cursor() as db:
