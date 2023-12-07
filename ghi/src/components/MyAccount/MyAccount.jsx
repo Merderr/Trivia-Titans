@@ -62,8 +62,8 @@ const MyAccount = () => {
           )}
         </div>
       ) : (
-        <p className="dark-background">
-          NO USER DATA AVAILABLE. PLEASE LOG IN OR SIGN UP.
+        <p className="no-user-card">
+          PLEASE LOG IN OR SIGN UP TO ACCESS YOUR ACCOUNT
         </p>
       )}
     </div>

@@ -5,6 +5,7 @@ const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
   const getLeaderboard = async () => {
@@ -18,8 +19,17 @@ const Leaderboard = () => {
     }
   };
 
+  const fetchCurrentUser = () => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (storedUser) {
+      setCurrentUser(storedUser.name);
+    }
+  };
+
   useEffect(() => {
     getLeaderboard();
+    fetchCurrentUser();
   }, []);
 
   const handleSearch = (e) => {
@@ -45,8 +55,13 @@ const Leaderboard = () => {
       </div>
       <ol className="leaderboard-list">
         {filteredLeaderboard.map((user) => (
-          <li key={user.name} className="leaderboard-item">
-            {user.name} - Score: {user.score}
+          <li
+            key={user.name}
+            className={`leaderboard-item ${
+              user.name === currentUser ? "highlighted" : ""
+            }`}
+          >
+            <span>{user.name}</span> - Score: {user.score}
           </li>
         ))}
       </ol>

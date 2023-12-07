@@ -27,6 +27,11 @@ app.include_router(questions.router, prefix="/api")
 app.include_router(users.router)
 
 
+@app.get("/")
+def root():
+    return {"message": "You hit the root path! Trivia Titans"}
+
+
 @app.get("/api/launch-details")
 def launch_details():
     return {
@@ -34,7 +39,7 @@ def launch_details():
             "module": 3,
             "week": 17,
             "day": 5,
-            "hour": 19,
-            "min": "00",
+            "hour": 50,
+            "min": "11",
         }
     }

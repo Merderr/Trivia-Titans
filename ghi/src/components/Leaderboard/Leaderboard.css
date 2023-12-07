@@ -10,8 +10,12 @@
   background-color:#091833;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-height: 80vh; 
-  overflow-y: auto; 
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.leaderboard-container h2 {
+  color: #34495e;
 }
 
 .leaderboard-list {
@@ -22,11 +26,16 @@
 .leaderboard-item {
   font-family: "Rubik", sans-serif;
   line-height: 1.6;
-  color: white; 
+  color: #34495e;
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
 }
 
 .leaderboard-item:last-child {
-  border-bottom: none; 
+  border-bottom: none;
+}
+
+.leaderboard-item.highlighted {
+  background-color: #00ccff;
+  font-weight: bold;
 }
