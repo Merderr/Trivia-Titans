@@ -3,6 +3,9 @@ from fastapi import APIRouter
 from main import app
 
 
+router = APIRouter()
+
+
 @app.get("/api/token")
 async def get_token():
     return {
@@ -26,21 +29,6 @@ async def get_user():
         "password": "expected_password",
         "name": "expected_name",
         "score": 12,
-    }
-
-
-@router.get("/api/questions/1")
-async def get_question():
-    return {
-        "id": 1,
-        "category": "expected_category",
-        "type": "expected_type",
-        "difficulty": "expected_difficulty",
-        "question": "expected_question",
-        "correct_answer": "expected_answer",
-        "incorrect_answer_1": "expected_incorrect_answer_1",
-        "incorrect_answer_2": "expected_incorrect_answer_2",
-        "incorrect_answer_3": "expected_incorrect_answer_3",
     }
 
 
@@ -80,6 +68,27 @@ def test_get_user():
     assert "score" in data and data["score"] == 12
 
 
+<<<<<<< HEAD:api/tests/test_main.py
+def test_create_user():
+    user_data = {
+        "username": "new_user",
+        "password": "new_password",
+        "name": "New User",
+        "score": 50,
+    }
+
+    response = client.post("/api/users", json=user_data)
+
+    assert response.status_code == 200
+    assert "user" in response.json()
+    assert "token_type" in response.json()
+    assert "access_token" in response.json()["token_type"]
+
+    # Add more assertions based on your test requirements
+    assert response.json()["user"]["username"] == user_data["username"]
+    assert response.json()["user"]["name"] == user_data["name"]
+    assert response.json()["user"]["score"] == user_data["score"]
+=======
 def test_get_question():
     question_id = 1
     response = client.get(f"/api/users/{question_id}")
@@ -106,3 +115,4 @@ def test_get_question():
         "incorrect_answer_3" in data
         and data["incorrect_answer_3"] == "expected_incorrect_answer_3"
     )
+>>>>>>> f7320cb9894e69c994119d3709ad34987a550564:api/tests/tests.py
