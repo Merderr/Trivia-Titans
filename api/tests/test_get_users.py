@@ -1,7 +1,6 @@
 from authenticator import authenticator
 from main import app
 from queries.users import UserRepository
-<<<<<<< HEAD
 from fastapi.testclient import TestClient
 from contextlib import contextmanager
 
@@ -20,16 +19,6 @@ class TestUserRepository:
 
 def fake_account():
     return {"id": "1", "username": "user"}
-=======
-<<<<<<< HEAD
-from psycopg_pool import ConnectionPool
-=======
-from test_config import TestConfig  # Import the testing configuration
->>>>>>> 2c9ae934752f395a5bb86e6441525688853497cc
-
-client = TestClient(app)
-
->>>>>>> a9242a633f401a727a2a14a6edd7be0ecce126d0
 
 def test_get_all_users():
     with override_dependencies():
