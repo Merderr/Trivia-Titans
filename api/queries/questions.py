@@ -93,31 +93,35 @@ class QuestionRepository:
             return {"message": "Could not get questions"}
 
     def create(self, question: QuestionModelIn) -> QuestionModelOut:
-        with pool.connection() as conn:
-            with conn.cursor() as db:
-                result = db.execute(
-                    """
-                    INSERT INTO questions
-                        (category, type, difficulty, question,
-                        correct_answer, incorrect_answer_1,
-                        incorrect_answer_2, incorrect_answer_3)
-                    VALUES
-                        (%s, %s, %s, %s, %s, %s, %s, %s)
-                    RETURNING id;
-                    """,
-                    [
-                        question.category,
-                        question.type,
-                        question.difficulty,
-                        question.question,
-                        question.correct_answer,
-                        question.incorrect_answer_1,
-                        question.incorrect_answer_2,
-                        question.incorrect_answer_3,
-                    ],
-                )
-                id = result.fetchone()[0]
-                return self.question_in_to_out(id, question)
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        INSERT INTO questions
+                            (category, type, difficulty, question,
+                            correct_answer, incorrect_answer_1,
+                            incorrect_answer_2, incorrect_answer_3)
+                        VALUES
+                            (%s, %s, %s, %s, %s, %s, %s, %s)
+                        RETURNING id;
+                        """,
+                        [
+                            question.category,
+                            question.type,
+                            question.difficulty,
+                            question.question,
+                            question.correct_answer,
+                            question.incorrect_answer_1,
+                            question.incorrect_answer_2,
+                            question.incorrect_answer_3,
+                        ],
+                    )
+                    id = result.fetchone()[0]
+                    return self.question_in_to_out(id, question)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not create question"}
 
     def update(
         self, question_id: int, question: QuestionModelIn
