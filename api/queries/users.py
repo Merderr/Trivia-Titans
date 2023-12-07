@@ -49,6 +49,14 @@ class DuplicateAccountError(ValueError):
 
 
 class UserRepository:
+    def __enter__(self):
+
+        return self
+    def __exit__(self, exc_type, exc_value, traceback):
+        try:
+            pool.closeall()
+        except Exception as e:
+            print(f"Error closing connection pool: {e}")
     def get_user_by_id(self, user_id: int) -> Optional[UserModelOut]:
         try:
             with pool.connection() as conn:
@@ -121,26 +129,34 @@ class UserRepository:
 
     def create_user(
         self, user: UserModelIn, hashed_password: str
-    ) -> UserModelOut:
-        with pool.connection() as conn:
-            with conn.cursor() as db:
-                result = db.execute(
-                    """
-                    INSERT INTO users
-                        (username, password, name, score)
-                    VALUES
-                        (%s, %s, %s, %s)
-                    RETURNING id;
-                    """,
-                    [
-                        user.username,
-                        hashed_password,
-                        user.name,
-                        user.score,
-                    ],
-                )
-                id = result.fetchone()[0]
-                return self.user_in_to_out(id, user, hashed_password)
+    ) -> Union[UserModelOut, JSONResponse]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        INSERT INTO users
+                            (username, password, name, score)
+                        VALUES
+                            (%s, %s, %s, %s)
+                        RETURNING id, username, password, name, score;
+                        """,
+                        [
+                            user.username,
+                            hashed_password,
+                            user.name,
+                            user.score,
+                        ],
+                    )
+                    record = result.fetchone()
+                    return self.record_to_user_out(record)
+        except psycopg.errors.UniqueViolation as e:
+            # Log the error or handle it as needed
+            print(f"User creation failed: {e}")
+            return JSONResponse(
+                content={"message": "Could not create user"},
+                status_code=500,
+            )
 
     def delete_user(self, user_id: int) -> Union[None, JSONResponse]:
         try:

@@ -68,6 +68,7 @@ def test_get_user():
     assert "score" in data and data["score"] == 12
 
 
+<<<<<<< HEAD:api/tests/test_main.py
 def test_create_user():
     user_data = {
         "username": "new_user",
@@ -87,3 +88,31 @@ def test_create_user():
     assert response.json()["user"]["username"] == user_data["username"]
     assert response.json()["user"]["name"] == user_data["name"]
     assert response.json()["user"]["score"] == user_data["score"]
+=======
+def test_get_question():
+    question_id = 1
+    response = client.get(f"/api/users/{question_id}")
+    data = response.json()
+    assert response.status_code == 200
+    assert "id" in data and data["id"] == 1
+    assert "category" in data and data["category"] == "expected_category"
+    assert "type" in data and data["type"] == "expected_type"
+    assert "difficulty" in data and data["difficulty"] == "expected_difficulty"
+    assert "question" in data and data["question"] == "expected_question"
+    assert (
+        "correct_answer" in data
+        and data["correct_answer"] == "expected_correct_answer"
+    )
+    assert (
+        "incorrect_answer_1" in data
+        and data["incorrect_answer_1"] == "expected_incorrect_answer_1"
+    )
+    assert (
+        "incorrect_answer_2" in data
+        and data["incorrect_answer_2"] == "expected_incorrect_answer_2"
+    )
+    assert (
+        "incorrect_answer_3" in data
+        and data["incorrect_answer_3"] == "expected_incorrect_answer_3"
+    )
+>>>>>>> f7320cb9894e69c994119d3709ad34987a550564:api/tests/tests.py
