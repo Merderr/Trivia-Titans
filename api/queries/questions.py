@@ -39,11 +39,8 @@ class QuestionModelOut(BaseModel):
 class QuestionRepository:
     def get_one_question(self, question_id: int) -> Optional[QuestionModelOut]:
         try:
-            # connect to the database
             with pool.connection() as conn:
-                # get a named cursor (something to run SQL with)
                 with conn.cursor(name="get_one_cursor") as db:
-                    # Run our SELECT statement
                     db.execute(
                         """
                         SELECT id, category, type, difficulty, question,
@@ -566,32 +563,36 @@ class QuestionRepository:
                     """
                 )
 
-    def create(self, question: QuestionModelIn) -> QuestionModelOut:
-        with pool.connection() as conn:
-            with conn.cursor() as db:
-                result = db.execute(
-                    """
-                    INSERT INTO questions
-                        (category, type, difficulty, question,
-                        correct_answer, incorrect_answer_1,
-                        incorrect_answer_2, incorrect_answer_3)
-                    VALUES
-                        (%s, %s, %s, %s, %s, %s, %s, %s)
-                    RETURNING id;
-                    """,
-                    [
-                        question.category,
-                        question.type,
-                        question.difficulty,
-                        question.question,
-                        question.correct_answer,
-                        question.incorrect_answer_1,
-                        question.incorrect_answer_2,
-                        question.incorrect_answer_3,
-                    ],
-                )
-                id = result.fetchone()[0]
-                return self.question_in_to_out(id, question)
+    def create(self, question: QuestionModelIn) -> Union[QuestionModelOut, Error]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        INSERT INTO questions
+                            (category, type, difficulty, question,
+                            correct_answer, incorrect_answer_1,
+                            incorrect_answer_2, incorrect_answer_3)
+                        VALUES
+                            (%s, %s, %s, %s, %s, %s, %s, %s)
+                        RETURNING id;
+                        """,
+                        [
+                            question.category,
+                            question.type,
+                            question.difficulty,
+                            question.question,
+                            question.correct_answer,
+                            question.incorrect_answer_1,
+                            question.incorrect_answer_2,
+                            question.incorrect_answer_3,
+                        ],
+                    )
+                    id = result.fetchone()[0]
+                    return self.question_in_to_out(id, question)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not create question"}
 
     def update(
         self, question_id: int, question: QuestionModelIn
