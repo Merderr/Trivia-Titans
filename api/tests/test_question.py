@@ -33,7 +33,6 @@ class FakeQuestionRepo():
     def get_one_question(self, question_id):
         if question_id >= 10000:
             return None
-
         return QuestionModelOut(
             id=question_id,
             category="string",
