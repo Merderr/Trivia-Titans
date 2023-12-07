@@ -151,7 +151,6 @@ class UserRepository:
                     record = result.fetchone()
                     return self.record_to_user_out(record)
         except psycopg.errors.UniqueViolation as e:
-            # Log the error or handle it as needed
             print(f"User creation failed: {e}")
             return JSONResponse(
                 content={"message": "Could not create user"},
@@ -246,7 +245,7 @@ class UserRepository:
             score=record[4],
         )
 
-    # Mason Added this dont want to mess u up seth move down if needed
+    
     def get_leaderboard(self):
         try:
             with pool.connection() as conn:
