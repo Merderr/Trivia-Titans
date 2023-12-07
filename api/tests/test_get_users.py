@@ -1,27 +1,28 @@
-# test_get_users.py
-from dotenv import load_dotenv
-load_dotenv()
-
-from fastapi.testclient import TestClient
+from authenticator import authenticator
 from main import app
 from queries.users import UserRepository
-from test_config import TestConfig  # Import the testing configuration
+from fastapi.testclient import TestClient
+from contextlib import contextmanager
 
 client = TestClient(app)
 
+@contextmanager
+def override_dependencies():
+    app.dependency_overrides[authenticator.get_account_data] = fake_account
+    app.dependency_overrides[UserRepository] = TestUserRepository
+    yield
+    app.dependency_overrides.clear()
+
+class TestUserRepository:
+    def get_all_users(self, id: int = None):
+        return []
+
+def fake_account():
+    return {"id": "1", "username": "user"}
+
 def test_get_all_users():
-    test_user = {
-        "username": "testuser",
-        "password": "testpassword",
-        "name": "Test User",
-        "score": 100,
-    }
+    with override_dependencies():
+        response = client.get("/api/users")
 
-    # Use the testing configuration for the UserRepository
-    with UserRepository(config=TestConfig) as repo:
-        hashed_password = "hashed_test_password"
-        repo.create_user(test_user, hashed_password)
-
-    response = client.get("/api/users")
     assert response.status_code == 200
-    assert test_user in response.json()
+    assert response.json() == []
