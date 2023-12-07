@@ -53,7 +53,7 @@ def test_get_token():
     assert "score" in response.json()["account"]
     assert response.json()["account"]["score"] == 0
 
-#Mason
+
 def test_get_user():
     user_id = 1
     response = client.get(f"/api/users/{user_id}")
@@ -85,3 +85,4 @@ def test_create_user():
     assert response.json()["user"]["username"] == user_data["username"]
     assert response.json()["user"]["name"] == user_data["name"]
     assert response.json()["user"]["score"] == user_data["score"]
+
