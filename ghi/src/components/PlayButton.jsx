@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const PlayButton = () => {
   return (
     <div className="play-button">
-      <Link href="play">
+      <a href="play">
         <button className="game-button">Play Now</button>
-      </Link>
+      </a>
     </div>
   );
 };
