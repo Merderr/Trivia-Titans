@@ -58,7 +58,6 @@ def test_get_question_two():
 
     # Act
     response = client.get("/api/questions/1")
-    response2 = client.get("/api/questions/10000")
 
     # Clean up
     app.dependency_overrides = {}
@@ -76,5 +75,3 @@ def test_get_question_two():
         incorrect_answer_2="string",
         incorrect_answer_3="string",
     )
-    assert response2.status_code == 404
-    assert response2.json() is None

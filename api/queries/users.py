@@ -50,13 +50,14 @@ class DuplicateAccountError(ValueError):
 
 class UserRepository:
     def __enter__(self):
-
         return self
+
     def __exit__(self, exc_type, exc_value, traceback):
         try:
             pool.closeall()
         except Exception as e:
             print(f"Error closing connection pool: {e}")
+
     def get_user_by_id(self, user_id: int) -> Optional[UserModelOut]:
         try:
             with pool.connection() as conn:
@@ -245,7 +246,6 @@ class UserRepository:
             score=record[4],
         )
 
-    
     def get_leaderboard(self):
         try:
             with pool.connection() as conn:
