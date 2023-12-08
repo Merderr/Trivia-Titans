@@ -43,11 +43,11 @@
    When running our application locally, we used docker-compose to build and run our application. When deploying our application to Cirrus, we used the SDK to build and run our application. The SDK is a command line tool that allows you to interact with the Cirrus API. The SDK is installed on the Cirrus instance and is used to build and run the application. The SDK is also installed on your local machine and is used to deploy the application to Cirrus. The SDK is used to create a pipeline that builds the container for each service and runs the pipeline to generate the images in your gitlab registry for each service. The SDK is also used to deploy the image on Galvanize Cirrus.
    We used the following commands to build and deploy our application to Cirrus:
 
-   glv-cloud-cli deploy -a api -i registry.gitlab.com/ice-climbers/trivia-titans/api:latest -e SIGNING_KEY=AC8C8396F9F516FCE01A6805FF8C3D8E -e postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata -e CORS_HOST=https://ice-climbers.gitlab.io
+   `glv-cloud-cli deploy -a api -i registry.gitlab.com/ice-climbers/trivia-titans/api:latest -e SIGNING_KEY=AC8C8396F9F516FCE01A6805FF8C3D8E -e postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata -e CORS_HOST=https://ice-climbers.gitlab.io`
 
    We used the following commands to build our Postgres DB into Cirrus:
 
-   glv-cloud-cli deploy -a db -i postgres:14.5-bullseye -e POSTGRES_DB=postgrestriviadata -e POSTGRES_USER=example_user -e POSTGRES_PASSWORD=secret -m /var/lib/postgresql -p 5432 -x=false
+   `glv-cloud-cli deploy -a db -i postgres:14.5-bullseye -e POSTGRES_DB=postgrestriviadata -e POSTGRES_USER=example_user -e POSTGRES_PASSWORD=secret -m /var/lib/postgresql -p 5432 -x=false`
 
 6. `Tech Stack`:
 
