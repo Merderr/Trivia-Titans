@@ -9,7 +9,7 @@ const Leaderboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const getLeaderboard = async () => {
-    const url = hostURL + "/leaderboard/";
+    const url = hostURL + "/leaderboard";
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
