@@ -6,6 +6,7 @@ from contextlib import contextmanager
 
 client = TestClient(app)
 
+
 @contextmanager
 def override_dependencies():
     app.dependency_overrides[authenticator.get_account_data] = fake_account
@@ -13,12 +14,15 @@ def override_dependencies():
     yield
     app.dependency_overrides.clear()
 
+
 class TestUserRepository:
     def get_all_users(self, id: int = None):
         return []
 
+
 def fake_account():
     return {"id": "1", "username": "user"}
+
 
 def test_get_all_users():
     with override_dependencies():
