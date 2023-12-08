@@ -10,8 +10,8 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "http://ice-climbers.gitlab.io/trivia-titans",
-    "http://aug-2023-2-pt-api.mod3projects.com",
+    "https://ice-climbers.gitlab.io/trivia-titans/",
+    "https://aug-2023-2-pt-api.mod3projects.com",
     os.environ.get("CORS_HOST", None),
 ]
 
