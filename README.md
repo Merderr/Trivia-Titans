@@ -1,141 +1,87 @@
-# Module3 Project Gamma
+1. `Functionality`: Articulate the capabilities of your app or service. :hammer_and_wrench:
 
-## Getting started
+- E.g.: Our RESTful API enables CRUD operations for movie reviews.
 
-You have a project repository, now what? The next section
-lists all of the deliverables that are due at the end of the
-week. Below is some guidance for getting started on the
-tasks for this week.
+2. `User Stories/Scenarios`: Outline key use-cases, ideally using Gherkin syntax. :cucumber:
 
-## Install Extensions
+- E.g.: `Given` a user is logged in, `When` they post a review, `Then` it appears on their profile.
 
-- Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
-- Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
+3. `Intended Market`:
 
-## Deliverables
+Trivia Titans is crafted for individuals who revel in the thrill of trivia battles, seeking a competitive yet enjoyable solo gaming experience with planned multiplayer expansion.
 
-- [ ] Wire-frame diagrams
-- [ ] API documentation
-- [ ] Project is deployed to Caprover (BE, DB) & GitLab-pages (FE)
-- [ ] GitLab issue board is setup and in use (or project management tool of choice)
-- [ ] Journals
+Key Features Tailored for Trivia Titans:
 
-## Project layout
+- Competitive solo gameplay with leaderboard rankings.
+- A vast array of challenging trivia questions spanning diverse categories.
+- Achievement system to recognize and reward accomplishments.
+- Mobile-friendly interface for seamless gaming anytime, anywhere.
 
-The layout of the project is just like all of the projects
-you did with `docker-compose` in module #2. You will create
-a directory in the root of the repository for each service
-that you add to your project just like those previous
-projects were setup.
+4. `Stretch Goals`:
 
-### Directories
+- Potential multiplayer head to head game mode.
 
-Several directories have been added to your project. The
-directories `docs` and `journals` are places for you and
-your team-mates to, respectively, put any documentation
-about your project that you create and to put your
-project-journal entries. See the _README.md_ file in each
-directory for more info.
+5. `Onboarding`:
 
-The other directories, `ghi` and `api`, are services, that
-you can start building off of.
+To fully enjoy this application on your local machine, please make sure to follow these steps:
 
-Inside of `ghi` is a minimal React app that has an "under
-construction" page. It is setup similarly to all of the
-other React projects that you have worked on.
+1. Clone the repository down to your local machine
+2. CD into the new project directory
+3. Run docker volume create postgrestriviadb
+4. Run docker compose build
+5. Run docker compose up
 
-Inside of `api` is a minimal FastAPI application.
-"Where are all the files?" you might ask? Well, the
-`main.py` file is the whole thing, and go take look inside
-of it... There's not even much in there..., hmm? That is
-FastAPI, we'll learn more about it in the coming days. Can
-you figure out what this little web-application does even
-though you haven't learned about FastAPI yet?
+Goodluck on the games!
 
-Also in `api` is a directory for your migrations.
-If you choose to use PostgreSQL, then you'll want to use
-migrations to control your database. Unlike Django, where
-migrations were automatically created for you, you'll write
-yours by hand using DDL. Don't worry about not knowing what
-DDL means; we have you covered. There's a sample migration
-in there that creates two tables so you can see what they
-look like.
+Deployment of our application was made to Cirrus by Galvanize https://cirrus.mod3projects.com/ to manage cloud instances.
+We performed the following steps to deploy our whatevr application:
 
-The Dockerfile and Dockerfile.dev run your migrations
-for you automatically.
+1. Add a Dockerfile for the deployment of each of your services.
+2. Write a pipeline that builds the container for each service.
+3. Run the pipeline to generate the images in your gitlab registry for each service.
+4. Deploy the image on Galvanize Cirrus using the SDK.
 
-### Other files
+When running our application locally, we used docker-compose to build and run our application. When deploying our application to Cirrus, we used the SDK to build and run our application. The SDK is a command line tool that allows you to interact with the Cirrus API. The SDK is installed on the Cirrus instance and is used to build and run the application. The SDK is also installed on your local machine and is used to deploy the application to Cirrus. The SDK is used to create a pipeline that builds the container for each service and runs the pipeline to generate the images in your gitlab registry for each service. The SDK is also used to deploy the image on Galvanize Cirrus.
+We used the following commands to build and deploy our application to Cirrus:
 
-The following project files have been created as a minimal
-starting point. Please follow the guidance for each one for
-a most successful project.
+glv-cloud-cli deploy -a api -i registry.gitlab.com/ice-climbers/trivia-titans/api:latest -e SIGNING_KEY=AC8C8396F9F516FCE01A6805FF8C3D8E -e postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata -e CORS_HOST=https://ice-climbers.gitlab.io
 
-- `docker-compose.yaml`: there isn't much in here, just a
-  **really** simple UI and FastAPI service. Add services
-  (like a database) to this file as you did with previous
-  projects in module #2.
-- `.gitlab-ci.yml`: This is your "ci/cd" file where you will
-  configure automated unit tests, code quality checks, and
-  the building and deployment of your production system.
-  Currently, all it does is deploy an "under construction"
-  page to your production UI on GitLab and a sample backend
-  to CapRover. We will learn much more about this file.
-- `.gitignore`: This is a file that prevents unwanted files
-  from getting added to your repository, files like
-  `pyc` files, `__pycache__`, etc. We've set it up so that
-  it has a good default configuration for Python projects.
-- `.env.sample`: This file is a template to copy when
-  creating environment variables for your team. Create a
-  copy called `.env` and put your own passwords in here
-  without fear of it being committed to git (see `.env`
-  listed in `.gitignore`). You can also put team related
-  environment variables in here, things like api and signing
-  keys that shouldn't be committed; these should be
-  duplicated in your deployed environments.
+We used the following commands to build our Postgres DB into Cirrus:
 
-## How to complete the initial deploy
+glv-cloud-cli deploy -a db -i postgres:14.5-bullseye -e POSTGRES_DB=postgrestriviadata -e POSTGRES_USER=example_user -e POSTGRES_PASSWORD=secret -m /var/lib/postgresql -p 5432 -x=false
 
-There will be further guidance on completing the initial
-deployment, but it just consists of these steps:
+6. `Tech Stack`:
 
-### Setup GitLab repo/project
+- Frontend: React
+- Backend: FastAPI
+- Database: PostgreSQL
+- Containerization: Docker
 
-- make sure this project is in a group. If it isn't, stop
-  now and move it to a GitLab group
-- remove the fork relationship: In GitLab go to:
+7. `Journaling`:
 
-  Settings -> General -> Advanced -> Remove fork relationship
+Please see journals folder.
 
-- add these GitLab CI/CD variables:
-  - PUBLIC_URL : this is your gitlab pages URL
-  - REACT_APP_API_HOST: enter "blank" for now
+8. `Documentation`: Attach DB schemas, wireframes, and API contracts. :clipboard:
+   -E.g.: point to the documents dir
 
-#### Your GitLab pages URL
+9. `Issue Tracking`:
 
-You can't find this in GitLab until after you've done a deploy
-but you can figure it out yourself from your GitLab project URL.
+https://gitlab.com/ice-climbers/trivia-titans/-/boards
 
-If this is your project URL
+10. `Testing`:
 
-https://gitlab.com/GROUP_NAME/PROJECT_NAME
+test_get_users:
 
-then your GitLab pages URL will be
+- Purpose: Tests the endpoint for retrieving users. Overrides the dependency for the UserRepository with FakeUserRepo. Sends a GET request to "/api/users/". Resets the dependency overrides. Checks if the response status code is 200 and the returned JSON is an empty list. Created by Seth Porche.
 
-https://GROUP_NAME.gitlab.io/PROJECT_NAME
+test_get_all_users:
 
-### Initialize CapRover
+- Purpose: Another test for retrieving users, possibly for a different endpoint. Uses the override_dependencies() context manager. Sends a GET request to "/api/users". Verifies the response status code and checks if the returned JSON is an empty list. Created by Mason Doney.
 
-1. Attain IP address and domain from an instructor
-1. Follow the steps in the CD Cookbook in Learn.
+test_get_question:
 
-### Update GitLab CI/CD variables
+- Purpose: Tests the endpoint for retrieving a specific question. Overrides the dependency for the QuestionRepository with FakeQuestionRepo. Sends a GET request to "/api/questions/1". Resets the dependency overrides. Verifies the response status code and checks if the returned JSON matches the expected QuestionModelOut. Created by Taylor Pearce.
 
-Copy the service URL for your CapRover service and then paste
-that into the value for the REACT_APP_API_HOST CI/CD variable
-in GitLab.
+test_get_token:
 
-### Deploy it
-
-Merge a change into main to kick off the initial deploy. Once the build pipeline
-finishes you should be able to see an "under construction" page on your GitLab
-pages site.
+- Purpose: Tests the endpoint for retrieving a token. Sends a GET request to "/token". Checks the response status code and the structure of the returned JSON, ensuring the presence and types of certain fields. Created by Hamza Ahmed.

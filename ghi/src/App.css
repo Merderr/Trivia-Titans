@@ -20,7 +20,7 @@ body {
 
 @media only screen and (min-width: 700px) and (max-width: 1300px) {
   body {
-  background-position: center;
-  background-size: 350%;
-}
+    background-position: center;
+    background-size: 350%;
+  }
 }
