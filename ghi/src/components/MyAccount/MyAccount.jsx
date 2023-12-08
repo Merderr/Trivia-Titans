@@ -47,17 +47,17 @@ const MyAccount = () => {
         <div className="account-card">
           <p className="account-title">Hello, {storageUser.name}</p>
           <div className="account-info">
-            <span className="info-label">Username:</span>
-            <span className="info-value">
-              {storageUser && storageUser.username}
+            <span className="info-label">
+              Username: {storageUser && storageUser.username}
             </span>
           </div>
           {loadingHighScore ? (
             <p>Loading high score...</p>
           ) : (
             <div className="account-info">
-              <span className="info-label">High Score:</span>
-              <span className="info-value">{serverUser?.score}</span>
+              <span className="info-label">
+                High Score: {serverUser?.score}
+              </span>{" "}
             </div>
           )}
         </div>

@@ -41,7 +41,7 @@ const AboutUs = () => {
             a challenge I embrace wholeheartedly. Life's a marathon, not a
             sprint, and I believe in savoring every step of the journey. Join me
             as I navigate the intersections of coding, running, family, and the
-            delightful chaos that is life.""
+            delightful chaos that is life."
           </p>
         </div>
         <div className="about-us-header">Mason Doney</div>
@@ -60,8 +60,8 @@ const AboutUs = () => {
         <div className="about-us-city">Denver, CO</div>
         <div className="about-us-content">
           <p>
-            Greetings! I'm Taylor, a software engineer hailing from the
-            Mile High City. Originating from a civil engineering background, I
+            Greetings! I'm Taylor, a software engineer hailing from the Mile
+            High City. Originating from a civil engineering background, I
             seamlessly made the leap into the dynamic realm of full-stack
             programming. Beyond coding, I'm an avid participant in the world of
             competitive dodgeball and when I'm not chucking balls at people I

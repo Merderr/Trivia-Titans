@@ -62,6 +62,7 @@ const Login = () => {
               placeholder="Password"
               className="form-control"
               value={password}
+              style={{ marginBottom: "10px" }}
               onChange={(e) => setPassword(e.target.value)}
             />
             <button
