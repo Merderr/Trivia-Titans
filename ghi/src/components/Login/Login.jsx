@@ -32,7 +32,6 @@ const Login = () => {
     if (token) {
       navigate("/");
     }
-    location.reload();
   }, [token]);
 
   const togglePasswordVisibility = () => {
