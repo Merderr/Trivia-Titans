@@ -12,6 +12,7 @@ origins = [
     "http://localhost:8000",
     "https://ice-climbers.gitlab.io",
     "https://aug-2023-2-pt-api.mod3projects.com",
+    "https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io",
     os.environ.get("CORS_HOST", None),
 ]
 
