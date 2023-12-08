@@ -64,8 +64,8 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button
-              type="checkbox"
-              className="show-pass-btn"
+              type="button"
+              className="btn btn-outline-secondary"
               onClick={togglePasswordVisibility}
             >
               {passwordVisible ? "Hide Password" : "Show Password"}
