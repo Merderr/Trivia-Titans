@@ -49,8 +49,8 @@ build-front-end-job:
     # CI/CD variables, that value will override the value here.
     # You need to substitute in your real values for
     # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
-    VITE_PUBLIC_URL: http://ice-climbers.gitlab.io/trivia-titans
-    VITE_REACT_APP_API_HOST: http://aug-2023-2-pt-api.mod3projects.com
+    VITE_PUBLIC_URL: https://ice-climbers.gitlab.io
+    VITE_REACT_APP_API_HOST: https://aug-2023-2-pt-api.mod3projects.com
   script:
     - cd ghi
     - npm install
