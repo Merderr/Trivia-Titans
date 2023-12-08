@@ -9,6 +9,7 @@ function Home() {
   const { token } = useToken();
   const [user, setUser] = useState("");
   const [storageUser, setStorageUser] = useState();
+  const [count, setCount] = useState(0);
 
   const getUser = async (e) => {
     if (token !== null) {
@@ -46,9 +47,7 @@ function Home() {
               <h2 className="welcome-title">Welcome, {storageUser.name} </h2>
             </div>
           )}
-
-            <PlayButton />
-
+          <PlayButton />
         </div>
       </div>
     </>

@@ -31,6 +31,7 @@ const Login = () => {
   useEffect(() => {
     if (token) {
       navigate("/");
+      window.location.reload();
     }
   }, [token]);
 
