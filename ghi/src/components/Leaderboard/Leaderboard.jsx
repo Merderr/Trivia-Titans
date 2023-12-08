@@ -41,31 +41,36 @@ const Leaderboard = () => {
   );
 
   return (
-    <div className="leaderboard-container">
-      <h2>Leaderboard</h2>
-      <div className="search-container">
-        <label htmlFor="search">Search:</label>
-        <input
-          type="text"
-          id="search"
-          value={searchTerm}
-          onChange={handleSearch}
-          placeholder="Enter user's name"
-        />
+    <>
+      <h2 className="leaderboard-title">LEADERBOARD</h2>
+      <div className="leaderboard-container">
+        <div className="search-container">
+          <div className="search-input-container">
+            <span className="search-text">Search</span>
+            <input
+              className="leaderboard-input"
+              type="text"
+              id="search"
+              value={searchTerm}
+              onChange={handleSearch}
+              placeholder="Enter user's name"
+            />
+          </div>
+        </div>
+        <ol className="leaderboard-list">
+          {filteredLeaderboard.map((user) => (
+            <li
+              key={user.name}
+              className={`leaderboard-item ${
+                user.name === currentUser ? "highlighted" : ""
+              }`}
+            >
+              <span>{user.name}</span> - Score: {user.score}
+            </li>
+          ))}
+        </ol>
       </div>
-      <ol className="leaderboard-list">
-        {filteredLeaderboard.map((user) => (
-          <li
-            key={user.name}
-            className={`leaderboard-item ${
-              user.name === currentUser ? "highlighted" : ""
-            }`}
-          >
-            <span>{user.name}</span> - Score: {user.score}
-          </li>
-        ))}
-      </ol>
-    </div>
+    </>
   );
 };
 
