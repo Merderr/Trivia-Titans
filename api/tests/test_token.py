@@ -24,22 +24,21 @@ async def get_token():
 
 def test_get_token():
     response = client.get("/token")
-
+    data = response.json()
     assert response.status_code == 200
-    assert "access_token" in response.json() and isinstance(
-        response["access_token"], str
+    assert "access_token" in data and isinstance(data["access_token"], str)
+    assert "token_type" in data and data["token_type"] == "Bearer"
+    assert "account" in data
+    assert "id" in data["account"] and isinstance(data["account"]["id"], int)
+    assert "username" in data["account"] and isinstance(
+        data["account"]["username"], str
     )
-
-    assert "token_type" in response.json()
-    assert response.json()["token_type"] == "Bearer"
-    assert "account" in response.json()
-    assert "id" in response.json()["account"] and isinstance()
-    assert response.json()["account"]["id"] == "string"
-    assert "username" in response.json()["account"]
-    assert response.json()["account"]["username"] == "string"
-    assert "password" in response.json()["account"]
-    assert response.json()["account"]["password"] == "string"
-    assert "name" in response.json()["account"]
-    assert response.json()["account"]["name"] == "string"
-    assert "score" in response.json()["account"]
-    assert response.json()["account"]["score"] == 0
+    assert "password" in data["account"] and isinstance(
+        data["account"]["password"], str
+    )
+    assert "name" in data["account"] and isinstance(
+        data["account"]["name"], str
+    )
+    assert "score" in data["account"] and isinstance(
+        data["account"]["score"], int
+    )
