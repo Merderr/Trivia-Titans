@@ -8,34 +8,31 @@ import { useEffect, useState } from "react";
 function Home() {
   const { token } = useToken();
   const [user, setUser] = useState("");
-  const [storageUser, setStorageUser] = useState();
-  const [count, setCount] = useState(0);
+  const [storageUser, setStorageUser] = useState("");
 
   const getUser = async (e) => {
-    try {
-      if (token !== null) {
-        const getToken = await fetch(
-          `${import.meta.env.VITE_REACT_APP_API_HOST}/token`,
-          {
-            credentials: "include",
-          }
-        );
-      }
-    } catch (error) {
-      setErrorMessage("Please login or signup");
-    }
-    if (getToken.ok) {
-      const data = await getToken.json();
-      if (data) {
-        setUser(data.account);
-        localStorage.setItem("user", JSON.stringify(data.account));
+    if (token !== null) {
+      const getToken = await fetch(
+        `${import.meta.env.VITE_REACT_APP_API_HOST}/token`,
+        {
+          credentials: "include",
+        }
+      );
+      if (getToken.ok) {
+        const data = await getToken.json();
+        if (data) {
+          setUser(data.account);
+          localStorage.setItem("user", JSON.stringify(data.account));
+        }
       }
     }
   };
 
   useEffect(() => {
     getUser();
-    setStorageUser(JSON.parse(localStorage.getItem("user")));
+    if (storageUser !== null) {
+      setStorageUser(JSON.parse(localStorage.getItem("user")));
+    }
   }, []);
 
   return (

@@ -3,15 +3,10 @@ from main import app
 from queries.users import UserRepository, UserModelOut
 from typing import Optional
 
-# Seth's Unit Test
-
 client = TestClient(app)
 
 
 class FakeUserRepo:
-    def get_all_users(self):
-        return []
-
     def get_user_by_id(self, user_id: int) -> Optional[UserModelOut]:
         return {
             "id": user_id,

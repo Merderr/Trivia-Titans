@@ -14,16 +14,13 @@ const MyAccount = () => {
         method: "GET",
         credentials: "include",
       });
-
       if (response.ok) {
         const data = await response.json();
         setServerUser(data);
       } else {
-        console.error("Failed to fetch user data");
         alert("Oops! Something went wrong fetching user data.");
       }
     } catch (error) {
-      console.error("Error fetching user data:", error);
       alert("Oops! Something went wrong fetching user data.");
     } finally {
       setLoadingHighScore(false);

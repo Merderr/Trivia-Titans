@@ -11,7 +11,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, token } = useToken();
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [newToken, setNewToken] = useState(undefined);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,8 +21,6 @@ const Login = () => {
       setErrorMessage(
         "Please wait a few minutes or username/password was entered incorrectly"
       );
-      setUsername("");
-      setPassword("");
     }
   };
 

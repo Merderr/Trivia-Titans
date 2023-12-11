@@ -2,7 +2,6 @@ from fastapi.testclient import TestClient
 from fastapi import APIRouter
 from main import app
 
-
 router = APIRouter()
 client = TestClient(app)
 

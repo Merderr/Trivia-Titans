@@ -3,7 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import "./SignUp.css";
 
-
 const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
 const Signup = () => {
@@ -12,11 +11,8 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [score, setScore] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
-  const { register, login } = useToken();
-  const { token } = useToken();
-  const [newToken, setNewToken] = useState(undefined);
+  const { register, login, token } = useToken();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,8 +26,8 @@ const Signup = () => {
       await register(userData, `${hostURL}/api/users`);
       e.target.reset();
       navigate("/");
+      window.location.reload();
     } catch (error) {
-      setIsError(true);
       setErrorMessage(
         "Please wait a few minutes or username/password was entered incorrectly"
       );

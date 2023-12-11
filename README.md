@@ -9,23 +9,17 @@
 
 2.  `User Stories/Scenarios`:
 
-        Scenario #1: New User Onboarding
-        Given a new user opens the Trivia Titans app
-        When they complete the signup process
-        Then they should be able to play right away
-        And they should be able to see their score update on the leaderboard right away
+    Scenario #1: New user onboarding
 
-        Scenario #2: Competitive Player Updates
-        Given a competitive player in the game
-        When they achieve a high score
-        Then their score should be updated upon getting a question wrong
-        And they should be notified upon achieving a new high score
+    Upon signing up on Trivia Titans, users should have instant access to play and witness their scores updating in real time on the leaderboard.
 
-        Scenario #3: Returning Player Engagement
-        Given a returning player
-        When they revisit the Trivia Titans app
-        Then they should see new trivia questions to keep the game engaging
-        And they should be able to view their account details including high score
+    Scenario #2: Competitive Player
+
+    As a competitive player on Trivia Titans, receiving a high score update should be triggered immediately upon answering a question incorrectly. Additionally, players should receive a notification upon reaching a new personal high score
+
+    Scenario #3: Returning Player Engagement
+
+    For returning players on Trivia Titans, a visit to the website should greet them with fresh trivia questions for an engaging experience. Moreover, they should have easy access to their account details, including their high score.
 
 3.  `Intended Market`:
 
@@ -43,6 +37,7 @@
     Potential multiplayer head to head game mode.
 
 5.  `Onboarding`:
+
     To fully enjoy this application on your local machine, please make sure to follow these steps:
 
         1. Clone the repository down to your local machine
@@ -52,6 +47,31 @@
         5. Run docker compose up
 
     Goodluck on the games!
+
+6.  `Design`:
+
+    - Presentation:
+
+    https://gitlab.com/ice-climbers/trivia-titans/-/blob/main/docs/presentation.md?ref_type=heads
+
+    - WireFrame:
+
+    https://gitlab.com/ice-climbers/trivia-titans/-/blob/main/docs/wireframe.md?ref_type=heads
+
+    - Issue Tracking:
+
+    https://gitlab.com/ice-climbers/trivia-titans/-/boards
+
+    - Journals:
+
+    Please see journals folder.
+
+    - Tech Stack:
+
+      Frontend: VITE React
+      Backend: FastAPI
+      Database: PostgreSQL
+      Containerization: Docker
 
     Deployment of our application was made to Cirrus by Galvanize https://cirrus.mod3projects.com/ to manage cloud instances.
 
@@ -72,30 +92,11 @@
 
         glv-cloud-cli deploy -a db -i postgres:14.5-bullseye -e POSTGRES_DB=postgrestriviadata -e POSTGRES_USER=example_user -e POSTGRES_PASSWORD=secret -m /var/lib/postgresql -p 5432 -x=false
 
-6.  `Tech Stack`:
+7.  `Testing`:
 
-    - Frontend: React
-    - Backend: FastAPI
-    - Database: PostgreSQL
-    - Containerization: Docker
+    1. test_get_one_user:
 
-7.  `Journaling`:
-
-    Please see journals folder.
-
-8.  `Documentation`:
-
-    https://excalidraw.com/#room=d3f0c49b03f24e8fd4b1,TQCdJTHuOxNcEHSB2_yFVg
-
-9.  `Issue Tracking`:
-
-    https://gitlab.com/ice-climbers/trivia-titans/-/boards
-
-10. `Testing`:
-
-    1. test_get_users:
-
-       Purpose: Tests the endpoint for retrieving users. Overrides the dependency for the UserRepository with FakeUserRepo. Sends a GET request to "/api/users/". Resets the dependency overrides. Checks if the response status code is 200 and the returned JSON is an empty list. Created by Seth Porche.
+       Purpose: Tests the endpoint for retrieving a single user. Overrides the dependency for the UserRepository with FakeUserRepo. Sends a GET request to "/api/users/{id}". Resets the dependency overrides. Checks if the response status code is 200 and the returned JSON is an empty list. Created by Seth Porche.
 
     2. test_get_all_users:
 

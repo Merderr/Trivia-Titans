@@ -107,25 +107,25 @@
   align-items: center;
 }
 
-@media only screen and (max-width: 699px){
-.title {
+@media only screen and (max-width: 699px) {
+  .title {
     font-size: 20px;
+  }
+  .about-us-header {
+    font-size: 21px;
+    margin-right: 2%;
+  }
+  .about-us-city {
+    font-size: 15px;
+    margin-right: 2%;
+  }
+  .linkedin-button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
 }
-.about-us-header {
-  font-size: 21px;
-  margin-right: 2%;
-}
-.about-us-city {
-  font-size: 15px;
-  margin-right: 2%;
-}
-.linkedin-button {
-  padding: 8px 12px;
-  font-size: 13px;
-}
-}
-@media only screen and (min-width: 700px) and (max-width: 1300px){
-    .title {
+@media only screen and (min-width: 700px) and (max-width: 1300px) {
+  .title {
     font-size: 30px;
-}
+  }
 }

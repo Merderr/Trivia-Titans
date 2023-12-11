@@ -4,22 +4,32 @@ import { useNavigate } from "react-router-dom";
 
 const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
-const usedNumbers = [];
-
 const Game = () => {
   const [question, setQuestion] = useState({});
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [result, setResult] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [score, setScore] = useState(0);
-  const [maxNumber, setMaxNumber] = useState(1);
+  const [maxNumber, setMaxNumber] = useState(464);
   const [storageUser, setStorageUser] = useState(0);
+  const [usedNumbers, setUsedNumbers] = useState([]);
   const navigate = useNavigate();
+
+  const setStates = async () => {
+    setQuestion({});
+    setSelectedAnswer(null);
+    setResult(null);
+    setShowModal(false);
+    setScore(0);
+    setMaxNumber(464);
+    setStorageUser(0);
+  };
 
   const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
     const allAnswers = [correctAnswer, ...incorrectAnswers];
     return allAnswers.sort(() => Math.random() - 0.5);
   };
+
   const getMaxNumber = async () => {
     const url = hostURL + `/api/questions`;
     const response = await fetch(url);
@@ -27,6 +37,7 @@ const Game = () => {
     if (response.ok) {
       const data = await response.json();
       setMaxNumber(data.length);
+      getQuestion();
     }
   };
 
@@ -37,10 +48,10 @@ const Game = () => {
         randomNumber = Math.floor(Math.random() * maxNumber) + 1;
       } while (usedNumbers.includes(randomNumber));
 
-      usedNumbers.push(randomNumber);
+      setUsedNumbers((prevUsedNumbers) => [...prevUsedNumbers, randomNumber]);
 
       if (usedNumbers.length === maxNumber) {
-        usedNumbers.length = 0;
+        setUsedNumbers([]);
       }
 
       const url = hostURL + `/api/questions/${randomNumber}`;
@@ -79,6 +90,7 @@ const Game = () => {
       getQuestion();
     } else {
       setShowModal(true);
+      setSelectedAnswer(null);
     }
   };
 
@@ -111,22 +123,18 @@ const Game = () => {
     setShowModal(false);
     setScore(0);
     getQuestion();
+    setUsedNumbers([]);
   };
-  
+
   const handleNoButtonClick = () => {
-    setShowModal(false);
+    setStates();
     navigate("/");
+    setUsedNumbers([]);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      await getMaxNumber();
-      getQuestion();
-    };
-    fetchData();
-  }, [maxNumber]);
-  useEffect(() => {
     setStorageUser(JSON.parse(localStorage.getItem("user")));
+    getMaxNumber();
   }, []);
 
   return (
