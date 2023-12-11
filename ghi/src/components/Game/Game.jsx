@@ -167,6 +167,9 @@ const Game = () => {
       </div>
       <div className={`modal-container ${showModal ? "show" : ""}`}>
         <div className="modal">
+          {score > storageUser.score && (
+            <p>Congratulations! You've got a new high score: {score}</p>
+          )}
           <p>Correct answer was {question.correct_answer}</p>
           <p>Play again?</p>
           <button onClick={handlePlayAgainClick}>YES</button>
