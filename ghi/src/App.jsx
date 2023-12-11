@@ -26,7 +26,6 @@ function App() {
     }
   };
 
-  const [count, setCount] = useState(0);
   const domain = /https?:\/\/[^/]+/;
   const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "");
   return (
