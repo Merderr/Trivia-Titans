@@ -79,7 +79,10 @@ const AboutUs = () => {
             <div className="about-us-city">Chicago, IL</div>
           </div>
           <div className="right-info">
-            <Link to="<LinkedIn Profile URL>" className="linkedin-button">
+            <Link
+              to="https://www.linkedin.com/in/mason-doney/"
+              className="linkedin-button"
+            >
               Linkedin
             </Link>
           </div>
