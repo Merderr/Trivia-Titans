@@ -11,8 +11,8 @@ const Game = () => {
   const [showModal, setShowModal] = useState(false);
   const [score, setScore] = useState(0);
   const [maxNumber, setMaxNumber] = useState(464);
-  const [storageUser, setStorageUser] = useState(0);
   const [usedNumbers, setUsedNumbers] = useState([]);
+  const [storageUser, setStorageUser] = useState(null);
   const navigate = useNavigate();
 
   const setStates = async () => {
@@ -22,7 +22,6 @@ const Game = () => {
     setShowModal(false);
     setScore(0);
     setMaxNumber(464);
-    setStorageUser(0);
   };
 
   const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
@@ -182,7 +181,7 @@ const Game = () => {
       </div>
       <div className={`modal-container ${showModal ? "show" : ""}`}>
         <div className="modal">
-          {score > storageUser.score && (
+          {score > storageUser?.score && (
             <p>Congratulations! You've got a new high score: {score}</p>
           )}
           <p>Correct answer was {question.correct_answer}</p>
