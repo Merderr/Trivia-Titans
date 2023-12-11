@@ -48,6 +48,31 @@
 
     Goodluck on the games!
 
+6.  `Design`:
+
+    - Presentation:
+
+    https://gitlab.com/ice-climbers/trivia-titans/-/blob/main/docs/presentation.md?ref_type=heads
+
+    - WireFrame:
+
+    https://gitlab.com/ice-climbers/trivia-titans/-/blob/main/docs/wireframe.md?ref_type=heads
+
+    - Issue Tracking:
+
+    https://gitlab.com/ice-climbers/trivia-titans/-/boards
+
+    - Journals:
+
+    Please see journals folder.
+
+    - Tech Stack:
+
+      Frontend: VITE React
+      Backend: FastAPI
+      Database: PostgreSQL
+      Containerization: Docker
+
     Deployment of our application was made to Cirrus by Galvanize https://cirrus.mod3projects.com/ to manage cloud instances.
 
     We performed the following steps to deploy our application:
@@ -67,22 +92,7 @@
 
         glv-cloud-cli deploy -a db -i postgres:14.5-bullseye -e POSTGRES_DB=postgrestriviadata -e POSTGRES_USER=example_user -e POSTGRES_PASSWORD=secret -m /var/lib/postgresql -p 5432 -x=false
 
-6.  `Tech Stack`:
-
-    - Frontend: VITE React
-    - Backend: FastAPI
-    - Database: PostgreSQL
-    - Containerization: Docker
-
-7.  `Journaling`:
-
-    Please see journals folder.
-
-8.  `Issue Tracking`:
-
-    https://gitlab.com/ice-climbers/trivia-titans/-/boards
-
-9.  `Testing`:
+7.  `Testing`:
 
     1. test_get_one_user:
 
