@@ -2,9 +2,7 @@ from fastapi.testclient import TestClient
 from main import app
 from queries.users import UserRepository
 
-
 # Seth's Unit Test
-
 
 client = TestClient(app)
 
