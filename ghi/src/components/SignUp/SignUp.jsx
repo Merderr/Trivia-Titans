@@ -25,9 +25,10 @@ const Signup = () => {
       };
       await register(userData, `${hostURL}/api/users`);
       e.target.reset();
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
+      console.log(token)
+    setTimeout(() => {
+      navigate("/");
+      }, 1000);
     } catch (error) {
       setErrorMessage(
         "Please wait a few minutes or username/password was entered incorrectly"
