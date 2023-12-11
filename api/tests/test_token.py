@@ -23,7 +23,7 @@ async def get_token():
 
 
 def test_get_token():
-    response = client.get("/token")
+    response = client.get("/api/token")
     data = response.json()
     assert response.status_code == 200
     assert "access_token" in data and isinstance(data["access_token"], str)

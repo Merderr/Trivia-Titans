@@ -22,7 +22,7 @@ api-unit-tests-job:
   script:
     - cd api
     - echo "Environment Variables:"
-    - printenv # Print all environment variables
+    - printenv
     - echo 'DATABASE_URL="postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata"' > .env
     - cat .env
     - pip install -r requirements.txt

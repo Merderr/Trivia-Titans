@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
 from fastapi import APIRouter
 from main import app
+import os
 from queries.questions import QuestionRepository, QuestionModelOut
 
 
@@ -15,6 +16,8 @@ class FakeQuestionRepo:
     def get_one_question(self, question_id):
         if question_id >= 10000:
             return None
+        conninfo = os.environ.get("DATABASE_URL", "No database URL found")
+        print(f"Using database URL: {conninfo}")
         return QuestionModelOut(
             id=question_id,
             category="string",
