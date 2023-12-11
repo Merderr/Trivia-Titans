@@ -81,3 +81,7 @@ Helped other groups setup CI/CD backend
 # 12/8/2023:
 
 Still helping other teams do CI/CD backend while updating readme and cleaning up code.
+
+# 12/11/2023:
+
+Finished updating readme and updated game functionality to properly display when you get a new high score along with cleaning up code.
