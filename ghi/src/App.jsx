@@ -16,7 +16,7 @@ function App() {
   const originalError = console.error;
 
   console.error = function (message) {
-    originalError.apply(console, arguments);
+    // originalError.apply(console, arguments);
 
     if (
       message instanceof Error &&
