@@ -17,9 +17,10 @@ const NavBar = () => {
       setStorageUser(localStorage.setItem("user", "null"));
       await logout();
     } catch (error) {
-      alert("Please wait for logout");
+      setErrorMessage("Please wait for logout");
     }
     location.reload();
+    alert("Please wait for logout");
   };
 
   return (
