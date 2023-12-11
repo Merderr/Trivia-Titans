@@ -63,3 +63,25 @@ This is generally very ambigous and confusing since the details lack some detail
 Still having ci/cd issues. We are displaying only 3 routes instead of all of them. Feels like we are pulling from the forked repo. We get assigned a "aug2023-2-pt" registry. It seems off.
 
 # 12/4/2023: CI/CD
+
+Stuck but sorting issues out.
+
+# 12/5/2023:
+
+Updated animations for Navbar aswell as Navbar functionality when logged in
+
+# 12/6/2023:
+
+Created search function on leaderboard and updated functionality to not display new users as to not clog up the leaderboard.
+
+# 12/7/2023:
+
+Helped other groups setup CI/CD backend
+
+# 12/8/2023:
+
+Still helping other teams do CI/CD backend while updating readme and cleaning up code.
+
+# 12/11/2023:
+
+Finished updating readme and updated game functionality to properly display when you get a new high score along with cleaning up code.

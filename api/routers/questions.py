@@ -79,14 +79,3 @@ def delete_question(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
-
-
-@router.get("/createallquestions/", response_model=bool)
-def create_all(repo: QuestionRepository = Depends()) -> bool:
-    try:
-        repo.create_all()
-        return True
-    except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-        )

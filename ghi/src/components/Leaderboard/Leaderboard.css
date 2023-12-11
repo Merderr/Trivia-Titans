@@ -24,7 +24,7 @@
   margin: 0 auto;
   padding: 20px;
   color: white;
-  background-color:#091833;
+  background-color: #091833;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-height: 80vh;
@@ -78,6 +78,10 @@ label {
   align-items: center;
 }
 
+.leaderboard-input::placeholder {
+  color: white;
+}
+
 .search-text {
   margin-right: 10px;
   color: white;
@@ -91,7 +95,7 @@ label {
   background-color: #091833;
   color: white;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .leaderboard-input:focus {
@@ -99,19 +103,19 @@ label {
   border-color: #0abdc6;
 }
 
-@media only screen and (max-width: 699px){
-.title {
+@media only screen and (max-width: 699px) {
+  .title {
     font-size: 20px;
+  }
+  .leaderboard-container {
+    width: 300px;
+  }
 }
-.leaderboard-container {
-  width: 300px;
-}
-}
-@media only screen and (min-width: 700px) and (max-width: 1300px){
-    .title {
+@media only screen and (min-width: 700px) and (max-width: 1300px) {
+  .title {
     font-size: 30px;
-}
-.leaderboard-container {
-  width: 450px;
-}
+  }
+  .leaderboard-container {
+    width: 450px;
+  }
 }

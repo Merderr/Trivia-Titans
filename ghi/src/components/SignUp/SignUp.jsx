@@ -93,9 +93,9 @@ const Signup = () => {
           }}
         >
           Already signed up?{" "}
-          <Link to="/login" href="#" className="form-label">
+          <a to="/login" href="#" className="form-label">
             Log in Here!
-          </Link>
+          </a>
         </p>
       </div>
     </div>

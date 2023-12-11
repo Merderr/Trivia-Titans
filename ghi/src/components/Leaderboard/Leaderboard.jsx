@@ -6,14 +6,14 @@ const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const getLeaderboard = async () => {
-    const url = hostURL + "/leaderboard/";
+    const url = hostURL + "/leaderboard";
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
-      const filteredData = data.filter(user => user.score !== 0);
+      const filteredData = data.filter((user) => user.score !== 0);
       const sortedData = filteredData.sort((a, b) => b.score - a.score);
       setLeaderboard(sortedData);
     }
@@ -36,8 +36,8 @@ const Leaderboard = () => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredLeaderboard = leaderboard.filter(
-    (user) => user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredLeaderboard = leaderboard.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (

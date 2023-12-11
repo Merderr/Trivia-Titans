@@ -9,8 +9,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
-  const { login } = useToken();
-  const { token } = useToken();
+  const { login, token } = useToken();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [newToken, setNewToken] = useState(undefined);
 
@@ -31,6 +30,7 @@ const Login = () => {
   useEffect(() => {
     if (token) {
       navigate("/");
+      window.location.reload();
     }
   }, [token]);
 
@@ -61,11 +61,12 @@ const Login = () => {
               placeholder="Password"
               className="form-control"
               value={password}
+              style={{ marginBottom: "10px" }}
               onChange={(e) => setPassword(e.target.value)}
             />
             <button
-              type="checkbox"
-              className="show-pass-btn"
+              type="button"
+              className="btn btn-outline-secondary"
               onClick={togglePasswordVisibility}
             >
               {passwordVisible ? "Hide Password" : "Show Password"}

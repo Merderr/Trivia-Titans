@@ -60,4 +60,26 @@ Fully integrated Update User to work with the game, fixing bugs that were resett
 
 Changed font on certain pages to be easier to read amongst purple/pink background, including the NavBar.
 
-# 12/4/2023
+# 12/4/2023 Leaderboard Feature
+
+Edited Leaderboard to highlight current user. Made styling changes on leaderboard fonts and items.
+
+# 12/5/2023 Leaderboard Feature/Error Hunting
+
+Worked on finishing up leaderboard highlight feature, looked into where we would need error handling.
+
+# 12/6/2023 Deployment Changes
+
+We ran into a bunch of errors trying to get our code to work with deployment, I just cleared some errors. Also, changed the pre-made user scores to be more realistic for a new user to try and climb the leaderboard through.
+
+# 12/7/2023 Unit Test
+
+Started working on making a create_user unit test, it seems like the authentication we have in place is making it difficult to test.
+
+# 12/8/2023 Unit Test
+
+After trying unsuccessfully to make a create user test, I switched to get_all_users, only to realize upon finishing the test that we already have that unit test working.
+
+# 12/11/2023 Unit Test Changes
+
+Working on changing the unit test to check for a specific user within our database. Also, checking for error handling such as the 500 error that happens on the homepage when a user is not logged in. It doesn't break anything, but it would be nice to clear the error just to have everything running smoothly before presenting the project.

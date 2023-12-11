@@ -1,9 +1,9 @@
-#Mason's Unit Test
 from authenticator import authenticator
 from main import app
 from queries.users import UserRepository
 from fastapi.testclient import TestClient
 from contextlib import contextmanager
+
 
 client = TestClient(app)
 
