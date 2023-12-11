@@ -151,7 +151,7 @@ class UserRepository:
                     )
                     record = result.fetchone()
                     return self.record_to_user_out(record)
-        except psycopg.errors.UniqueViolation as e:
+        except Exception as e:
             print(f"User creation failed: {e}")
             return JSONResponse(
                 content={"message": "Could not create user"},
