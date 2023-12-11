@@ -16,7 +16,9 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(username, password).then(() => {
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
       });
     } catch (error) {
       setIsError(true);
