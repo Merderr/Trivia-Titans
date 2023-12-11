@@ -1,6 +1,3 @@
-import os
-
-
 class TestConfig:
     DATABASE_URL = (
         "postgresql://exampleuser:secret@postgres/postgrestriviadata"

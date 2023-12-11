@@ -3,19 +3,42 @@
   margin-bottom: 30px;
 }
 
+.leaderboard-title {
+  font-family: Rubik;
+  font-style: italic;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.leaderboard-title:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 7px;
+  background: linear-gradient(to right, #0abdc6, #133e7c);
+  margin-top: 10px;
+}
+
 .leaderboard-container {
-  max-width: 800px;
+  width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color:#091833;
+  color: white;
+  background-color: #091833;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-height: 80vh;
   overflow-y: auto;
 }
 
-.leaderboard-container h2 {
-  color: #34495e;
+.leaderboard-container::-webkit-scrollbar {
+  width: 12px;
+  height: 10px;
+}
+
+.leaderboard-container::-webkit-scrollbar-thumb {
+  background-color: #8998ac;
+  border-radius: 10px;
 }
 
 .leaderboard-list {
@@ -26,7 +49,6 @@
 .leaderboard-item {
   font-family: "Rubik", sans-serif;
   line-height: 1.6;
-  color: #34495e;
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
 }
@@ -36,6 +58,64 @@
 }
 
 .leaderboard-item.highlighted {
-  background-color: #00ccff;
+  background-color: #0abdc6;
   font-weight: bold;
+}
+
+.search-container {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.leaderboard-input::placeholder {
+  color: white;
+}
+
+.search-text {
+  margin-right: 10px;
+  color: white;
+}
+
+.leaderboard-input {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #8998ac;
+  border-radius: 5px;
+  background-color: #091833;
+  color: white;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.leaderboard-input:focus {
+  outline: none;
+  border-color: #0abdc6;
+}
+
+@media only screen and (max-width: 699px) {
+  .title {
+    font-size: 20px;
+  }
+  .leaderboard-container {
+    width: 300px;
+  }
+}
+@media only screen and (min-width: 700px) and (max-width: 1300px) {
+  .title {
+    font-size: 30px;
+  }
+  .leaderboard-container {
+    width: 450px;
+  }
 }

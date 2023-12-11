@@ -1,4 +1,4 @@
-#Mason's Unit Test
+# Mason's Unit Test
 from authenticator import authenticator
 from main import app
 from queries.users import UserRepository

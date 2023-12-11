@@ -10,13 +10,15 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://ice-climbers.gitlab.io",
+    "https://aug-2023-2-pt-api.mod3projects.com",
     os.environ.get("CORS_HOST", None),
 ]
 
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

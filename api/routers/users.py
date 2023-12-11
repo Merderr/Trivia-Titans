@@ -20,23 +20,30 @@ from queries.users import (
     DuplicateAccountError,
 )
 
+
 class UserForm(BaseModel):
     username: str
     password: str
 
+
 class UserToken(Token):
     user: UserModelOut
+
 
 class AccountToken(Token):
     account: UserModelOut
 
+
 class HttpError(BaseModel):
     detail: str
+
 
 class UserScoreUpdate(BaseModel):
     score: int
 
+
 router = APIRouter()
+
 
 @router.put("/api/users/{user_id}/update-score", response_model=UserModelOut)
 async def update_user_score(
@@ -53,7 +60,10 @@ async def update_user_score(
         user = repo.update_user_score(user_id, score_data.score)
         return user
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
 
 @router.post("/api/users", response_model=UserToken | HttpError)
 async def create_user(
@@ -74,14 +84,20 @@ async def create_user(
             detail="Cannot create an account with those credentials",
         )
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
 
 @router.get("/api/users", response_model=List[UserModelOut] | dict)
 async def get_all_users(repo: UserRepository = Depends()):
     try:
         return repo.get_all_users()
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
 
 @router.get("/api/users/{user_id}", response_model=UserModelOut)
 async def get_user(user_id: int, repo: UserRepository = Depends()):
@@ -94,7 +110,10 @@ async def get_user(user_id: int, repo: UserRepository = Depends()):
             )
         return user
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
 
 @router.put("/api/users/{user_id}", response_model=UserModelOut)
 async def update_user(
@@ -121,7 +140,10 @@ async def update_user(
             status_code=status.HTTP_200_OK,
         )
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
 
 @router.delete("/api/users/{user_id}", response_class=Response)
 async def delete_user(user_id: int, repo: UserRepository = Depends()):
@@ -139,7 +161,10 @@ async def delete_user(user_id: int, repo: UserRepository = Depends()):
             media_type="application/json",
         )
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
 
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
@@ -159,7 +184,10 @@ async def get_token(
                 detail="User not found",
             )
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
 
 @router.get("/leaderboard")
 def get_leaderboard_route(
@@ -169,4 +197,6 @@ def get_leaderboard_route(
         leaderboard = queries.get_leaderboard()
         return leaderboard
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
