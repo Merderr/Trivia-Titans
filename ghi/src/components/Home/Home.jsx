@@ -16,10 +16,11 @@ function Home() {
       if (token !== null) {
         const getToken = await fetch(
         `${import.meta.env.VITE_REACT_APP_API_HOST}/token`,
-        {
+          {
           credentials: "include",
-        }
-      );
+          }
+        );
+      }
     } catch error {
       setErrorMessage(
         "Please login or signup"
