@@ -4,6 +4,7 @@ from queries.users import UserRepository
 from fastapi.testclient import TestClient
 from contextlib import contextmanager
 
+
 client = TestClient(app)
 
 
