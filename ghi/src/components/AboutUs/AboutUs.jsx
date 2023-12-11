@@ -1,5 +1,6 @@
 import React from "react";
-import "./AboutUs.css";
+import "./AboutUs.css"
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
@@ -14,12 +15,12 @@ const AboutUs = () => {
             <div className="about-us-city">Tampa, FL</div>
           </div>
           <div className="right-info">
-            <a
-              href="https://www.linkedin.com/in/seth-porche-26295527b/"
+            <Link
+              to="https://www.linkedin.com/in/seth-porche-26295527b/"
               className="linkedin-button"
             >
               Linkedin
-            </a>
+            </Link>
           </div>
         </div>
         <div className="about-us-content">
@@ -46,12 +47,12 @@ const AboutUs = () => {
             <div className="about-us-city">Ocean City, MD</div>
           </div>
           <div className="right-info">
-            <a
-              href="https://www.linkedin.com/in/hamza-ahmed-63a500251/"
+            <Link
+              to="https://www.linkedin.com/in/hamza-ahmed-63a500251/"
               className="linkedin-button"
             >
               Linkedin
-            </a>
+            </Link>
           </div>
         </div>
         <div className="about-us-content">
@@ -78,9 +79,9 @@ const AboutUs = () => {
             <div className="about-us-city">Chicago, IL</div>
           </div>
           <div className="right-info">
-            <a href="<LinkedIn Profile URL>" className="linkedin-button">
+            <Link to="<LinkedIn Profile URL>" className="linkedin-button">
               Linkedin
-            </a>
+            </Link>
           </div>
         </div>
         <div className="about-us-content">
@@ -100,12 +101,12 @@ const AboutUs = () => {
             <div className="about-us-city">Denver, CO</div>
           </div>
           <div className="right-info">
-            <a
-              href="https://www.linkedin.com/in/taylorapearce/"
+            <Link
+              to="https://www.linkedin.com/in/taylorapearce/"
               className="linkedin-button"
             >
               Linkedin
-            </a>
+            </Link>
           </div>
         </div>
         <div className="about-us-content">
