@@ -1,8 +1,6 @@
 from fastapi.testclient import TestClient
 from fastapi import APIRouter
 from main import app
-from pydantic import BaseModel
-from authenticator import authenticator
 from queries.questions import QuestionRepository, QuestionModelOut
 
 
