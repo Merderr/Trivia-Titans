@@ -2,6 +2,5 @@
   "editor.formatOnPaste": true,
   "python.formatting.provider": "black",
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "python.testing.envFile": "${tests}/.env"
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
