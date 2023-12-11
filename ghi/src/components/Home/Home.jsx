@@ -22,7 +22,7 @@ function Home() {
         if (data) {
           setUser(data.account);
           localStorage.setItem("user", JSON.stringify(data.account));
-          setStorageUser(data.account); 
+          setStorageUser(data.account);
         }
       }
     }
@@ -32,10 +32,7 @@ function Home() {
     getUser();
   }, [token]);
 
-  useEffect(() => {
-
-  }, [storageUser]);
-
+  useEffect(() => {}, [storageUser]);
   return (
     <>
       <header className="app-header"></header>
@@ -55,5 +52,4 @@ function Home() {
     </>
   );
 }
-
 export default Home;
