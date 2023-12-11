@@ -40,7 +40,7 @@
 
 4.  `Stretch Goals`:
 
-    Potential multiplayer head to head game mode.
+        Potential multiplayer head to head game mode.
 
 5.  `Onboarding`:
     To fully enjoy this application on your local machine, please make sure to follow these steps:
@@ -66,11 +66,11 @@
 
     We used the following commands to build and deploy our application to Cirrus:
 
-    `glv-cloud-cli deploy -a api -i registry.gitlab.com/ice-climbers/trivia-titans/api:latest -e SIGNING_KEY=AC8C8396F9F516FCE01A6805FF8C3D8E -e postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata -e CORS_HOST=https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/`
+        ```glv-cloud-cli deploy -a api -i registry.gitlab.com/ice-climbers/trivia-titans/api:latest -e SIGNING_KEY=AC8C8396F9F516FCE01A6805FF8C3D8E -e postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata -e CORS_HOST=https://module3-project-gamma-ice-climbers-c0a68aa6a822a297eec1a4775dd1.gitlab.io/```
 
     We used the following commands to build our Postgres DB into Cirrus:
 
-    `glv-cloud-cli deploy -a db -i postgres:14.5-bullseye -e POSTGRES_DB=postgrestriviadata -e POSTGRES_USER=example_user -e POSTGRES_PASSWORD=secret -m /var/lib/postgresql -p 5432 -x=false`
+        ```glv-cloud-cli deploy -a db -i postgres:14.5-bullseye -e POSTGRES_DB=postgrestriviadata -e POSTGRES_USER=example_user -e POSTGRES_PASSWORD=secret -m /var/lib/postgresql -p 5432 -x=false```
 
 6.  `Tech Stack`:
 
@@ -81,30 +81,30 @@
 
 7.  `Journaling`:
 
-    Please see journals folder.
+        Please see journals folder.
 
 8.  `Documentation`:
 
-    https://excalidraw.com/#room=d3f0c49b03f24e8fd4b1,TQCdJTHuOxNcEHSB2_yFVg
+        https://excalidraw.com/#room=d3f0c49b03f24e8fd4b1,TQCdJTHuOxNcEHSB2_yFVg
 
 9.  `Issue Tracking`:
 
-    https://gitlab.com/ice-climbers/trivia-titans/-/boards
+        https://gitlab.com/ice-climbers/trivia-titans/-/boards
 
 10. `Testing`:
 
     1. test_get_users:
 
-    Purpose: Tests the endpoint for retrieving users. Overrides the dependency for the UserRepository with FakeUserRepo. Sends a GET request to "/api/users/". Resets the dependency overrides. Checks if the response status code is 200 and the returned JSON is an empty list. Created by Seth Porche.
+       Purpose: Tests the endpoint for retrieving users. Overrides the dependency for the UserRepository with FakeUserRepo. Sends a GET request to "/api/users/". Resets the dependency overrides. Checks if the response status code is 200 and the returned JSON is an empty list. Created by Seth Porche.
 
     2. test_get_all_users:
 
-    Purpose: Tests the endpoint for retrieving users, overrides dependencies using a context manager for testing purposes, and includes a test function (test_get_all_users) that checks if a GET request to "/api/users" returns a response with a 200 status code and an empty JSON list. The file also defines fake implementations for the authentication and user repository components during testing. Created by Mason Doney
+       Purpose: Tests the endpoint for retrieving users, overrides dependencies using a context manager for testing purposes, and includes a test function (test_get_all_users) that checks if a GET request to "/api/users" returns a response with a 200 status code and an empty JSON list. The file also defines fake implementations for the authentication and user repository components during testing. Created by Mason Doney
 
     3. test_get_question:
 
-    Purpose: Tests the endpoint for retrieving a specific question. Overrides the dependency for the QuestionRepository with FakeQuestionRepo. Sends a GET request to "/api/questions/1". Resets the dependency overrides. Verifies the response status code and checks if the returned JSON matches the expected QuestionModelOut. Created by Taylor Pearce.
+       Purpose: Tests the endpoint for retrieving a specific question. Overrides the dependency for the QuestionRepository with FakeQuestionRepo. Sends a GET request to "/api/questions/1". Resets the dependency overrides. Verifies the response status code and checks if the returned JSON matches the expected QuestionModelOut. Created by Taylor Pearce.
 
     4. test_get_token:
 
-    Purpose: Tests the endpoint for retrieving a token. Sends a GET request to "/token". Checks the response status code and the structure of the returned JSON, ensuring the presence and types of certain fields. Created by Hamza Ahmed.
+       Purpose: Tests the endpoint for retrieving a token. Sends a GET request to "/token". Checks the response status code and the structure of the returned JSON, ensuring the presence and types of certain fields. Created by Hamza Ahmed.

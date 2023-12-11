@@ -21,7 +21,7 @@ function Home() {
           }
         );
       }
-    } catch error {
+    } catch (error) {
       setErrorMessage(
         "Please login or signup"
       );
