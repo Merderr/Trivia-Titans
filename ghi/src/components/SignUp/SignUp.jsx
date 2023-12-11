@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import "./SignUp.css";
 
+
 const hostURL = import.meta.env.VITE_REACT_APP_API_HOST;
 
 const Signup = () => {
@@ -93,9 +94,9 @@ const Signup = () => {
           }}
         >
           Already signed up?{" "}
-          <a to="/login" href="#" className="form-label">
+          <Link to="/login" href="#" className="form-label">
             Log in Here!
-          </a>
+          </Link>
         </p>
       </div>
     </div>

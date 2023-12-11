@@ -1,5 +1,6 @@
 import React from "react";
-import "./AboutUs.css";
+import "./AboutUs.css"
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
@@ -8,8 +9,20 @@ const AboutUs = () => {
         <h1 className="title">ABOUT THE DEVELOPERS</h1>
       </div>
       <div className="about-us-container">
-        <div className="about-us-header">Seth Porche</div>
-        <div className="about-us-city">Tampa, FL</div>
+        <div className="developer-info">
+          <div className="left-info">
+            <div className="about-us-header">Seth Porche</div>
+            <div className="about-us-city">Tampa, FL</div>
+          </div>
+          <div className="right-info">
+            <Link
+              to="https://www.linkedin.com/in/seth-porche-26295527b/"
+              className="linkedin-button"
+            >
+              Linkedin
+            </Link>
+          </div>
+        </div>
         <div className="about-us-content">
           <p>
             "Hi, I'm Seth, a passionate individual with a diverse set of
@@ -26,10 +39,25 @@ const AboutUs = () => {
             be on the lookout for exciting opportunities to contribute my skills
             and passion to the world of technology."
           </p>
-          <div className="about-us-header">Hamza Ahmed</div>
-          <div className="about-us-city">Ocean City, MD</div>
+        </div>
+
+        <div className="developer-info">
+          <div className="left-info">
+            <div className="about-us-header">Hamza Ahmed</div>
+            <div className="about-us-city">Ocean City, MD</div>
+          </div>
+          <div className="right-info">
+            <Link
+              to="https://www.linkedin.com/in/hamza-ahmed-63a500251/"
+              className="linkedin-button"
+            >
+              Linkedin
+            </Link>
+          </div>
+        </div>
+        <div className="about-us-content">
           <p>
-            "Hey there! I'm Hamza, a running enthusiast, amatuer cook and a
+            "Hey there! I'm Hamza, a running enthusiast, amateur cook, and a
             passionate coder. Originally from Pakistan, I made a bold shift from
             PA school to the dynamic world of programming. When I'm not immersed
             in the world of coding, you'll likely find me pounding the pavement,
@@ -44,8 +72,21 @@ const AboutUs = () => {
             delightful chaos that is life."
           </p>
         </div>
-        <div className="about-us-header">Mason Doney</div>
-        <div className="about-us-city">Chicago, IL</div>
+
+        <div className="developer-info">
+          <div className="left-info">
+            <div className="about-us-header">Mason Doney</div>
+            <div className="about-us-city">Chicago, IL</div>
+          </div>
+          <div className="right-info">
+            <Link
+              to="https://www.linkedin.com/in/mason-doney/"
+              className="linkedin-button"
+            >
+              Linkedin
+            </Link>
+          </div>
+        </div>
         <div className="about-us-content">
           <p>
             "Hey there! I'm Mason Doney, hailing from the vibrant city of
@@ -53,11 +94,24 @@ const AboutUs = () => {
             unleashing my competitive spirit in video games or tearing up the
             sports field with my friends. 🎮⚽ In the world of technology, I'm
             always up for a challenge and love bringing ideas to life through
-            coding. Looking forward to making a mark in the tech landscape!
+            coding. Looking forward to making a mark in the tech landscape!"
           </p>
         </div>
-        <div className="about-us-header">Taylor Pearce</div>
-        <div className="about-us-city">Denver, CO</div>
+
+        <div className="developer-info">
+          <div className="left-info">
+            <div className="about-us-header">Taylor Pearce</div>
+            <div className="about-us-city">Denver, CO</div>
+          </div>
+          <div className="right-info">
+            <Link
+              to="https://www.linkedin.com/in/taylorapearce/"
+              className="linkedin-button"
+            >
+              Linkedin
+            </Link>
+          </div>
+        </div>
         <div className="about-us-content">
           <p>
             Greetings! I'm Taylor, a software engineer hailing from the Mile

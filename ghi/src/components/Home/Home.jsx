@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 function Home() {
   const { token } = useToken();
   const [user, setUser] = useState("");
-  const [storageUser, setStorageUser] = useState();
+  const [storageUser, setStorageUser] = useState("");
   const [count, setCount] = useState(0);
 
   const getUser = async (e) => {
@@ -19,12 +19,12 @@ function Home() {
           credentials: "include",
         }
       );
-      if (getToken.ok) {
-        const data = await getToken.json();
-        if (data) {
-          setUser(data.account);
-          localStorage.setItem("user", JSON.stringify(data.account));
-        }
+    }
+    if (getToken.ok) {
+      const data = await getToken.json();
+      if (data) {
+        setUser(data.account);
+        localStorage.setItem("user", JSON.stringify(data.account));
       }
     }
   };
