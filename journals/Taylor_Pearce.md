@@ -51,3 +51,12 @@ Worked on creating a dynamic based on screen size for smartphones and tablets. U
 
 # 12/6/2023 Tests and Aesthetics:
 Worked on pytest, and minor game aesthetics.
+
+# 12/7/2023 Tests and Aesthetics:
+Finished up unit test.
+
+# 12/7/2023 Aesthetics:
+Updated leaderboard aesthetics.
+
+# 12/8/2023 Finishing Touches:
+Finishing touches, submission.
