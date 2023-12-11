@@ -21,6 +21,8 @@ const Login = () => {
       setErrorMessage(
         "Please wait a few minutes or username/password was entered incorrectly"
       );
+      setUsername("");
+      setPassword("");
     }
   };
 
