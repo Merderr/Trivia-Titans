@@ -19,12 +19,12 @@ function Home() {
           credentials: "include",
         }
       );
-    }
-    if (getToken.ok) {
-      const data = await getToken.json();
-      if (data) {
-        setUser(data.account);
-        localStorage.setItem("user", JSON.stringify(data.account));
+      if (getToken.ok) {
+        const data = await getToken.json();
+        if (data) {
+          setUser(data.account);
+          localStorage.setItem("user", JSON.stringify(data.account));
+        }
       }
     }
   };
