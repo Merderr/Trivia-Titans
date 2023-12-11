@@ -74,10 +74,10 @@
 
 6.  `Tech Stack`:
 
-    Frontend: React
-    Backend: FastAPI
-    Database: PostgreSQL
-    Containerization: Docker
+    - Frontend: React
+    - Backend: FastAPI
+    - Database: PostgreSQL
+    - Containerization: Docker
 
 7.  `Journaling`:
 
