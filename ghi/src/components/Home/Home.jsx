@@ -31,7 +31,9 @@ function Home() {
 
   useEffect(() => {
     getUser();
-    setStorageUser(JSON.parse(localStorage.getItem("user")));
+    if (storageUser !== null){
+      setStorageUser(JSON.parse(localStorage.getItem("user")));
+  }
   }, []);
 
   return (
