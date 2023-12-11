@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import "./Login.css";
@@ -9,13 +9,15 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
-  const { login, token } = useToken();
+  const { login } = useToken();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(username, password);
+      await login(username, password).then(() => {
+        navigate("/");
+      });
     } catch (error) {
       setIsError(true);
       setErrorMessage(
@@ -25,13 +27,6 @@ const Login = () => {
       setPassword("");
     }
   };
-
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-      window.location.reload();
-    }
-  }, [token]);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
