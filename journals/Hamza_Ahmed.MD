@@ -69,3 +69,7 @@ Helped other groups setup CI/CD backend
 # 12/8/2023:
 
 Still helping other teams do CI/CD backend while updating readme and cleaning up code.
+
+# 12/11/2023:
+
+Fixed frontend CI/CD, final submission due today! Just cleaning up code and getting rdy to present.

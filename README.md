@@ -78,17 +78,11 @@
 
     Please see journals folder.
 
-8.  `Documentation`:
-
-    https://excalidraw.com/#room=d3f0c49b03f24e8fd4b1,TQCdJTHuOxNcEHSB2_yFVg
-
-    https://docs.google.com/presentation/d/16_4rFWDkUHJ6b9N0DxPc2FHKREWIohpugK_UJ4YJMGQ/edit?usp=sharing
-
-9.  `Issue Tracking`:
+8.  `Issue Tracking`:
 
     https://gitlab.com/ice-climbers/trivia-titans/-/boards
 
-10. `Testing`:
+9.  `Testing`:
 
     1. test_get_one_user:
 
