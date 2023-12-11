@@ -4,8 +4,9 @@
 
         Competitive solo gameplay with leaderboard rankings.
         A diverse array of challenging trivia questions spanning various categories.
-        An achievement system to recognize and reward accomplishments.
         A mobile-friendly interface for seamless gaming anytime, anywhere.
+        Users can sign up, login and logout.
+        My account section which shows username and score.
 
 2.  `User Stories/Scenarios`:
 
