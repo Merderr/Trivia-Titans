@@ -11,15 +11,15 @@
 
     Scenario #1: New user onboarding
 
-        Upon signing up on Trivia Titans, users should have instant access to play and witness their scores updating in real time on the leaderboard.
+    Upon signing up on Trivia Titans, users should have instant access to play and witness their scores updating in real time on the leaderboard.
 
     Scenario #2: Competitive Player
 
-        As a competitive player on Trivia Titans, receiving a high score update should be triggered immediately upon answering a question incorrectly. Additionally, players should receive a notification upon reaching a new personal high score
+    As a competitive player on Trivia Titans, receiving a high score update should be triggered immediately upon answering a question incorrectly. Additionally, players should receive a notification upon reaching a new personal high score
 
     Scenario #3: Returning Player Engagement
 
-        For returning players on Trivia Titans, a visit to the website should greet them with fresh trivia questions for an engaging experience. Moreover, they should have easy access to their account details, including their high score.
+    For returning players on Trivia Titans, a visit to the website should greet them with fresh trivia questions for an engaging experience. Moreover, they should have easy access to their account details, including their high score.
 
 3.  `Intended Market`:
 
@@ -69,7 +69,7 @@
 
 6.  `Tech Stack`:
 
-    - Frontend: React
+    - Frontend: VITE React
     - Backend: FastAPI
     - Database: PostgreSQL
     - Containerization: Docker
@@ -90,9 +90,9 @@
 
 10. `Testing`:
 
-    1. test_get_users:
+    1. test_get_one_user:
 
-       Purpose: Tests the endpoint for retrieving users. Overrides the dependency for the UserRepository with FakeUserRepo. Sends a GET request to "/api/users/". Resets the dependency overrides. Checks if the response status code is 200 and the returned JSON is an empty list. Created by Seth Porche.
+       Purpose: Tests the endpoint for retrieving a single user. Overrides the dependency for the UserRepository with FakeUserRepo. Sends a GET request to "/api/users/{id}". Resets the dependency overrides. Checks if the response status code is 200 and the returned JSON is an empty list. Created by Seth Porche.
 
     2. test_get_all_users:
 
