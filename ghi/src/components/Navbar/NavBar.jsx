@@ -12,17 +12,6 @@ const NavBar = () => {
     setIsNavOpen(!isNavOpen);
   };
 
-  const handleLogout = async () => {
-    try {
-      setStorageUser(localStorage.setItem("user", "null"));
-      await logout();
-    } catch (error) {
-      alert("Please wait for logout");
-    }
-    location.reload();
-    alert("Please wait for logout");
-  };
-
   return (
     <div className={`nav-container ${isNavOpen ? "open" : ""}`}>
       <button onClick={toggleNav} className="toggle-button">
@@ -51,7 +40,7 @@ const NavBar = () => {
         <NavLink to="/aboutus" activeClassName="active">
           About Us
         </NavLink>
-        <NavLink to="/" activeClassName="active" onClick={handleLogout}>
+        <NavLink to="/" activeClassName="active">
           Log Out
         </NavLink>
       </div>
