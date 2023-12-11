@@ -9,23 +9,17 @@
 
 2.  `User Stories/Scenarios`:
 
-        Scenario #1: New User Onboarding
-        Given a new user opens the Trivia Titans app
-        When they complete the signup process
-        Then they should be able to play right away
-        And they should be able to see their score update on the leaderboard right away
+    Scenario #1: New user onboarding
 
-        Scenario #2: Competitive Player Updates
-        Given a competitive player in the game
-        When they achieve a high score
-        Then their score should be updated upon getting a question wrong
-        And they should be notified upon achieving a new high score
+        Upon signing up on Trivia Titans, users should have instant access to play and witness their scores updating in real time on the leaderboard.
 
-        Scenario #3: Returning Player Engagement
-        Given a returning player
-        When they revisit the Trivia Titans app
-        Then they should see new trivia questions to keep the game engaging
-        And they should be able to view their account details including high score
+    Scenario #2: Competitive Player
+
+        As a competitive player on Trivia Titans, receiving a high score update should be triggered immediately upon answering a question incorrectly. Additionally, players should receive a notification upon reaching a new personal high score
+
+    Scenario #3: Returning Player Engagement
+
+        For returning players on Trivia Titans, a visit to the website should greet them with fresh trivia questions for an engaging experience. Moreover, they should have easy access to their account details, including their high score.
 
 3.  `Intended Market`:
 
@@ -43,6 +37,7 @@
     Potential multiplayer head to head game mode.
 
 5.  `Onboarding`:
+
     To fully enjoy this application on your local machine, please make sure to follow these steps:
 
         1. Clone the repository down to your local machine
@@ -86,6 +81,8 @@
 8.  `Documentation`:
 
     https://excalidraw.com/#room=d3f0c49b03f24e8fd4b1,TQCdJTHuOxNcEHSB2_yFVg
+
+    https://docs.google.com/presentation/d/16_4rFWDkUHJ6b9N0DxPc2FHKREWIohpugK_UJ4YJMGQ/edit?usp=sharing
 
 9.  `Issue Tracking`:
 

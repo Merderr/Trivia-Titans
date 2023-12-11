@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 function Home() {
   const { token } = useToken();
   const [user, setUser] = useState("");
-  const [storageUser, setStorageUser] = useState();
+  const [storageUser, setStorageUser] = useState("");
   const [count, setCount] = useState(0);
 
   const getUser = async (e) => {
