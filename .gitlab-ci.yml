@@ -6,6 +6,10 @@ stages:
   - build
   - deploy
 
+variables:
+  DATABASE_URL: "postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata"
+  SIGNING_KEY: "AC8C8396F9F516FCE01A6805FF8C3D8"
+
 # Run flake8 to check for code quality
 lint-test-job:
   image: python:3-bullseye
@@ -22,9 +26,11 @@ api-unit-tests-job:
   script:
     - cd api
     - echo "Environment Variables:"
-    - printenv # Print all environment variables
+    - printenv
     - echo 'DATABASE_URL="postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata"' > .env
     - cat .env
+    - export DATABASE_URL="postgresql://exampleuser:secret@aug-2023-2-pt-db-service.default.svc.cluster.local/postgrestriviadata"
+    - export SIGNING_KEY="AC8C8396F9F516FCE01A6805FF8C3D8"
     - pip install -r requirements.txt
     - python -m pytest
 
