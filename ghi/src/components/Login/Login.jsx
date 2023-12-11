@@ -9,8 +9,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
-  const { login } = useToken();
-  const { token } = useToken();
+  const { login, token } = useToken();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [newToken, setNewToken] = useState(undefined);
 
