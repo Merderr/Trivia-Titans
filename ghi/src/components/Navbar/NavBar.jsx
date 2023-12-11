@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -17,9 +18,10 @@ const NavBar = () => {
       setStorageUser(localStorage.setItem("user", "null"));
       await logout();
     } catch (error) {
-      alert("Please wait for logout");
+      setErrorMessage("Please wait for logout");
     }
     location.reload();
+    alert("Please wait for logout");
   };
 
   return (
