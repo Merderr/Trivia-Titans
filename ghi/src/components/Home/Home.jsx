@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../Navbar/NavBar";
 import PlayButton from "../PlayButton";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import "./Home.css";
-import { useEffect, useState } from "react";
 
 function Home() {
   const { token } = useToken();
   const [user, setUser] = useState("");
-  const [storageUser, setStorageUser] = useState("");
+  const [storageUser, setStorageUser] = useState(null);
 
-  const getUser = async (e) => {
+  const getUser = async () => {
     if (token !== null) {
       const getToken = await fetch(
         `${import.meta.env.VITE_REACT_APP_API_HOST}/token`,
@@ -23,6 +22,7 @@ function Home() {
         if (data) {
           setUser(data.account);
           localStorage.setItem("user", JSON.stringify(data.account));
+          setStorageUser(data.account); 
         }
       }
     }
@@ -30,8 +30,11 @@ function Home() {
 
   useEffect(() => {
     getUser();
-    setStorageUser(JSON.parse(localStorage.getItem("user")));
-  }, []);
+  }, [token]);
+
+  useEffect(() => {
+
+  }, [storageUser]);
 
   return (
     <>
@@ -41,7 +44,7 @@ function Home() {
           <div>
             <h1 className="main-title">TRIVIA TITANS</h1>
           </div>
-          {token && storageUser && (
+          {token && storageUser !== null && (
             <div>
               <h2 className="welcome-title">Welcome, {storageUser.name} </h2>
             </div>

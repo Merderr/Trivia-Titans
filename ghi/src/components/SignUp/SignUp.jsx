@@ -25,11 +25,14 @@ const Signup = () => {
       };
       await register(userData, `${hostURL}/api/users`);
       e.target.reset();
+      console.log(token)
+    setTimeout(() => {
       navigate("/");
+      }, 2000);
     } catch (error) {
-      setErrorMessage(
-        "Please wait a few minutes or username/password was entered incorrectly"
-      );
+    setErrorMessage(
+      "Please wait a few minutes or username/password was entered incorrectly"
+    );
     }
   };
 
