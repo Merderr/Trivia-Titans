@@ -28,7 +28,7 @@ const Signup = () => {
       console.log(token)
     setTimeout(() => {
       navigate("/");
-      }, 2000);
+      }, 1000);
     } catch (error) {
     setErrorMessage(
       "Please wait a few minutes or username/password was entered incorrectly"
