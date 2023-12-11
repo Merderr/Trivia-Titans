@@ -1,5 +1,5 @@
 import React from "react";
-import "./AboutUs.css"
+import "./AboutUs.css";
 import { Link } from "react-router-dom";
 
 const AboutUs = () => {
@@ -72,7 +72,6 @@ const AboutUs = () => {
             delightful chaos that is life."
           </p>
         </div>
-
         <div className="developer-info">
           <div className="left-info">
             <div className="about-us-header">Mason Doney</div>
@@ -97,7 +96,6 @@ const AboutUs = () => {
             coding. Looking forward to making a mark in the tech landscape!"
           </p>
         </div>
-
         <div className="developer-info">
           <div className="left-info">
             <div className="about-us-header">Taylor Pearce</div>

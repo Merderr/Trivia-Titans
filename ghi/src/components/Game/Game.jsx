@@ -14,7 +14,7 @@ const Game = () => {
   const [storageUser, setStorageUser] = useState(0);
   const [usedNumbers, setUsedNumbers] = useState([]);
   const navigate = useNavigate();
-  
+
   const setStates = async () => {
     setQuestion({});
     setSelectedAnswer(null);
@@ -23,15 +23,17 @@ const Game = () => {
     setScore(0);
     setMaxNumber(464);
     setStorageUser(0);
-  }
+  };
+
   const shuffleAnswers = (correctAnswer, incorrectAnswers) => {
     const allAnswers = [correctAnswer, ...incorrectAnswers];
     return allAnswers.sort(() => Math.random() - 0.5);
   };
+
   const getMaxNumber = async () => {
     const url = hostURL + `/api/questions`;
     const response = await fetch(url);
-    
+
     if (response.ok) {
       const data = await response.json();
       setMaxNumber(data.length);
@@ -46,9 +48,7 @@ const Game = () => {
         randomNumber = Math.floor(Math.random() * maxNumber) + 1;
       } while (usedNumbers.includes(randomNumber));
 
-      setUsedNumbers((prevUsedNumbers)=>([
-        ...prevUsedNumbers, randomNumber
-      ]))
+      setUsedNumbers((prevUsedNumbers) => [...prevUsedNumbers, randomNumber]);
 
       if (usedNumbers.length === maxNumber) {
         setUsedNumbers([]);
@@ -125,17 +125,16 @@ const Game = () => {
     getQuestion();
     setUsedNumbers([]);
   };
-  
+
   const handleNoButtonClick = () => {
     setStates();
-    navigate("/"); 
+    navigate("/");
     setUsedNumbers([]);
   };
 
   useEffect(() => {
     setStorageUser(JSON.parse(localStorage.getItem("user")));
     getMaxNumber();
-    
   }, []);
 
   return (

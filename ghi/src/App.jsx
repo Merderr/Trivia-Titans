@@ -14,10 +14,7 @@ import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {
   const originalError = console.error;
-
   console.error = function (message) {
-    // originalError.apply(console, arguments);
-
     if (
       message instanceof Error &&
       message.message.includes("Failed to get token after login. Got")

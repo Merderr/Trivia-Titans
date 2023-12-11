@@ -9,7 +9,6 @@ function Home() {
   const { token } = useToken();
   const [user, setUser] = useState("");
   const [storageUser, setStorageUser] = useState("");
-  const [count, setCount] = useState(0);
 
   const getUser = async (e) => {
     if (token !== null) {
@@ -31,9 +30,9 @@ function Home() {
 
   useEffect(() => {
     getUser();
-    if (storageUser !== null){
+    if (storageUser !== null) {
       setStorageUser(JSON.parse(localStorage.getItem("user")));
-  }
+    }
   }, []);
 
   return (

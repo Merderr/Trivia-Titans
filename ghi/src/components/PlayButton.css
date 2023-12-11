@@ -108,7 +108,6 @@ button:focus::before {
   }
 
   .play-button {
-  padding: 30px;
-}
-
+    padding: 30px;
+  }
 }

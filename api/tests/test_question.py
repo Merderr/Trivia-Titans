@@ -3,10 +3,6 @@ from fastapi import APIRouter
 from main import app
 from queries.questions import QuestionRepository, QuestionModelOut
 
-
-# Taylor's Unit Test
-
-
 router = APIRouter()
 client = TestClient(app)
 

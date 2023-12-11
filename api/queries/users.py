@@ -49,15 +49,6 @@ class DuplicateAccountError(ValueError):
 
 
 class UserRepository:
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_value, traceback):
-        try:
-            pool.closeall()
-        except Exception as e:
-            print(f"Error closing connection pool: {e}")
-
     def get_user_by_id(self, user_id: int) -> Optional[UserModelOut]:
         try:
             with pool.connection() as conn:
@@ -246,29 +237,6 @@ class UserRepository:
             score=record[4],
         )
 
-    def get_leaderboard(self):
-        try:
-            with pool.connection() as conn:
-                with conn.cursor() as db:
-                    result = db.execute(
-                        """
-                        SELECT name, score
-                        FROM users
-                        ORDER BY score;
-                        """
-                    )
-                    result_list = []
-                    for record in result:
-                        user = UserScoreOut(
-                            name=record[0],
-                            score=record[1],
-                        )
-                        result_list.append(user)
-                    return result_list
-        except Exception as e:
-            print(e)
-            return {"message": "Could not get leaderboard"}
-
     def update_user_score(
         self, user_id: int, new_score: int
     ) -> Union[None, JSONResponse]:
@@ -292,3 +260,26 @@ class UserRepository:
                 content={"message": "Could not update user score"},
                 status_code=500,
             )
+
+    def get_leaderboard(self):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT name, score
+                        FROM users
+                        ORDER BY score;
+                        """
+                    )
+                    result_list = []
+                    for record in result:
+                        user = UserScoreOut(
+                            name=record[0],
+                            score=record[1],
+                        )
+                        result_list.append(user)
+                    return result_list
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get leaderboard"}

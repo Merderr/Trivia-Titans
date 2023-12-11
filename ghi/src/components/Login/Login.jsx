@@ -7,23 +7,18 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
   const { login, token } = useToken();
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [newToken, setNewToken] = useState(undefined);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await login(username, password);
     } catch (error) {
-      setIsError(true);
       setErrorMessage(
         "Please wait a few minutes or username/password was entered incorrectly"
       );
-      setUsername("");
-      setPassword("");
     }
   };
 
