@@ -7,6 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
   const { login, token } = useToken();
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -16,6 +17,7 @@ const Login = () => {
     try {
       await login(username, password);
     } catch (error) {
+      setIsError(true);
       setErrorMessage(
         "Please wait a few minutes or username/password was entered incorrectly"
       );
