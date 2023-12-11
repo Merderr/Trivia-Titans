@@ -30,9 +30,9 @@ const Signup = () => {
       navigate("/");
       }, 1000);
     } catch (error) {
-    setErrorMessage(
-      "Please wait a few minutes or username/password was entered incorrectly"
-    );
+      setErrorMessage(
+        "Please wait a few minutes or username/password was entered incorrectly"
+      );
     }
   };
 
