@@ -12,13 +12,19 @@ function Home() {
   const [count, setCount] = useState(0);
 
   const getUser = async (e) => {
-    if (token !== null) {
-      const getToken = await fetch(
+    try {
+      if (token !== null) {
+        const getToken = await fetch(
         `${import.meta.env.VITE_REACT_APP_API_HOST}/token`,
         {
           credentials: "include",
         }
       );
+    } catch error {
+      setErrorMessage(
+        "Please login or signup"
+      );
+    }
       if (getToken.ok) {
         const data = await getToken.json();
         if (data) {
