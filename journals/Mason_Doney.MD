@@ -84,4 +84,4 @@ Still helping other teams do CI/CD backend while updating readme and cleaning up
 
 # 12/11/2023:
 
-Finished updating readme and updated game functionality to properly display when you get a new high score along with cleaning up code.
+Finished updating readme and updated game functionality to properly display when you get a new high score along with some logic changes
