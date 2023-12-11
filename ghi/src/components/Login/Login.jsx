@@ -26,7 +26,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate("/leaderboard");
       window.location.reload();
     }
   }, [token]);
