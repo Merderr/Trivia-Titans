@@ -26,7 +26,6 @@ const Signup = () => {
       await register(userData, `${hostURL}/api/users`);
       e.target.reset();
       navigate("/");
-      window.location.reload();
     } catch (error) {
       setErrorMessage(
         "Please wait a few minutes or username/password was entered incorrectly"
